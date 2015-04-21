@@ -5,7 +5,7 @@ package Repository;
  * @author Raphael 64044
  * @version 1.0
  */
-public interface MonInfoInterface {
+public interface RepositoryInterface {
 
     // Function to change the Owner's variable
     /**

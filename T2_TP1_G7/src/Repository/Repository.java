@@ -11,7 +11,7 @@ import genclass.TextFile;
  * @version 1.0
  */
 
-public class MonInfo implements MonInfoInterface {
+public class Repository implements RepositoryInterface {
 
     /**
      * Owner States.
@@ -120,7 +120,7 @@ public class MonInfo implements MonInfoInterface {
      * @param fName Log file name
      * @param nPrimeMaterialsInFactory Initial number of prime materials in factory
      */
-    public MonInfo(int nCraftsman, int nCustomer, String fName, int nPrimeMaterialsInFactory) {
+    public Repository(int nCraftsman, int nCustomer, String fName, int nPrimeMaterialsInFactory) {
         // Initialization of the Craftman's variables
         this.nCraftman = nCraftsman;
         stateCraftman = new int[this.nCraftman];
