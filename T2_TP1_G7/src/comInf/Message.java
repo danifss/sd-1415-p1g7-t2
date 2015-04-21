@@ -11,11 +11,11 @@ import java.io.*;
 public abstract class Message implements Serializable {
 
     /**
-     * Chave de serialização
-     *
+     * Serialization key
+     * 
      * @serialField serialVersionUID
      */
-    private static final long serialVersionUID = 1001L;
+    private static final long serialVersionUID = 220415L;
 
     /**
      * Operação realizada com sucesso (resposta enviada pelo servidor)
