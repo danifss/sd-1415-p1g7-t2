@@ -354,11 +354,11 @@ public class Repository implements RepositoryInterface {
     /**
      * Set number of goods (accumulation) bought by the customer.
      * @param customerId Customer id
-     * @param nGoodsByCustomer Number of goods bought by the customer
+     * @param nGoods Number of goods bought by the customer
      */
     @Override
-    public synchronized void setnGoodsByCustomer(int customerId, int nGoodsByCustomer) {
-        this.nGoodsByCustomer[customerId] = nGoodsByCustomer;
+    public synchronized void setnGoodsByCustomer(int customerId, int nGoods) {
+        this.nGoodsByCustomer[customerId] = nGoods;
     }
     
     
