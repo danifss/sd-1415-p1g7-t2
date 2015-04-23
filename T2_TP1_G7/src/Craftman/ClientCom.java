@@ -5,9 +5,9 @@ import java.io.*;
 import java.net.*;
 
 /**
- * This Object implements the communication channel, on client side, directed to
- * a communication based on message passing over sockets using TCP protocol.
- * The transfer of data is based in objects, one object at a time.
+ * This Object implements the communication channel, on client side, directed to a communication
+ * based on message passing over sockets using TCP protocol. The transfer of data is based in
+ * objects, one object at a time.
  */
 public class ClientCom {
 
@@ -16,7 +16,6 @@ public class ClientCom {
      *
      * @serialField commSocket
      */
-
     private Socket commSocket = null;
 
     /**
@@ -59,11 +58,10 @@ public class ClientCom {
     }
 
     /**
-     * Open communication channel. Instantiation of communication socket and his
-     * association to server address. Opening of in and out streams of socket.
+     * Open communication channel. Instantiation of communication socket and his association to
+     * server address. Opening of in and out streams of socket.
      *
-     * @return true     if the communication channel was open
-     *         false    otherwise
+     * @return true if the communication channel was open false otherwise
      */
     public boolean open() {
         boolean success = true;
@@ -134,8 +132,7 @@ public class ClientCom {
     }
 
     /**
-     * Communication channel closed. Socket in and out streams closed. 
-     * Communication socket closed.
+     * Communication channel closed. Socket in and out streams closed. Communication socket closed.
      */
     public void close() {
         try {

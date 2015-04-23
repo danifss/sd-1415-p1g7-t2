@@ -1,13 +1,11 @@
 package Customer;
 
-import MonitorsProblema1.*;
-
 /**
  * This class is responsible to host the Customers
  *
  * @author Daniel 51908
  * @author Raphael 64044
- * @version 1.0
+ * @version 2.0
  */
 public class Customer extends Thread implements CustomerInterface {
     
@@ -36,13 +34,13 @@ public class Customer extends Thread implements CustomerInterface {
      * Shop
      * @serialField shop
      */
-    private MonShop shop;
+    private CustomerShopInterface shop;
 	
     /**
      * General Repository
      * @serialField sharedInfo
      */
-    private final MonInfo sharedInfo;
+    private CustomerRepositoryInterface sharedInfo;
     
     /**
      * Total number of goods bought buy the customer
@@ -63,7 +61,7 @@ public class Customer extends Thread implements CustomerInterface {
      * @param customerId customer identification
      * @param shop Shop
      */
-    public Customer(MonInfo sharedInfo, int customerId, MonShop shop){
+    public Customer(CustomerRepositoryInterface sharedInfo, int customerId, CustomerShopInterface shop){
         this.sharedInfo = sharedInfo;
         this.customerId = customerId;
         this.shop = shop;
@@ -138,7 +136,7 @@ public class Customer extends Thread implements CustomerInterface {
         try{
             sleep((long) (20));
         }catch(InterruptedException e){}
-        return shop.isDoorOpen();
+        return shop.isDoorOpen(customerId);
     }
     
     /**
@@ -162,7 +160,7 @@ public class Customer extends Thread implements CustomerInterface {
         try{
             sleep((long) (20));
         }catch(InterruptedException e){}
-        shop.enterShop();
+        shop.enterShop(customerId);
         setCustomerState(APPRAISING_OFFER_IN_DISPLAY);
     }
     
@@ -176,7 +174,7 @@ public class Customer extends Thread implements CustomerInterface {
             sleep((long) (100+20*Math.random()));
         }catch(InterruptedException e){}
         
-        nProductsCustomer = shop.perusingAround();
+        nProductsCustomer = shop.perusingAround(customerId);
     }
     
     /**
@@ -202,7 +200,7 @@ public class Customer extends Thread implements CustomerInterface {
         try{
             sleep((long) (100+25*Math.random()));
         }catch(InterruptedException e){}
-        shop.exitShop();
+        shop.exitShop(customerId);
         setCustomerState(CARRYING_OUT_DAILY_CHORES);
     }
     

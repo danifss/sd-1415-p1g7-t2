@@ -1,26 +1,16 @@
 package Customer;
 
-import Shop.*;
-
 /**
  * @author Daniel 51908
  * @author Raphael 64044
  * @version 2.0
  */
-public interface ShopInterface {
-
-    /**
-     * See if the owner and the customer can stop.
-     * Checks if all products have been transferred to Shop, and all the products
-     * are sold.
-     * @return true if they can stop working
-     */
-    boolean endOper();
+public interface CustomerShopInterface {
 
     /**
      * The customer enters the shop.
      */
-    void enterShop();
+    void enterShop(int customerId);
 
     /**
      * The Customer leaves the Shop.
@@ -28,7 +18,7 @@ public interface ShopInterface {
      * finish working, if he his waiting for all the Customers to buy products,
      * but the last one don't buy anything).
      */
-    void exitShop();
+    void exitShop(int customerId);
 
     /**
      * The Customer goes to the queue, and waits till the owner call him.
@@ -43,7 +33,7 @@ public interface ShopInterface {
      * The Customer sees if the door is open
      * @return True if the shop is OPEN
      */
-    boolean isDoorOpen();
+    boolean isDoorOpen(int customerId);
 
     /**
      * The Customer is perusing around.
@@ -52,5 +42,13 @@ public interface ShopInterface {
      * of goods for sell and returns his remainder.
      * @return number of goods to buy
      */
-    int perusingAround();
+    int perusingAround(int customerId);
+    
+    /**
+     * See if the owner and the customer can stop.
+     * Checks if all products have been transferred to Shop, and all the products
+     * are sold.
+     * @return true if they can stop working
+     */
+    boolean endOper();
 }
