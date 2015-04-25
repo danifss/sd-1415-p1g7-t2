@@ -11,52 +11,67 @@ import java.io.*;
 public abstract class Message implements Serializable {
 
     /**
-     * Serialization key
+     * Serialization key.
      * 
      * @serialField serialVersionUID
      */
     private static final long serialVersionUID = 220415L;
 
     /**
-     * Operação realizada com sucesso (resposta enviada pelo servidor)
+     * Operation completed with success. (Server response)
      *
      * @serialField ACK
      */
     public static final int ACK = 0;
 
     /**
-     * Tipo da mensagem
+     * Message type.
      *
      * @serialField msgType
      */
     private int msgType = -1;
+    
+    /**
+     * Customer ID
+     * @serialField customerId
+     */
+    private int customerId = -1;
 
     /**
-     * Instanciação de uma mensagem (forma 1).
+     * Instantiation of a message (form 1)
      *
-     * @param type tipo da mensagem
+     * @param type Message type
      */
     public Message(int type) {
         msgType = type;
     }
+    
+    /**
+     * Instantiation of a message (form 2)
+     * @param type Message type
+     * @param customerId Customer ID
+     */
+    public Message(int type, int customerId){
+        msgType = type;
+        this.customerId = customerId;
+    }
 
     /**
-     * Obtenção do valor do campo tipo da mensagem.
+     * Get the type of the Message.
      *
-     * @return tipo da mensagem
+     * @return Message type
      */
     public int getType() {
         return (msgType);
     }
 
     /**
-     * Impressão dos campos internos. Usada para fins de debugging.
+     * Printing internal fields. Used to debugging.
      *
-     * @return string contendo, em linhas separadas, a concatenação da identificação de cada campo e
-     * valor respectivo
+     * @return string with field and his value respectively
      */
     @Override
     public String toString() {
-        return ("Tipo = " + msgType);
+        return ("Tipo = " + msgType + "\nCustomer ID = "+ customerId);
     }
 }

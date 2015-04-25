@@ -339,7 +339,7 @@ public class Repository implements RepositoryInterface {
     
     
     
-    // Function to change the Customers' variables
+    // Function to change the Customer's variables
     /**
      * Set Customer[i] State.
      * @param customerId Customer id
@@ -363,7 +363,7 @@ public class Repository implements RepositoryInterface {
     
     
     
-    // Function to change the Craftmans' variables
+    // Function to change the Craftman's variables
     /**
      * Set state of the Craftman[i].
      * @param craftmanId Craftman id

@@ -205,13 +205,13 @@ public class Customer extends Thread implements CustomerInterface {
     }
     
     /**
-     * Verifies if the Owner can stop working.
+     * Verifies if the Customer can stop working.
      * From the shop, he checks if all products have been transferred to Shop, and all the products
      * are sold. He needs to be in the state CARRYING_OUT_DAILY_CHORES
      * @return true if needs to stop
      */
     private boolean endOper() {
-        return shop.endOper() && customerState == CARRYING_OUT_DAILY_CHORES;
+        return shop.endOper(customerId) && customerState == CARRYING_OUT_DAILY_CHORES;
     }
     
     /**
