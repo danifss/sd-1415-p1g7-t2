@@ -50,5 +50,5 @@ public interface CustomerShopInterface {
      * are sold.
      * @return true if they can stop working
      */
-    boolean endOper();
+    boolean endOper(int customerId);
 }
