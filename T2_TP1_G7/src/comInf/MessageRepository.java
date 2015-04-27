@@ -59,7 +59,7 @@ public class MessageRepository extends Message {
      * Message Repository constructor (form 2)
      * @param type Message type
      * @param customerId Customer ID
-     * @param value
+     * @param value Some int value
      */
     public MessageRepository(int type, int customerId, int value) {
         super(type, customerId);
