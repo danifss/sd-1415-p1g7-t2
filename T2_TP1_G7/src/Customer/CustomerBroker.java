@@ -110,7 +110,7 @@ public class CustomerBroker implements CustomerShopInterface, CustomerRepository
         int result = 0;
         switch(inMessage.getType()){
             case Message.ACK:
-                result = inMessage.getnProductsCustomer();
+                result = inMessage.getValue();
                 break;
             default:
                 GenericIO.writelnString("Customer: "+customerId+" - Error on perusingAround in Shop.");

@@ -12,7 +12,7 @@ public abstract class Message implements Serializable {
 
     /**
      * Serialization key.
-     * 
+     *
      * @serialField serialVersionUID
      */
     private static final long serialVersionUID = 220415L;
@@ -30,12 +30,20 @@ public abstract class Message implements Serializable {
      * @serialField msgType
      */
     private int msgType = -1;
-    
+
     /**
      * Customer ID
+     *
      * @serialField customerId
      */
     private int customerId = -1;
+    
+    /**
+     * Craftman ID
+     * 
+     * @serialField craftmanId
+     */
+    private int craftmanId = -1;
 
     /**
      * Instantiation of a message (form 1)
@@ -45,13 +53,14 @@ public abstract class Message implements Serializable {
     public Message(int type) {
         msgType = type;
     }
-    
+
     /**
      * Instantiation of a message (form 2)
+     *
      * @param type Message type
      * @param customerId Customer ID
      */
-    public Message(int type, int customerId){
+    public Message(int type, int customerId) {
         msgType = type;
         this.customerId = customerId;
     }
@@ -62,9 +71,25 @@ public abstract class Message implements Serializable {
      * @return Message type
      */
     public int getType() {
-        return (msgType);
+        return msgType;
     }
 
+    /**
+     * Get the Customer Id
+     * @return customer Id
+     */
+    public int getCustId() {
+        return customerId;
+    }
+
+    /**
+     * Get the Craftman Id
+     * @return craftman Id
+     */
+    public int getCraftId() {
+        return craftmanId;
+    }
+    
     /**
      * Printing internal fields. Used to debugging.
      *
@@ -72,6 +97,6 @@ public abstract class Message implements Serializable {
      */
     @Override
     public String toString() {
-        return ("Tipo = " + msgType + "\nCustomer ID = "+ customerId);
+        return ("Tipo = " + msgType + "\nCustomer ID = " + customerId);
     }
 }
