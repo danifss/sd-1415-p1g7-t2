@@ -5,7 +5,7 @@ package Shop;
  * @author Raphael 64044
  * @version 1.0
  */
-public interface MonShopInterface {
+public interface ShopInterface {
 
     /**
      * Update the number of products that the shop is selling.

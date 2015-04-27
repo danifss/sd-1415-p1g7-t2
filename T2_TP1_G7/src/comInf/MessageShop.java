@@ -64,10 +64,10 @@ public class MessageShop extends Message {
     
     // Internal variables
     /**
-     * Variable to save the amount of goods that customer will buy.
-     * @serialField nProductsCustomer
+     * Variable to save a integer value.
+     * @serialField value
      */
-    private int nProductsCustomer = 0;
+    private int value = 0;
     
     /**
      * Variable to see if Customer can die or not.
@@ -98,11 +98,11 @@ public class MessageShop extends Message {
      * Message Shop constructor (form 3)
      * @param type Message type
      * @param customerId Customer ID
-     * @param nProductsCustomer Num products
+     * @param value Variable value
      */
-    public MessageShop(int type, int customerId, int nProductsCustomer) {
+    public MessageShop(int type, int customerId, int value) {
         super(type, customerId);
-        this.nProductsCustomer = nProductsCustomer;
+        this.value = value;
     }
     
     /**
@@ -120,10 +120,10 @@ public class MessageShop extends Message {
     // Internal Functions
     /**
      * Get the number of products that customer wants to buy
-     * @return nProductsCustomer Number of products to Customer buying
+     * @return value Number of products to Customer buying
      */
-    public int getnProductsCustomer() {
-        return nProductsCustomer;
+    public int getValue() {
+        return value;
     }
 
     /**

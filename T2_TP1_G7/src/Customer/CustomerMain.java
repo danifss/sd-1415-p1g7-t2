@@ -8,8 +8,10 @@ public class CustomerMain {
     public static void main(String[] args){
         //TODO: create and start 3 Customers
         int nCustomers = 3;
+        // Array de Clientes
         Customer[] customer = new Customer[nCustomers];
-        CustomerBroker broker = new CustomerBroker("0.0.0.0", 220101, "0.0.0.0", 220102);
+        // PORTAS: 221GX -> G = grupo 7 -> X 0-9
+        CustomerBroker broker = new CustomerBroker("localhost", 22170, "localhost", 220171);
         
         //Initialization of Customers
         for (int i = 0; i < nCustomers; i++)
