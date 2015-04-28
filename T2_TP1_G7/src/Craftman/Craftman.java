@@ -1,7 +1,5 @@
 package Craftman;
 
-import MonitorsProblema1.*;
-
 /**
  * This class is responsible to host the Craftmans
  * 
@@ -24,19 +22,19 @@ public class Craftman extends Thread implements CraftmanInterface {
      * Factory/Workshop
      * @serialField factory
      */
-    private final MonFactory factory;
+    private final CraftmanFactoryInterface factory;
         
     /**
      * Shop
      * @serialField shop
      */
-    private final MonShop shop;
+    private final CraftmanShopInterface shop;
     
     /**
      * General Repository
      * @serialField shop
      */
-    private final MonInfo info;
+    private final CraftmanRepositoryInterface info;
     
     
     
@@ -83,7 +81,7 @@ public class Craftman extends Thread implements CraftmanInterface {
      * @param shop Shop
      * @param info Repository
      */
-    public Craftman(int craftmanId, MonFactory factory, MonShop shop, MonInfo info){
+    public Craftman(int craftmanId, CraftmanFactoryInterface factory, CraftmanShopInterface shop, CraftmanRepositoryInterface info){
         this.craftmanId = craftmanId;
         this.factory = factory;
         this.shop = shop;
@@ -207,8 +205,8 @@ public class Craftman extends Thread implements CraftmanInterface {
             sleep((long) (20));
         }catch(InterruptedException e){}
         setCraftmanState(CONTACTING_THE_ENTREPRENEUR);
-        factory.batchReadyForTransfer();
-        shop.batchReadyForTransfer();
+        factory.batchReadyForTransferFactory();
+        shop.batchReadyForTransferShop();
     }
     
     /**
@@ -231,9 +229,9 @@ public class Craftman extends Thread implements CraftmanInterface {
         try{
             sleep((long) (20));
         }catch(InterruptedException e){}
-        if(factory.primeMaterialsNeeded()){
+        if(factory.primeMaterialsNeededFactory()){
             setCraftmanState(CONTACTING_THE_ENTREPRENEUR);
-            shop.primeMaterialsNeeded();
+            shop.primeMaterialsNeededShop();
         }
     }
     

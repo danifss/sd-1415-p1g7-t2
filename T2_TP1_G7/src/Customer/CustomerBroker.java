@@ -12,25 +12,25 @@ public class CustomerBroker implements CustomerShopInterface, CustomerRepository
 
     /**
      * Repository host name
-     * @serialField serverHostName
+     * @serialField RPserverHostName
      */
     private String RPserverHostName = null;
 
     /**
      * Repository Server port
-     * @serialField serverPortNumb
+     * @serialField RPserverPortNumb
      */
     private int RPserverPortNumb;
     
     /**
-     * Repository host name
-     * @serialField serverHostName
+     * Shop host name
+     * @serialField ShopServerHostName
      */
     private String ShopServerHostName = null;
 
     /**
-     * Repository Server port
-     * @serialField serverPortNumb
+     * Shop Server port
+     * @serialField ShopServerPortNumb
      */
     private int ShopServerPortNumb;
     
