@@ -131,7 +131,7 @@ public class CustomerBroker implements CustomerShopInterface, CustomerRepository
         ClientCom con = new ClientCom(ShopServerHostName, ShopServerPortNumb);
         MessageShop inMessage, outMessage;
         
-        outMessage = new MessageShop(MessageShop.IWANTTHIS, customerId); // pede a realizacao do servico
+        outMessage = new MessageShop(MessageShop.IWANTTHIS, customerId, nGoods); // pede a realizacao do servico
         con.writeObject(outMessage);
         inMessage = (MessageShop) con.readObject();
         if (inMessage.getType() != Message.ACK) {
