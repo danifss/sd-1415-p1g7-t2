@@ -41,12 +41,11 @@ public class ShopBroker {
     }
 
     /**
-     * Processamento das mensagens através da execução da tarefa correspondente. Geração de uma
-     * mensagem de resposta.
+     * Processing message through respectively task execution. Generation of a response message.
      *
-     * @param inMessage mensagem com o pedido
-     * @return mensagem de resposta
-     * @throws MessageException se a mensagem com o pedido for considerada inválida
+     * @param inMessage message with request
+     * @return response message
+     * @throws MessageException if invalid message request
      */
     public MessageShop processAndReply(MessageShop inMessage) throws MessageException {
         MessageShop outMessage = null;                           // mensagem de resposta
@@ -85,17 +84,24 @@ public class ShopBroker {
                 break;
             case MessageShop.ENTERSHOP:
                 shop.enterShop(); // customer enters in the Shop
-                outMessage = new MessageShop(MessageShop.ACK); // Sends an acknowledge
+                outMessage = new MessageShop(MessageShop.ACK);
                 break;
             case MessageShop.PERUSINGAROUND:
-                int nGoods = shop.perusingAround();
-                outMessage = new MessageShop(MessageShop.ACK,inMessage.getCustId(),nGoods);
+                int nGoods = shop.perusingAround(); // Customer chooses what to buy
+                outMessage = new MessageShop(MessageShop.ACK, inMessage.getCustId(), nGoods);
                 break;
             case MessageShop.IWANTTHIS:
+                int goodsToBuy = inMessage.getValue();
+                shop.iWantThis(inMessage.getCustId(), goodsToBuy); // Customer goes to queue
+                outMessage = new MessageShop(MessageShop.ACK);
                 break;
             case MessageShop.EXITSHOP:
+                shop.exitShop(); // Customer exits Shop
+                outMessage = new MessageShop(MessageShop.ACK);
                 break;
             case MessageShop.ENDOPER:
+                boolean result = shop.endOper();
+                outMessage = new MessageShop(MessageShop.ACK, inMessage.getCustId(), result);
                 break;
         }
 
