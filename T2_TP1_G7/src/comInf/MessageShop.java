@@ -119,8 +119,8 @@ public class MessageShop extends Message {
     
     // Internal Functions
     /**
-     * Get the number of products that customer wants to buy
-     * @return value Number of products to Customer buying
+     * Get a genric integer value.
+     * @return value variable
      */
     public int getValue() {
         return value;
