@@ -7,7 +7,7 @@ package Factory;
  * @author Raphael 64044
  * @version 1.0
  */
-public class MonFactory implements MonFactoryInterface {
+public class Factory implements FactoryInterface {
     
     /**
      * General Repository
@@ -105,7 +105,7 @@ public class MonFactory implements MonFactoryInterface {
      * @param nPrimeRestock Minimum number of prime materials in stock to call owner to restock
      * @param nProductsCollect Maximum number of finished products that the owner can collect
      */
-    public MonFactory(MonInfo info, int nPrimeMaterialsInFactory, int nTotalPrime, int nPrimePerProduct, int nPrimeRestock, int nProductsCollect) {
+    public Factory(MonInfo info, int nPrimeMaterialsInFactory, int nTotalPrime, int nPrimePerProduct, int nPrimeRestock, int nProductsCollect) {
         // Repository
         this.info = info;
         

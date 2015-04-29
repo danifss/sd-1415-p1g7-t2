@@ -101,7 +101,7 @@ public class Craftman extends Thread implements CraftmanInterface {
         while(!endOper()){
             switch(stateCraftman){
                 case FETCHING_PRIME_MATERIALS:
-                    if(factory.checkForRestock() && !factory.flagPrimeActivated()){
+                    if(factory.checkForRestock(craftmanId) && !factory.flagPrimeActivated(craftmanId)){
                         primeMaterialsNeeded();
                         System.out.printf("Artesao %d\t- A pedir materia prima.\n",craftmanId);
                     }else{
@@ -120,7 +120,7 @@ public class Craftman extends Thread implements CraftmanInterface {
                     System.out.printf("Artesao %d\t- Produziu um produto.\n",craftmanId);
                     break;
                 case STORING_IT_FOR_TRANSFER:
-                    if(factory.checkContactProduct()){
+                    if(factory.checkContactProduct(craftmanId)){
                         batchReadyForTransfer();
                     }else{
                         backToWork();
@@ -141,7 +141,7 @@ public class Craftman extends Thread implements CraftmanInterface {
         try{
             sleep((long) (20));
         }catch(InterruptedException e){}
-        return factory.checkForMaterials();
+        return factory.checkForMaterials(craftmanId);
     }
     
     /**
@@ -153,7 +153,7 @@ public class Craftman extends Thread implements CraftmanInterface {
         try{
             sleep((long) (20));
         }catch(InterruptedException e){}
-        nPrimeMaterials += factory.collectMaterials();
+        nPrimeMaterials += factory.collectMaterials(craftmanId);
     }
     
     /**
@@ -177,7 +177,7 @@ public class Craftman extends Thread implements CraftmanInterface {
         try{
             sleep((long) (500+100*Math.random()));
         }catch(InterruptedException e){}
-        nPrimeMaterials -= factory.getnPrimePerProduct();
+        nPrimeMaterials -= factory.getnPrimePerProduct(craftmanId);
         nProduct += 1;
         totalProduced += 1;
         info.setnGoodsCraftedByCraftman(craftmanId, totalProduced);
@@ -192,7 +192,7 @@ public class Craftman extends Thread implements CraftmanInterface {
             sleep((long) (200+20*Math.random()));
         }catch(InterruptedException e){}
         setCraftmanState(STORING_IT_FOR_TRANSFER);
-        nProduct -= factory.goToStore(nProduct);
+        nProduct -= factory.goToStore(craftmanId, nProduct);
     }
     
     /**
@@ -205,8 +205,8 @@ public class Craftman extends Thread implements CraftmanInterface {
             sleep((long) (20));
         }catch(InterruptedException e){}
         setCraftmanState(CONTACTING_THE_ENTREPRENEUR);
-        factory.batchReadyForTransferFactory();
-        shop.batchReadyForTransferShop();
+        factory.batchReadyForTransferFactory(craftmanId);
+        shop.batchReadyForTransferShop(craftmanId);
     }
     
     /**
@@ -229,9 +229,9 @@ public class Craftman extends Thread implements CraftmanInterface {
         try{
             sleep((long) (20));
         }catch(InterruptedException e){}
-        if(factory.primeMaterialsNeededFactory()){
+        if(factory.primeMaterialsNeededFactory(craftmanId)){
             setCraftmanState(CONTACTING_THE_ENTREPRENEUR);
-            shop.primeMaterialsNeededShop();
+            shop.primeMaterialsNeededShop(craftmanId);
         }
     }
     
@@ -245,7 +245,7 @@ public class Craftman extends Thread implements CraftmanInterface {
      */
     private boolean endOper() {
         // valida se o craftman deve terminar ou nao
-        return factory.endOfPrimeMaterials() && !checkForMaterials() && (stateCraftman==FETCHING_PRIME_MATERIALS) && (nPrimeMaterials==0);
+        return factory.endOfPrimeMaterials(craftmanId) && !checkForMaterials() && (stateCraftman==FETCHING_PRIME_MATERIALS) && (nPrimeMaterials==0);
     }
     
     /**

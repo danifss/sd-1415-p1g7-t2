@@ -10,7 +10,6 @@ import genclass.TextFile;
  * @author Raphael 64044
  * @version 1.0
  */
-
 public class Repository implements RepositoryInterface {
 
     /**

@@ -13,6 +13,7 @@ public class MessageShop extends Message {
      */
     private static final long serialVersionUID = 220415L;
     
+    //*************** CUSTOMERS MESSAGE TYPES
     /**
      * Message type: Customer check if door is open.
      * @serialField CHKDOOROPEN
@@ -61,8 +62,21 @@ public class MessageShop extends Message {
      */
     public static final int ENDOPER = 8;
     
+    //*************** CRAFTMANS MESSAGE TYPES
+    /**
+     * Message type: Craftman indicates that prime materials are needed.
+     * @serialField PRIMEMATERIALSNEEDED
+     */
+    public static final int PRIMEMATERIALSNEEDED = 9;
     
-    // Internal variables
+    /**
+     * Message type: Craftman indicates that the Owner can go to factory to collect products.
+     * @serialField READYFORTRANSFER
+     */
+    public static final int READYFORTRANSFER = 10;
+    
+    
+    //*************** Internal variables
     /**
      * Variable to save a integer value.
      * @serialField value
@@ -76,7 +90,7 @@ public class MessageShop extends Message {
     private boolean endOper = false;
     
     
-    // Constructors
+    //*************** Constructors
     /**
      * Message Shop constructor (form 1)
      * @param type Message type
@@ -88,38 +102,38 @@ public class MessageShop extends Message {
     /**
      * Message Shop constructor (form 2)
      * @param type Message type
-     * @param customerId Customer ID
+     * @param id ID
      */
-    public MessageShop(int type, int customerId) {
-        super(type, customerId);
+    public MessageShop(int type, int id) {
+        super(type, id);
     }
     
     /**
      * Message Shop constructor (form 3)
      * @param type Message type
-     * @param customerId Customer ID
+     * @param id ID
      * @param value Variable value
      */
-    public MessageShop(int type, int customerId, int value) {
-        super(type, customerId);
+    public MessageShop(int type, int id, int value) {
+        super(type, id);
         this.value = value;
     }
     
     /**
      * Message Shop constructor (form 4)
      * @param type Message type
-     * @param customerId Customer ID
+     * @param id ID
      * @param endOper End of Operation (true/false)
      */
-    public MessageShop(int type, int customerId, boolean endOper){
-        super(type, customerId);
+    public MessageShop(int type, int id, boolean endOper){
+        super(type, id);
         this.endOper = endOper;
     }
 
     
-    // Internal Functions
+    //*************** Internal Functions
     /**
-     * Get a genric integer value.
+     * Get a generic integer value.
      * @return value variable
      */
     public int getValue() {
@@ -127,8 +141,8 @@ public class MessageShop extends Message {
     }
 
     /**
-     * Get if customer can die or not.
-     * @return if Customer can die.
+     * Check if can die or not.
+     * @return if can die.
      */
     public boolean isEndOper() {
         return endOper;
