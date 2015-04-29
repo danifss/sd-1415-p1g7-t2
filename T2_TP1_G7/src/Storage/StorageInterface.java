@@ -5,7 +5,7 @@ package Storage;
  * @author Raphael 64044
  * @version 1.0
  */
-public interface MonStorageInterface {
+public interface StorageInterface {
 
     /**
      * Get the amount of prime materials that the owner should collect during the experience.

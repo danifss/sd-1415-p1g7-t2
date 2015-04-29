@@ -10,7 +10,7 @@ interface CraftmanFactoryInterface {
      * He increments the number of flagNProductsCall to tell that the Owner needs to
      * come to the Factory flagNProductsCall times to collect products.
      */
-    void batchReadyForTransferFactory();
+    void batchReadyForTransferFactory(int craftmanId);
 
     /**
      * The Craftman verifies if he needs to contact the owner to collect products.
@@ -20,7 +20,7 @@ interface CraftmanFactoryInterface {
      * he needs to contact the Owner.
      * @return true if he needs to contact
      */
-    boolean checkContactProduct();
+    boolean checkContactProduct(int craftmanId);
 
     /**
      * The Craftman checks if the Factory has prime materials to collect.
@@ -31,7 +31,7 @@ interface CraftmanFactoryInterface {
      * he will stop working
      * @return true if has materials
      */
-    boolean checkForMaterials();
+    boolean checkForMaterials(int craftmanId);
 
     /**
      * Check if the Craftman needs to contact owner to bring prime materials.
@@ -41,7 +41,7 @@ interface CraftmanFactoryInterface {
      * in the storage at the beginning.
      * @return true if needs to restock
      */
-    boolean checkForRestock();
+    boolean checkForRestock(int craftmanId);
 
     /**
      * The Craftman collects prime materials.
@@ -50,26 +50,26 @@ interface CraftmanFactoryInterface {
      * pieces collected in the number of prime materials available in the Factory.
      * @return number of collected prime materials
      */
-    int collectMaterials();
+    int collectMaterials(int craftmanId);
 
     /**
      * Checks if the all the prime materials from the storage were supplied.
      * This function helps the Craftman to know if he can stop working.
      * @return true if there is no more prime materials in the storage
      */
-    boolean endOfPrimeMaterials();
+    boolean endOfPrimeMaterials(int craftmanId);
 
     /**
      * The Craftman sees if someone already contacted the owner to restock prime materials.
      * @return true if someone already contacted the owner
      */
-    boolean flagPrimeActivated();
+    boolean flagPrimeActivated(int craftmanId);
 
     /**
      * Craftman sees how many prime materials needs to produce a new product
      * @return number of prime materials needed per products
      */
-    int getnPrimePerProduct();
+    int getnPrimePerProduct(int craftmanId);
 
     /**
      * The Craftman stores the products produced.
@@ -79,13 +79,13 @@ interface CraftmanFactoryInterface {
      * @param nProd Number of products that the Craftman has
      * @return number of products the Craftman stored
      */
-    int goToStore(int nProd);
+    int goToStore(int craftmanId, int nProd);
 
     /**
      * The Craftman turns true the flag that indicates that prime materials are needed.
      * He also ensure that none of the Craftmans already contacted the Owner.
      * @return true if he contacted the owner
      */
-    boolean primeMaterialsNeededFactory();
+    boolean primeMaterialsNeededFactory(int craftmanId);
 
 }

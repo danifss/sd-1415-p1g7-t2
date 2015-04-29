@@ -13,6 +13,7 @@ public class MessageRepository extends Message {
      */
     private static final long serialVersionUID = 220415L;
     
+    //*************** CUSTOMERS MESSAGE TYPES
     /**
      * Message type: Set Customer State in Repository.
      * @serialField SETCUSTOMERSTATE
@@ -31,8 +32,21 @@ public class MessageRepository extends Message {
      */
     public static final int SETGOODSBYCUST = 3;
     
+    //*************** CRAFTMANS MESSAGE TYPES
+    /**
+     * Message type: Set Craftman Present State
+     * @serialField SETCRAFTMANSTATE
+     */
+    public static final int SETCRAFTMANSTATE = 4;
     
-    // Internal variables
+    /**
+     * Message type: Set total number of products crafted by Craftman
+     * @serialField SETGOODSCRAFTEDBYCRAFTMAN
+     */
+    public static final int SETGOODSCRAFTEDBYCRAFTMAN = 5;
+    
+    
+    //*************** Internal variables
     /**
      * Value of something in integer.
      * @serialField value
@@ -46,7 +60,7 @@ public class MessageRepository extends Message {
     private int nCustomersInsideShop;
     
     
-    // Constructors
+    //*************** Constructors
     /**
      * Message Repository constructor (form 1)
      * @param type Message type
@@ -77,7 +91,7 @@ public class MessageRepository extends Message {
     }
 
     
-    // Internal Functions
+    //*************** Internal Functions
     /**
      * Get the variable value.
      * @return Variable value

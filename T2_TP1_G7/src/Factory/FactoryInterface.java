@@ -5,7 +5,7 @@ package Factory;
  * @author Raphael 64044
  * @version 1.0
  */
-public interface MonFactoryInterface {
+public interface FactoryInterface {
 
     /**
      * The Craftman indicates that the owner has products to collect.

@@ -13,6 +13,8 @@ public class MessageStorage extends Message {
      */
     private static final long serialVersionUID = 220415L;
     
+    
+    //*************** Constructors
     /**
      * Message Storage constructor
      * @param type Message type

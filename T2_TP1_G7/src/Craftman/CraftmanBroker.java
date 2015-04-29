@@ -1,10 +1,15 @@
 package Craftman;
 
+import comInf.MessageShop;
+import comInf.MessageRepository;
+import comInf.MessageFactory;
+import genclass.GenericIO;
+
 /**
  *
  * @author Daniel
  */
-class CraftmanBroker implements CraftmanRepositoryInterface, CraftmanShopInterface, CraftmanFactoryInterface {
+public class CraftmanBroker implements CraftmanRepositoryInterface, CraftmanShopInterface, CraftmanFactoryInterface {
     
     /**
      * Repository server host name
@@ -54,7 +59,7 @@ class CraftmanBroker implements CraftmanRepositoryInterface, CraftmanShopInterfa
      * @param FactoryServerPortNumb Factory Server Port Number
      */
     public CraftmanBroker(String ShopServerHostName, int ShopServerPortNumb, String RPserverHostName, int RPserverPortNumb, 
-                        String FactoryServerHostName, int FactoryServerPortNumb) {
+                            String FactoryServerHostName, int FactoryServerPortNumb) {
         this.ShopServerHostName = ShopServerHostName;
         this.ShopServerPortNumb = ShopServerPortNumb;
         this.RPserverHostName = RPserverHostName;
@@ -65,77 +70,177 @@ class CraftmanBroker implements CraftmanRepositoryInterface, CraftmanShopInterfa
     
     
     // Repository Communication
+    /**
+     * Communicate with Repository: Set Craftman present state.
+     * @param craftmanId id
+     * @param state Craftman future state
+     */
     @Override
     public void setCraftmanState(int craftmanId, int state) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        ClientCom con = new ClientCom(RPserverHostName, RPserverPortNumb);
+        MessageRepository inMessage, outMessage;
+        
+        outMessage = new MessageRepository(MessageRepository.SETCRAFTMANSTATE, craftmanId, state);
+        con.writeObject(outMessage);
+        inMessage = (MessageRepository) con.readObject();
+        if(inMessage.getType() != MessageRepository.ACK){
+            GenericIO.writelnString("Craftman: "+craftmanId+" - Error setting Craftman State.");
+            GenericIO.writelnString(inMessage.toString());
+            System.exit(1);
+        }
+        con.close();
     }
 
+    /**
+     * Communicate with Repository: Set total number of crafted goods by Craftman.
+     * @param craftmanId id
+     * @param nGoodsCraftedByCraftman total goods of craftman
+     */
     @Override
     public void setnGoodsCraftedByCraftman(int craftmanId, int nGoodsCraftedByCraftman) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        ClientCom con = new ClientCom(RPserverHostName, RPserverPortNumb);
+        MessageRepository inMessage, outMessage;
+        
+        outMessage = new MessageRepository(MessageRepository.SETGOODSCRAFTEDBYCRAFTMAN, craftmanId, nGoodsCraftedByCraftman);
+        con.writeObject(outMessage);
+        inMessage = (MessageRepository) con.readObject();
+        if(inMessage.getType() != MessageRepository.ACK){
+            GenericIO.writelnString("Craftman: "+craftmanId+" - Error setting total goods crafted by him.");
+            GenericIO.writelnString(inMessage.toString());
+            System.exit(1);
+        }
+        con.close();
     }
     
     
     // Shop Communication
+    /**
+     * Communicate with Shop: Craftman indicates that prime materials are needed in the Factory.
+     * @param craftmanId
+     */
     @Override
-    public void primeMaterialsNeededShop() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public void primeMaterialsNeededShop(int craftmanId) {
+        ClientCom con = new ClientCom(ShopServerHostName, ShopServerPortNumb);
+        MessageShop inMessage, outMessage;
+        
+        outMessage = new MessageShop(MessageShop.PRIMEMATERIALSNEEDED, craftmanId);
+        con.writeObject(outMessage);
+        inMessage = (MessageShop) con.readObject();
+        if(inMessage.getType() != MessageShop.ACK){
+            GenericIO.writelnString("Craftman: "+craftmanId+" - Error setting prime materials needed.");
+            GenericIO.writelnString(inMessage.toString());
+            System.exit(1);
+        }
+        con.close();
     }
     
+    /**
+     * Communicate with Shop: Craftman indicates that the Owner can go to factory to collect products.
+     * @param craftmanId 
+     */
     @Override
-    public void batchReadyForTransferShop() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public void batchReadyForTransferShop(int craftmanId) {
+        ClientCom con = new ClientCom(ShopServerHostName, ShopServerPortNumb);
+        MessageShop inMessage, outMessage;
+        
+        outMessage = new MessageShop(MessageShop.READYFORTRANSFER, craftmanId);
+        con.writeObject(outMessage);
+        inMessage = (MessageShop) con.readObject();
+        if(inMessage.getType() != MessageShop.ACK){
+            GenericIO.writelnString("Craftman: "+craftmanId+" - Error notifying batch is ready for transfer.");
+            GenericIO.writelnString(inMessage.toString());
+            System.exit(1);
+        }
+        con.close();
     }
     
     
     // Factory Communication
+    /**
+     * Communicate with Factory: The Craftman indicates that the owner has products to collect.
+     * @param craftmanId
+     */
     @Override
-    public void batchReadyForTransferFactory() {
+    public void batchReadyForTransferFactory(int craftmanId) {
+        ClientCom con = new ClientCom(FactoryServerHostName, FactoryServerPortNumb);
+        MessageFactory inMessage, outMessage;
+        
+        outMessage = new MessageFactory(MessageFactory.READYFORTRANSFER, craftmanId);
+        con.writeObject(outMessage);
+        inMessage = (MessageFactory) con.readObject();
+        if(inMessage.getType() != MessageFactory.ACK){
+            GenericIO.writelnString("Craftman: "+craftmanId+" - Error notifying owner to collect products.");
+            GenericIO.writelnString(inMessage.toString());
+            System.exit(1);
+        }
+        con.close();
+    }
+
+    /**
+     * Communicate with Factory: The Craftman verifies if he needs to contact the owner to collect products.
+     * @param craftmanId
+     * @return if he needs to contact owner
+     */
+    @Override
+    public boolean checkContactProduct(int craftmanId) {
+        ClientCom con = new ClientCom(FactoryServerHostName, FactoryServerPortNumb);
+        MessageFactory inMessage, outMessage;
+        
+        outMessage = new MessageFactory(MessageFactory.CHECKCONTACTPRODUCT, craftmanId);
+        con.writeObject(outMessage);
+        inMessage = (MessageFactory) con.readObject();
+        boolean result = false;
+        switch(inMessage.getType()){
+            case MessageFactory.ACK:
+                result = inMessage.isBool();
+                break;
+            default:
+                GenericIO.writelnString("Craftman: "+craftmanId+" - Error verifying if he needs to contact the owner.");
+                GenericIO.writelnString(inMessage.toString());
+                System.exit(1);
+                break;
+        }
+        con.close();
+        return result;
+    }
+
+    @Override
+    public boolean checkForMaterials(int craftmanId) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
-    public boolean checkContactProduct() {
+    public boolean checkForRestock(int craftmanId) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
-    public boolean checkForMaterials() {
+    public int collectMaterials(int craftmanId) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
-    public boolean checkForRestock() {
+    public boolean endOfPrimeMaterials(int craftmanId) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
-    public int collectMaterials() {
+    public boolean flagPrimeActivated(int craftmanId) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
-    public boolean endOfPrimeMaterials() {
+    public int getnPrimePerProduct(int craftmanId) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
-    public boolean flagPrimeActivated() {
+    public int goToStore(int craftmanId, int nProd) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
-    public int getnPrimePerProduct() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    @Override
-    public int goToStore(int nProd) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    @Override
-    public boolean primeMaterialsNeededFactory() {
+    public boolean primeMaterialsNeededFactory(int craftmanId) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
     

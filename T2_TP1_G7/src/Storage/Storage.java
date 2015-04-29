@@ -7,7 +7,7 @@ package Storage;
  * @author Raphael 64044
  * @version 1.0
  */
-public class MonStorage implements MonStorageInterface {
+public class Storage implements StorageInterface {
     
     /**
      * Present number of Prime Materials in Storage.
@@ -38,7 +38,7 @@ public class MonStorage implements MonStorageInterface {
      * @param nInitialPrimeMaterialsInStorage Number of prime materials at the beginning
      * @param nPrimeOwnerCarry Number of prime materials that the owner can carry
      */
-    public MonStorage(int nInitialPrimeMaterialsInStorage, int nPrimeOwnerCarry) {
+    public Storage(int nInitialPrimeMaterialsInStorage, int nPrimeOwnerCarry) {
         nPrimeMaterialsInStorage = nInitialPrimeMaterialsInStorage;
         nMaxPrimeMaterialsToDeliver = nInitialPrimeMaterialsInStorage;
         this.nPrimeOwnerCarry = nPrimeOwnerCarry;
