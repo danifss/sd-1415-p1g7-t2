@@ -69,7 +69,7 @@ public class CraftmanBroker implements CraftmanRepositoryInterface, CraftmanShop
     }
     
     
-    // Repository Communication
+    //*************** Repository Communication
     /**
      * Communicate with Repository: Set Craftman present state.
      * @param craftmanId id
@@ -113,7 +113,7 @@ public class CraftmanBroker implements CraftmanRepositoryInterface, CraftmanShop
     }
     
     
-    // Shop Communication
+    //*************** Shop Communication
     /**
      * Communicate with Shop: Craftman indicates that prime materials are needed in the Factory.
      * @param craftmanId
@@ -155,7 +155,7 @@ public class CraftmanBroker implements CraftmanRepositoryInterface, CraftmanShop
     }
     
     
-    // Factory Communication
+    //*************** Factory Communication
     /**
      * Communicate with Factory: The Craftman indicates that the owner has products to collect.
      * @param craftmanId

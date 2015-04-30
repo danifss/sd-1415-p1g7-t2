@@ -1,106 +1,94 @@
 package Repository;
 
 import genclass.GenericIO;
-import comInf.Message;
 import comInf.MessageException;
+import comInf.MessageRepository;
 
 /**
- *   Este tipo de dados define o thread agente prestador de serviço para uma solução do Problema dos Barbeiros
- *   Sonolentos que implementa o modelo cliente-servidor de tipo 2 (replicação do servidor) com lançamento estático dos
- *   threads barbeiro.
- *   A comunicação baseia-se em passagem de mensagens sobre sockets usando o protocolo TCP.
+ * Este tipo de dados define o thread agente prestador de serviço para uma solução do Aveiro
+ * Handicraft que implementa o modelo cliente-servidor de tipo 2 (replicação do servidor) com
+ * lançamento estático dos threads Repository. A comunicação baseia-se em passagem de mensagens sobre
+ * sockets usando o protocolo TCP.
  */
+public class ClientProxy extends Thread {
 
-public class ClientProxy extends Thread
-{
-  /**
-   *  Contador de threads lançados
-   *
-   *    @serialField nProxy
-   */
+    /**
+     * Threads counter
+     *
+     * @serialField nProxy
+     */
+    private static int nProxy;
 
-   private static int nProxy;
+    /**
+     * Communication Channel.
+     *
+     * @serialField sconi
+     */
+    private ServerCom sconi;
 
-  /**
-   *  Canal de comunicação
-   *
-   *    @serialField sconi
-   */
+    /**
+     *
+     *
+     * @serialField repositoryInter
+     */
+    private RepositoryBroker repositoryInter;
 
-   private ServerCom sconi;
+    /**
+     * Instanciação do interface ao Repository.
+     *
+     * @param sconi canal de comunicação
+     * @param repositoryInter interface ao Repository
+     */
+    public ClientProxy(ServerCom sconi, RepositoryBroker repositoryInter) {
+        super("Proxy_" + getProxyId());
 
-  /**
-   *  Interface à barbearia
-   *
-   *    @serialField bShopInter
-   */
+        this.sconi = sconi;
+        this.repositoryInter = repositoryInter;
+    }
 
-   private BarberShopInterface bShopInter;
+    /**
+     * Ciclo de vida do thread agente prestador de serviço.
+     */
+    @Override
+    public void run() {
+        MessageRepository inMessage = null,                               // mensagem de entrada
+                outMessage = null;                                        // mensagem de saída
 
-  /**
-   *  Instanciação do interface à barbearia.
-   *
-   *    @param sconi canal de comunicação
-   *    @param bShopInter interface à barbearia
-   */
+        inMessage = (MessageRepository) sconi.readObject();               // ler pedido do cliente
+        try {
+            outMessage = repositoryInter.processAndReply(inMessage);      // processá-lo
+        } catch (MessageException e) {
+            GenericIO.writelnString("Thread " + getName() + ": " + e.getMessage() + "!");
+            GenericIO.writelnString(e.getMessageVal().toString());
+            System.exit(1);
+        }
+        sconi.writeObject(outMessage);                              // enviar resposta ao cliente
+        sconi.close();                                              // fechar canal de comunicação
+    }
 
-   public ClientProxy (ServerCom sconi, BarberShopInterface bShopInter)
-   {
-      super ("Proxy_" + getProxyId ());
+    /**
+     * Geração do identificador da instanciação.
+     *
+     * @return identificador da instanciação
+     */
+    private static int getProxyId() {
+        Class<ClientProxy> cl = null;             // representação do tipo de dados ClientProxy na máquina
+        //   virtual de Java
+        int proxyId;                              // identificador da instanciação
 
-      this.sconi = sconi;
-      this.bShopInter = bShopInter;
-   }
+        try {
+            cl = (Class<ClientProxy>) Class.forName("Repository.ClientProxy");
+        } catch (ClassNotFoundException e) {
+            GenericIO.writelnString("O tipo de dados ClientProxy não foi encontrado!");
+            e.printStackTrace();
+            System.exit(1);
+        }
 
-  /**
-   *  Ciclo de vida do thread agente prestador de serviço.
-   */
+        synchronized (cl) {
+            proxyId = nProxy;
+            nProxy += 1;
+        }
 
-   @Override
-   public void run ()
-   {
-      Message inMessage = null,                                      // mensagem de entrada
-              outMessage = null;                      // mensagem de saída
-
-      inMessage = (Message) sconi.readObject ();                     // ler pedido do cliente
-      try
-      { outMessage = bShopInter.processAndReply (inMessage);         // processá-lo
-      }
-      catch (MessageException e)
-      { GenericIO.writelnString ("Thread " + getName () + ": " + e.getMessage () + "!");
-        GenericIO.writelnString (e.getMessageVal ().toString ());
-        System.exit (1);
-      }
-      sconi.writeObject (outMessage);                                // enviar resposta ao cliente
-      sconi.close ();                                                // fechar canal de comunicação
-   }
-
-  /**
-   *  Geração do identificador da instanciação.
-   *
-   *    @return identificador da instanciação
-   */
-
-   private static int getProxyId ()
-   {
-      Class<serverSide.ClientProxy> cl = null;             // representação do tipo de dados ClientProxy na máquina
-                                                           //   virtual de Java
-      int proxyId;                                         // identificador da instanciação
-
-      try
-      { cl = (Class<serverSide.ClientProxy>) Class.forName ("serverSide.ClientProxy");
-      }
-      catch (ClassNotFoundException e)
-      { GenericIO.writelnString ("O tipo de dados ClientProxy não foi encontrado!");
-        e.printStackTrace ();
-        System.exit (1);
-      }
-
-      synchronized (cl)
-      { proxyId = nProxy;
-        nProxy += 1;
-      }
-
-      return proxyId;
-   }
+        return proxyId;
+    }
 }
