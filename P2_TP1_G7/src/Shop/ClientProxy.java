@@ -3,29 +3,32 @@ package Shop;
 import genclass.GenericIO;
 import comInf.Message;
 import comInf.MessageException;
+import comInf.MessageShop;
 
 /**
- * Este tipo de dados define o thread agente prestador de serviço para uma solução do Problema dos
- * Barbeiros Sonolentos que implementa o modelo cliente-servidor de tipo 2 (replicação do servidor)
- * com lançamento estático dos threads barbeiro. A comunicação baseia-se em passagem de mensagens
- * sobre sockets usando o protocolo TCP.
+ * Este tipo de dados define o thread agente prestador de serviço para uma solução do Aveiro
+ * Handicraft que implementa o modelo cliente-servidor de tipo 2 (replicação do servidor) com
+ * lançamento estático dos threads Shop. A comunicação baseia-se em passagem de mensagens sobre
+ * sockets usando o protocolo TCP.
  */
 public class ClientProxy extends Thread {
 
     /**
      * Threads counter
+     *
      * @serialField nProxy
      */
     private static int nProxy;
 
     /**
      * Communication Channel.
+     *
      * @serialField sconi
      */
     private ServerCom sconi;
 
     /**
-     * 
+     *
      *
      * @serialField bShopInter
      */
@@ -49,19 +52,19 @@ public class ClientProxy extends Thread {
      */
     @Override
     public void run() {
-        Message inMessage = null, // mensagem de entrada
-                outMessage = null;                      // mensagem de saída
+        MessageShop inMessage = null,                               // mensagem de entrada
+                outMessage = null;                                  // mensagem de saída
 
-        inMessage = (Message) sconi.readObject();                     // ler pedido do cliente
+        inMessage = (MessageShop) sconi.readObject();               // ler pedido do cliente
         try {
-            outMessage = shopInter.processAndReply(inMessage);         // processá-lo
+            outMessage = shopInter.processAndReply(inMessage);      // processá-lo
         } catch (MessageException e) {
             GenericIO.writelnString("Thread " + getName() + ": " + e.getMessage() + "!");
             GenericIO.writelnString(e.getMessageVal().toString());
             System.exit(1);
         }
-        sconi.writeObject(outMessage);                                // enviar resposta ao cliente
-        sconi.close();                                                // fechar canal de comunicação
+        sconi.writeObject(outMessage);                              // enviar resposta ao cliente
+        sconi.close();                                              // fechar canal de comunicação
     }
 
     /**
@@ -70,12 +73,12 @@ public class ClientProxy extends Thread {
      * @return identificador da instanciação
      */
     private static int getProxyId() {
-        Class<serverSide.ClientProxy> cl = null;             // representação do tipo de dados ClientProxy na máquina
+        Class<ClientProxy> cl = null;             // representação do tipo de dados ClientProxy na máquina
         //   virtual de Java
-        int proxyId;                                         // identificador da instanciação
+        int proxyId;                              // identificador da instanciação
 
         try {
-            cl = (Class<serverSide.ClientProxy>) Class.forName("serverSide.ClientProxy");
+            cl = (Class<ClientProxy>) Class.forName("Shop.ClientProxy");
         } catch (ClassNotFoundException e) {
             GenericIO.writelnString("O tipo de dados ClientProxy não foi encontrado!");
             e.printStackTrace();

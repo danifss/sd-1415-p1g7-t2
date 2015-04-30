@@ -58,17 +58,23 @@ public class ShopBroker {
             case MessageShop.IWANTTHIS:
             case MessageShop.EXITSHOP:
             case MessageShop.ENDOPER:
+                // Customers Messages
                 if ((inMessage.getCustId() < 0) || (inMessage.getCustId() >= nCustomers)) {
                     throw new MessageException("Invalid Customer Id!", inMessage);
                 }
                 break;
-            case MessageShop.cenasDoCraftmanParaAShop:
-                if ((inMessage.getCraftId() >= nCraftmans)) {
+            case MessageShop.PRIMEMATERIALSNEEDED:
+            case MessageShop.READYFORTRANSFER:
+                // Craftmans Messages
+                if ((inMessage.getCraftId() < 0) || (inMessage.getCraftId() >= nCraftmans)) {
                     throw new MessageException("Invalid Craftman Id!", inMessage);
                 }
                 break;
             case MessageShop.cenasDaOwnerParaAShop:
-                
+                // Owner Messages
+                if ((inMessage.getCustId()!= -1) && (inMessage.getCraftId() != -1)){
+                    throw new MessageException("Invalid Owner message!", inMessage);
+                }
                 break;
             default:
                 throw new MessageException("Invalid message type!", inMessage);
@@ -76,8 +82,9 @@ public class ShopBroker {
 
         // seu processamento
         switch (inMessage.getType()) {
+            //*************** Customers Messages
             case MessageShop.CHKDOOROPEN:
-                if(shop.isDoorOpen())
+                if(shop.isDoorOpen()) // Customer sees if door is open
                     outMessage = new MessageShop(MessageShop.DOOROPEN);
                 else
                     outMessage = new MessageShop(MessageShop.DOORCLOSED);
@@ -103,6 +110,17 @@ public class ShopBroker {
                 boolean result = shop.endOper();
                 outMessage = new MessageShop(MessageShop.ACK, inMessage.getCustId(), result);
                 break;
+            //*************** Craftmans Messages
+            case MessageShop.PRIMEMATERIALSNEEDED:
+                shop.primeMaterialsNeeded();
+                outMessage = new MessageShop(MessageShop.ACK,inMessage.getCraftId());
+                break;
+            case MessageShop.READYFORTRANSFER:
+                shop.batchReadyForTransfer();
+                outMessage = new MessageShop(MessageShop.ACK,inMessage.getCraftId());
+                break;
+            //*************** Owner Messages
+                //TODO: Owner cases
         }
 
         return (outMessage);
