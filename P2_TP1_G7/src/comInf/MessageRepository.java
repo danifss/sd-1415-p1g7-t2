@@ -53,12 +53,6 @@ public class MessageRepository extends Message {
      */
     private int value;
     
-    /**
-     * Number of Customers inside the Shop.
-     * @serialField nCustomersInsideShop
-     */
-    private int nCustomersInsideShop;
-    
     
     //*************** Constructors
     /**
@@ -70,24 +64,23 @@ public class MessageRepository extends Message {
     }
     
     /**
-     * Message Repository constructor (form 2)
+     * Message Repository constructor (form 1)
      * @param type Message type
-     * @param customerId Customer ID
-     * @param value Some int value
+     * @param id ID
      */
-    public MessageRepository(int type, int customerId, int value) {
-        super(type, customerId);
-        this.value = value;
+    public MessageRepository(int type, int id) {
+        super(type, id);
     }
     
     /**
      * Message Repository constructor (form 3)
      * @param type Message type
-     * @param nCustomersInsideShop Number of Customers inside the Shop
+     * @param id ID
+     * @param value Some int value
      */
-    public MessageRepository(int type, int nCustomersInsideShop){
-        super(type);
-        this.nCustomersInsideShop = nCustomersInsideShop;
+    public MessageRepository(int type, int id, int value) {
+        super(type, id);
+        this.value = value;
     }
 
     
@@ -98,14 +91,6 @@ public class MessageRepository extends Message {
      */
     public int getValue() {
         return value;
-    }
-
-    /**
-     * Get number of Customers inside the Shop.
-     * @return Number Customers inside the Shop
-     */
-    public int getnCustomersInsideShop() {
-        return nCustomersInsideShop;
     }
     
 }

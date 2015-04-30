@@ -17,7 +17,7 @@ public class ShopServer {
     public static void main(String[] args){
         //TODO: Aqui e onde corre o servidor e lanca threads(ClientProxy) para atender cada cliente.
         Shop shop;                                              // Shop (servico a ser prestado)
-        ShopBroker shopInterface;                            // Interface a Shop
+        ShopBroker shopInterface;                               // Interface a Shop
         ServerCom scon, sconi;                                  // canais de comunicacao
         ClientProxy cliProxy;                                   // thread agente prestador do servico
 
@@ -32,13 +32,13 @@ public class ShopServer {
         scon = new ServerCom(portNumb);                         // criacao do canal de escuta e sua associacao
         scon.start();                                           // com o endereco publico
         shop = new Shop(nInitialProductsInShop, nCustomers, repository, totalProducts); // activacao do servico
-        shopInterface = new ShopBroker(shop, nCustomers); // activacao do interface com o servico
+        shopInterface = new ShopBroker(shop, nCustomers);       // activacao do interface com o servico
         GenericIO.writelnString("O serviço foi estabelecido!");
         GenericIO.writelnString("O servidor esta em escuta.");
 
         /* processamento de pedidos */
         while (true) {
-            sconi = scon.accept();                            // entrada em processo de escuta
+            sconi = scon.accept();                               // entrada em processo de escuta
             cliProxy = new ClientProxy(sconi, shopInterface);    // lancamento do agente prestador do servico
             cliProxy.start();
         }
