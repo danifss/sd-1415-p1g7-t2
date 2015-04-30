@@ -42,7 +42,7 @@ public class CustomerBroker implements CustomerShopInterface, CustomerRepository
     }
 
     
-    // Shop communication
+    //*************** Shop communication
     /**
      * Communicate with Shop: Customer verifies if the door is open.
      * @param customerId
@@ -194,7 +194,7 @@ public class CustomerBroker implements CustomerShopInterface, CustomerRepository
     }
 
     
-    // Repository communication
+    //*************** Repository communication
     /**
      * Communicate with Repository: Set Customer present state.
      * @param customerId
@@ -221,11 +221,11 @@ public class CustomerBroker implements CustomerShopInterface, CustomerRepository
      * @param nCustomersInsideShop number of Customers
      */
     @Override
-    public void setnCustomersInsideShop(int nCustomersInsideShop) {
+    public void setnCustomersInsideShop(int customerId, int nCustomersInsideShop) {
         ClientCom con = new ClientCom(RPserverHostName, RPserverPortNumb);
         MessageRepository inMessage, outMessage;
         
-        outMessage = new MessageRepository(MessageRepository.SETCUSTINSHOP, nCustomersInsideShop); // pede a realizacao do servico
+        outMessage = new MessageRepository(MessageRepository.SETCUSTINSHOP, customerId, nCustomersInsideShop); // pede a realizacao do servico
         con.writeObject(outMessage);
         inMessage = (MessageRepository) con.readObject();
         if (inMessage.getType() != Message.ACK) {

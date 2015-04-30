@@ -20,7 +20,7 @@ public interface CustomerRepositoryInterface {
      *
      * @param nCustomersInsideShop Number of customers inside
      */
-    void setnCustomersInsideShop(int nCustomersInsideShop);
+    void setnCustomersInsideShop(int customerId, int nCustomersInsideShop);
     
     /**
      * Set number of goods (accumulation) bought by the customer.
