@@ -75,6 +75,20 @@ public class MessageFactory extends Message {
     public static final int PRIMEMATERIALSNEEDED = 10;
     
     
+    //*************** OWNER MESSAGE TYPES
+    /**
+     * Message type: 
+     * @serialField GOTOWORKSHOP
+     */
+    public static final int GOTOWORKSHOP = 11;
+    
+    /**
+     * Message type: 
+     * @serialField REPLENISHSTOCK
+     */
+    public static final int REPLENISHSTOCK = 12;
+    
+    
     //*************** Internal Variables
     /**
      * Variable to save a integer value.
