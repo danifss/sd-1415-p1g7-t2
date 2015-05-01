@@ -81,7 +81,7 @@ public interface OwnerShopInterface {
     /**
      * The owner goes to the Factory to collect products.
      */
-    void goToWorkshop();
+    void goToWorkshopShop();
     
     /**
      * Update the number of products that the shop is selling.
@@ -92,7 +92,7 @@ public interface OwnerShopInterface {
     /**
      * Owner goes to Factory to restock prime materials.
      */
-    void replenishStock();
+    void replenishStockShop();
     
     /**
      * See if the owner and the customer can stop.

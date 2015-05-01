@@ -14,9 +14,9 @@ public interface OwnerFactoryInterface {
      * of prime materials supplied and the number of times he came to the Factory.
      * @param nPrimeMaterials Amount of prime materials to restock
      */
-    void replenishStock(int nPrimeMaterials);
+    void replenishStockFactory(int nPrimeMaterials);
     
-        /**
+    /**
      * Owner goes to factory to collect finished products.
      * If he can collect all the products (depends of the number of products that the
      * owner can carry), he collect all products setting the number of finished products
@@ -25,5 +25,5 @@ public interface OwnerFactoryInterface {
      * of products collected. He also decreases the flagNProductsCall.
      * @return number of products collected
      */
-    int goToWorkshop();
+    int goToWorkshopFactory();
 }
