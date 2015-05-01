@@ -45,6 +45,12 @@ public class MessageRepository extends Message {
      */
     public static final int SETGOODSCRAFTEDBYCRAFTMAN = 5;
     
+    //*************** OWNER MESSAGE TYPES
+    /**
+     * Message type: Set Owner Present State
+     * @serialField SETOWNERSTATE
+     */
+    public static final int SETOWNERSTATE = 5;
     
     //*************** Internal variables
     /**
