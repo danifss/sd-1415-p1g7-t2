@@ -177,4 +177,67 @@ public class MessageRep implements Serializable{
         }
     }
     
+    /**
+     * Get the type of the Message.
+     * @return Message type
+     */
+    public int getMsgType(){
+        return msgType;
+    }
+    
+    /**
+     * Get the state of the owner.
+     * @return owner state
+     */
+    public int getOwnerState(){
+        return ownerState;
+    }
+    
+    /**
+     * Get the customer id.
+     * @return customer id
+     */
+    public int getCustomerId(){
+        return customerId;
+    }
+    
+    /**
+     * Get the state of the customer.
+     * @return customer state
+     */
+    public int getCustomerState(){
+        return customerState;
+    }
+    
+    /**
+     * Get the number of goods bought by the Customer
+     * @return number of goods
+     */
+    public int getGoodsBoughtByCust(){
+        return goodsBoughtByCust;
+    }
+    
+    /**
+     * Get the Craftman id.
+     * @return Craftman id
+     */
+    public int getCraftmanId(){
+        return craftmanId;
+    }
+    
+    /**
+     * Get the state of the Craftman
+     * @return Craftman State
+     */
+    public int getCraftmanState(){
+        return craftmanState;
+    }
+    
+    /**
+     * Get the number of products crafted by the Craftman
+     * @return number of products
+     */
+    public int getGoodsCraftedByCraftman(){
+        return goodsCraftedByCraftman;
+    }
 }
