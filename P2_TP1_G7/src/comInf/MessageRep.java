@@ -135,6 +135,36 @@ public class MessageRep implements Serializable{
     private int goodsCraftedByCraftman = -1;
     
     /**
+     * Shop State.
+     * @serialField shopState
+     */
+    private int shopState = -1;
+    
+    /**
+     * Number of customers inside the Shop.
+     * @serialField customersInTheShop
+     */
+    private int customersInTheShop = -1;
+    
+    /**
+     * Number of goods in display.
+     * @serialField goodsInDisplay
+     */
+    private int goodsInDisplay = -1;
+    
+    /**
+     * See if the Craftman requested the transfer of finished products to the Shop.
+     * @serialField transProdToShop
+     */
+    private boolean transProdToShop = false;
+    
+    /**
+     * See if the craftsman requested the supply of prime materials to the Factory.
+     * @serialField supplyMatToFact
+     */
+    private boolean supplyMatToFact = false;
+    
+    /**
      * Message Repository constructor (form 1)
      * @param type Message type
      */
@@ -151,6 +181,12 @@ public class MessageRep implements Serializable{
         msgType = type;
         if(type == SETOWNERSTATE){
             ownerState = value1;
+        }else if(type == SETSHOPSTATE){
+            shopState = value1;
+        }else if(type == SETCUSTINSHOP){
+            customersInTheShop = value1;
+        }else if(type == SETGOODSINDISP){
+            goodsInDisplay = value1;
         }
     }
     
@@ -174,6 +210,20 @@ public class MessageRep implements Serializable{
         }else if(type == SETGOODSCRAFTEDBYCRAFTMAN){
             craftmanId = value1;
             goodsCraftedByCraftman = value2;
+        }
+    }
+    
+    /**
+     * Message Repository constructor (form 3)
+     * @param type Message type
+     * @param bool1 boolean 1
+     */
+    public MessageRep(int type, boolean bool1){
+        msgType = type;
+        if(type == SETTRANSPRODTOSHOP){
+            transProdToShop = bool1;
+        }else if(type == SETSUPPLYMATTOFACT){
+            supplyMatToFact = bool1;
         }
     }
     
@@ -239,5 +289,45 @@ public class MessageRep implements Serializable{
      */
     public int getGoodsCraftedByCraftman(){
         return goodsCraftedByCraftman;
+    }
+    
+    /**
+     * Get the state of the Shop
+     * @return shop state
+     */
+    public int getShopState(){
+        return shopState;
+    }
+    
+    /**
+     * Get the number of customers inside the shop
+     * @return number of customers
+     */
+    public int getCustomersInTheShop(){
+        return customersInTheShop;
+    }
+    
+    /**
+     * Get the number of goods in display.
+     * @return number of goods
+     */
+    public int getGoodsInDisplay(){
+        return goodsInDisplay;
+    }
+    
+    /**
+     * Check if the owner can collect products.
+     * @return true if the Owner needs to go to the factory
+     */
+    public boolean getTransProdToShop(){
+        return transProdToShop;
+    }
+    
+    /**
+     * Get if the craftsman requested the supply of prime materials to the Factory.
+     * @return true if the Factory needs prime materials
+     */
+    public boolean getSupplyMatToFact(){
+        return supplyMatToFact;
     }
 }
