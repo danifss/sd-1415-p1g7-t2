@@ -256,8 +256,8 @@ public class Owner extends Thread implements OwnerInterface {
         }catch(InterruptedException e){}
         setOwnerState(COLLECTING_A_BATCH_OF_PRODUCTS);
 
-        shop.goToWorkshop();
-        int products = factory.goToWorkshop();
+        shop.goToWorkshopShop();
+        int products = factory.goToWorkshopFactory();
 
         shop.addnGoodsInDisplay(products);
     }
@@ -298,8 +298,8 @@ public class Owner extends Thread implements OwnerInterface {
             sleep((long) (20));
         }catch(InterruptedException e){}
         setOwnerState(DELIVERING_PRIME_MATERIALS);
-        shop.replenishStock();
-        factory.replenishStock(nPrimeMaterials);
+        shop.replenishStockShop();
+        factory.replenishStockFactory(nPrimeMaterials);
         nPrimeMaterials = 0;
     }
     
