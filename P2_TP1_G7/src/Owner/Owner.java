@@ -1,6 +1,5 @@
 package Owner;
 
-import MonitorsProblema1.*;
 
 /**
  * This class is responsible to host the Owner
@@ -34,25 +33,25 @@ public class Owner extends Thread implements OwnerInterface {
      * General Repository
      * @serialField sharedInfo
      */
-    private MonInfo sharedInfo;
+    private OwnerRepositoryInterface sharedInfo;
 
     /**
      * Factory
      * @serialField factory
      */
-    private MonFactory factory;
+    private OwnerFactoryInterface factory;
 
     /**
      * Shop
      * @serialField shop
      */
-    private MonShop shop;
+    private OwnerShopInterface shop;
     
     /**
      * Storage
      * @serialField storage
      */
-    private MonStorage storage;
+    private OwnerStorageInterface storage;
     
     /**
      * Present State of the Owner
@@ -80,7 +79,7 @@ public class Owner extends Thread implements OwnerInterface {
      * @param shop Shop
      * @param storage Storage
      */
-    public Owner(MonInfo sharedInfo, MonFactory factory, MonShop shop, MonStorage storage) {
+    public Owner(OwnerRepositoryInterface sharedInfo, OwnerFactoryInterface factory, OwnerShopInterface shop, OwnerStorageInterface storage) {
         this.sharedInfo = sharedInfo;
         this.factory = factory;
         this.shop = shop;
