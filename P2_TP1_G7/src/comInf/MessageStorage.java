@@ -23,7 +23,7 @@ public class MessageStorage extends Message {
     
     /**
      * Message type: Owner collects some prime materials.
-     * @serialField VISITSUPPLIES
+     * @serialField VISITSUPPLIERS
      */
     public static final int VISITSUPPLIERS = 2;
     
