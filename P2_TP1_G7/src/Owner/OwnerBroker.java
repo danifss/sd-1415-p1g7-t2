@@ -553,7 +553,7 @@ public class OwnerBroker implements OwnerFactoryInterface, OwnerRepositoryInterf
         ClientCom con = new ClientCom(FactoryServerHostName, FactoryServerPortNumb);
         MessageStorage inMessage, outMessage;
         
-        outMessage = new MessageStorage(MessageStorage.VISITSUPPLIES);
+        outMessage = new MessageStorage(MessageStorage.VISITSUPPLIERS);
         con.writeObject(outMessage);
         inMessage = (MessageStorage) con.readObject();
         int result = -1;
