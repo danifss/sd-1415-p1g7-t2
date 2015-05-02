@@ -1,11 +1,11 @@
 package Craftman;
 
 /**
- * This class is responsible to host the Craftmans
+ * This class is responsible to host the Craftman
  * 
  * @author Daniel 51908
  * @author Raphael 64044
- * @version 1.0
+ * @version 2.0
  */
 public class Craftman extends Thread implements CraftmanInterface {
     

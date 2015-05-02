@@ -1,8 +1,9 @@
 package Craftman;
 
 /**
- *
- * @author Daniel
+ * @author Daniel 51908
+ * @author Raphael 64044
+ * @version 2.0
  */
 interface CraftmanFactoryInterface {
     /**
