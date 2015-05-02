@@ -73,7 +73,7 @@ public class MessageRepository extends Message {
      * Value of something in integer.
      * @serialField value
      */
-    private int value;
+    private int value = -1;
     
     /**
      * Variable to save a boolean value.
