@@ -5,7 +5,7 @@ package Factory;
  * 
  * @author Daniel 51908
  * @author Raphael 64044
- * @version 1.0
+ * @version 2.0
  */
 public class Factory implements FactoryInterface {
     
@@ -14,7 +14,7 @@ public class Factory implements FactoryInterface {
      * 
      * @serialField info
      */
-    private final MonInfo info;
+    private final FactoryRepositoryInterface info;
     
     
     
@@ -105,7 +105,7 @@ public class Factory implements FactoryInterface {
      * @param nPrimeRestock Minimum number of prime materials in stock to call owner to restock
      * @param nProductsCollect Maximum number of finished products that the owner can collect
      */
-    public Factory(MonInfo info, int nPrimeMaterialsInFactory, int nTotalPrime, int nPrimePerProduct, int nPrimeRestock, int nProductsCollect) {
+    public Factory(FactoryRepositoryInterface info, int nPrimeMaterialsInFactory, int nTotalPrime, int nPrimePerProduct, int nPrimeRestock, int nProductsCollect) {
         // Repository
         this.info = info;
         
