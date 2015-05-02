@@ -43,6 +43,11 @@ public class ShopBrokerRepository implements ShopRepositoryInterface {
         MessageRepository inMessage, outMessage;
         
         outMessage = new MessageRepository(MessageRepository.SETTRANSPRODTOSHOP, tranfsProductsToShop);
+        while (!con.open ()){                                 // aguarda ligação
+            try{ 
+                Thread.sleep ((long) (10));
+            }catch (InterruptedException e) {}
+        }
         con.writeObject(outMessage);
         inMessage = (MessageRepository) con.readObject();
         if(inMessage.getType() != MessageRepository.ACK){
@@ -63,6 +68,11 @@ public class ShopBrokerRepository implements ShopRepositoryInterface {
         MessageRepository inMessage, outMessage;
         
         outMessage = new MessageRepository(MessageRepository.SETGOODSINDISP, -1, nGoodsInDisplay);
+        while (!con.open ()){                                 // aguarda ligação
+            try{ 
+                Thread.sleep ((long) (10));
+            }catch (InterruptedException e) {}
+        }
         con.writeObject(outMessage);
         inMessage = (MessageRepository) con.readObject();
         if(inMessage.getType() != MessageRepository.ACK){
@@ -83,6 +93,11 @@ public class ShopBrokerRepository implements ShopRepositoryInterface {
         MessageRepository inMessage, outMessage;
         
         outMessage = new MessageRepository(MessageRepository.SETSUPPLYMATTOFACT, supplyMaterialsToFactory);
+        while (!con.open ()){                                 // aguarda ligação
+            try{ 
+                Thread.sleep ((long) (10));
+            }catch (InterruptedException e) {}
+        }
         con.writeObject(outMessage);
         inMessage = (MessageRepository) con.readObject();
         if(inMessage.getType() != MessageRepository.ACK){
@@ -103,6 +118,11 @@ public class ShopBrokerRepository implements ShopRepositoryInterface {
         MessageRepository inMessage, outMessage;
         
         outMessage = new MessageRepository(MessageRepository.SETCUSTINSHOP, -1, nCustomersInsideShop);
+        while (!con.open ()){                                 // aguarda ligação
+            try{ 
+                Thread.sleep ((long) (10));
+            }catch (InterruptedException e) {}
+        }
         con.writeObject(outMessage);
         inMessage = (MessageRepository) con.readObject();
         if(inMessage.getType() != MessageRepository.ACK){
@@ -123,6 +143,11 @@ public class ShopBrokerRepository implements ShopRepositoryInterface {
         MessageRepository inMessage, outMessage;
         
         outMessage = new MessageRepository(MessageRepository.SETSHOPSTATE, -1, state);
+        while (!con.open ()){                                 // aguarda ligação
+            try{ 
+                Thread.sleep ((long) (10));
+            }catch (InterruptedException e) {}
+        }
         con.writeObject(outMessage);
         inMessage = (MessageRepository) con.readObject();
         if(inMessage.getType() != MessageRepository.ACK){
