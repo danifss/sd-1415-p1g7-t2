@@ -2,25 +2,27 @@ package Factory;
 
 import comInf.MessageException;
 import comInf.MessageFactory;
+import comInf.MessageRepository;
+import genclass.GenericIO;
 
 /**
- *
- * @author Daniel
+ * @author Daniel 51908
+ * @author Raphael 64044
+ * @version 2.0
  */
-public class FactoryBroker {
+public class FactoryBroker implements FactoryRepositoryInterface{
 
     /**
-     * Repository Monitor
-     *
-     * @serialField shop
+     * Repository server host name
+     * @serialField RPserverHostName
      */
-    private final Repository repository;
-    
+    private String RPserverHostName = null;
+
     /**
-     * Total number of Customers
-     * @serialField nCustomers
+     * Repository Server port
+     * @serialField RPserverPortNumb
      */
-    private final int nCustomers;
+    private int RPserverPortNumb;
     
     /**
      * Total number of Craftmans
@@ -29,14 +31,14 @@ public class FactoryBroker {
     private final int nCraftmans;
 
     /**
-     * Constructor of Repository Broker
-     *
-     * @param shop Repository Monitor Object
-     * @param nCustomers Total Number of Customers
+     * Constructor of Factory Broker
+     * @param RPserverHostName      Repository Server Host Name
+     * @param RPserverPortNumb      Repository Server Port Number
+     * @param nCraftmans            Number of Craftmans
      */
-    public RepositoryBroker(Repository repository, int nCustomers, int nCraftmans) {
-        this.repository = repository;
-        this.nCustomers = nCustomers;
+    public FactoryBroker(String RPserverHostName, int RPserverPortNumb, int nCraftmans) {
+        this.RPserverHostName = RPserverHostName;
+        this.RPserverPortNumb = RPserverPortNumb;
         this.nCraftmans = nCraftmans;
     }
 
@@ -107,5 +109,105 @@ public class FactoryBroker {
         }
 
         return (outMessage);
+    }
+
+    /**
+     * Change the amount of prime materials presently in the Factory.
+     * @param nPrimeMaterialsInFactory Amount of prime materials available in the Factory
+     */
+    @Override
+    public void setnPrimeMaterialsInFactory(int nPrimeMaterialsInFactory) {
+        ClientCom con = new ClientCom(RPserverHostName, RPserverPortNumb);
+        MessageRepository inMessage, outMessage;
+        
+        outMessage = new MessageRepository(MessageRepository.SETPRIMEMATERIALSINFACT, -1, nPrimeMaterialsInFactory);
+        con.writeObject(outMessage);
+        inMessage = (MessageRepository) con.readObject();
+        if(inMessage.getType() != MessageRepository.ACK){
+            GenericIO.writelnString("Factory: - Error setting number of prime materials in Factory.");
+            GenericIO.writelnString(inMessage.toString());
+            System.exit(1);
+        }
+        con.close();
+    }
+
+    /**
+     * Change the number of finished products presently in the Factory.
+     * @param nFinishedProductsInFactory Number of finished products in the Factory
+     */
+    @Override
+    public void setnFinishedProductsInFactory(int nFinishedProductsInFactory) {
+        ClientCom con = new ClientCom(RPserverHostName, RPserverPortNumb);
+        MessageRepository inMessage, outMessage;
+        
+        outMessage = new MessageRepository(MessageRepository.SETFINISHEDPRODUCTSINFACT, -1, nFinishedProductsInFactory);
+        con.writeObject(outMessage);
+        inMessage = (MessageRepository) con.readObject();
+        if(inMessage.getType() != MessageRepository.ACK){
+            GenericIO.writelnString("Factory: - Error setting number of finished products in factory.");
+            GenericIO.writelnString(inMessage.toString());
+            System.exit(1);
+        }
+        con.close();
+    }
+
+    /**
+     * Change the total number of products that have already been manufactured (accumulation).
+     * @param nProductsManufactured Total number of products produced
+     */
+    @Override
+    public void setnProductsManufactured(int nProductsManufactured) {
+        ClientCom con = new ClientCom(RPserverHostName, RPserverPortNumb);
+        MessageRepository inMessage, outMessage;
+        
+        outMessage = new MessageRepository(MessageRepository.SETPRODSMANUFACTURED, -1, nProductsManufactured);
+        con.writeObject(outMessage);
+        inMessage = (MessageRepository) con.readObject();
+        if(inMessage.getType() != MessageRepository.ACK){
+            GenericIO.writelnString("Factory: - Error setting number of products manufactured.");
+            GenericIO.writelnString(inMessage.toString());
+            System.exit(1);
+        }
+        con.close();
+    }
+
+    /**
+     * Change the number of times that a supply of prime materials was delivered to the Factory.
+     * @param nSuppliedTimes Number of times that the owner delivered prime materials
+     */
+    @Override
+    public void setnSuppliedTimes(int nSuppliedTimes) {
+        ClientCom con = new ClientCom(RPserverHostName, RPserverPortNumb);
+        MessageRepository inMessage, outMessage;
+        
+        outMessage = new MessageRepository(MessageRepository.SETSUPPLIEDTIMES, -1, nSuppliedTimes);
+        con.writeObject(outMessage);
+        inMessage = (MessageRepository) con.readObject();
+        if(inMessage.getType() != MessageRepository.ACK){
+            GenericIO.writelnString("Factory: - Error setting number of supplied times.");
+            GenericIO.writelnString(inMessage.toString());
+            System.exit(1);
+        }
+        con.close();
+    }
+
+    /**
+     * Change the total amount of prime materials that have already been supplied (accumulation).
+     * @param nPrimeMaterialsSupplied Number of prime materials supplied
+     */
+    @Override
+    public void setnPrimeMaterialsSupplied(int nPrimeMaterialsSupplied) {
+        ClientCom con = new ClientCom(RPserverHostName, RPserverPortNumb);
+        MessageRepository inMessage, outMessage;
+        
+        outMessage = new MessageRepository(MessageRepository.SETPRIMEMATSUPPLIED, -1, nPrimeMaterialsSupplied);
+        con.writeObject(outMessage);
+        inMessage = (MessageRepository) con.readObject();
+        if(inMessage.getType() != MessageRepository.ACK){
+            GenericIO.writelnString("Factory: - Error setting number of prime materials supplied.");
+            GenericIO.writelnString(inMessage.toString());
+            System.exit(1);
+        }
+        con.close();
     }
 }
