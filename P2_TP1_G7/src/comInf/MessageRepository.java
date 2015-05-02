@@ -1,8 +1,9 @@
 package comInf;
 
 /**
- *
- * @author Daniel
+ * @author Daniel 51908
+ * @author Raphael 64044
+ * @version 2.0
  */
 public class MessageRepository extends Message {
 
@@ -26,8 +27,8 @@ public class MessageRepository extends Message {
      * @serialField SETCUSTOMERSTATE Set Customer State in Repository
      * @serialField SETGOODSBYCUST Set number of goods by Customer
      */
-    public static final int SETCUSTOMERSTATE = 1;
-    public static final int SETGOODSBYCUST = 2;
+    public static final int SETCUSTOMERSTATE = 2;
+    public static final int SETGOODSBYCUST = 3;
     
     //*************** CRAFTMANS MESSAGE TYPES
     /**
@@ -35,8 +36,8 @@ public class MessageRepository extends Message {
      * @serialField SETCRAFTMANSTATE Set Craftman Present State
      * @serialField SETGOODSCRAFTEDBYCRAFTMAN Set total number of products crafted by Craftman
      */
-    public static final int SETCRAFTMANSTATE = 3;
-    public static final int SETGOODSCRAFTEDBYCRAFTMAN = 4;
+    public static final int SETCRAFTMANSTATE = 4;
+    public static final int SETGOODSCRAFTEDBYCRAFTMAN = 5;
     
     //*************** SHOP MESSAGE TYPES
     /**
@@ -47,11 +48,11 @@ public class MessageRepository extends Message {
      * @serialField SETTRANSPRODTOSHOP Set if the craftsman requested the transfer of finished products to the Shop
      * @serialField SETSUPPLYMATTOFACT Set if the craftsman requested the supply of prime materials to the Factory
      */
-    public static final int SETSHOPSTATE = 5;
-    public static final int SETCUSTINSHOP = 6;
-    public static final int SETGOODSINDISP = 7;
-    public static final int SETTRANSPRODTOSHOP = 8;
-    public static final int SETSUPPLYMATTOFACT = 9;
+    public static final int SETSHOPSTATE = 6;
+    public static final int SETCUSTINSHOP = 7;
+    public static final int SETGOODSINDISP = 8;
+    public static final int SETTRANSPRODTOSHOP = 9;
+    public static final int SETSUPPLYMATTOFACT = 10;
     
     //*************** FACTORY MESSAGE TYPES
     /**
@@ -62,11 +63,11 @@ public class MessageRepository extends Message {
      * @serialField SETPRIMEMATSUPPLIED Change the total amount of prime materials that have already been supplied (accumulation)
      * @serialField SETSUPPLYMATTOFACT Change the total number of products that have already been manufactured (accumulation)
      */
-    public static final int SETPRIMEMATERIALSINFACT = 10;
-    public static final int SETFINISHEDPRODUCTSINFACT = 11;
-    public static final int SETSUPPLIEDTIMES = 12;
-    public static final int SETPRIMEMATSUPPLIED = 13;
-    public static final int SETPRODSMANUFACTURED = 14;
+    public static final int SETPRIMEMATERIALSINFACT = 11;
+    public static final int SETFINISHEDPRODUCTSINFACT = 12;
+    public static final int SETSUPPLIEDTIMES = 13;
+    public static final int SETPRIMEMATSUPPLIED = 14;
+    public static final int SETPRODSMANUFACTURED = 15;
     
     //*************** Internal variables
     /**
