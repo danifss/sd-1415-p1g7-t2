@@ -170,6 +170,12 @@ public class MessageShop extends Message {
     private int value = 0;
     
     /**
+     * Variable to save a boolean value.
+     * @serialField bool
+     */
+    private boolean bool = false;
+    
+    /**
      * Variable to see if Customer can die or not.
      * @serialField endOper
      */
@@ -214,6 +220,7 @@ public class MessageShop extends Message {
     public MessageShop(int type, int id, boolean endOper){
         super(type, id);
         this.endOper = endOper;
+        this.bool = endOper;
     }
 
     
@@ -232,6 +239,14 @@ public class MessageShop extends Message {
      */
     public boolean isEndOper() {
         return endOper;
+    }
+    
+    /**
+     * Get generic boolean variable.
+     * @return boolean value of variable bool
+     */
+    public boolean isBool(){
+        return bool;
     }
     
 }
