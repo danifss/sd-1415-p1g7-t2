@@ -18,6 +18,13 @@ public abstract class Message implements Serializable {
     private static final long serialVersionUID = 220415L;
 
     /**
+     * Operation with error. (Server response)
+     *
+     * @serialField ERROR
+     */
+    public static final int ERROR = -1;
+    
+    /**
      * Operation completed with success. (Server response)
      *
      * @serialField ACK
