@@ -4,8 +4,9 @@ import comInf.MessageException;
 import comInf.MessageRepository;
 
 /**
- *
- * @author Daniel
+ * @author Daniel 51908
+ * @author Raphael 64044
+ * @version 2.0
  */
 class RepositoryBroker {
 
@@ -52,8 +53,13 @@ class RepositoryBroker {
 
         // validacao da mensagem recebida
         switch (inMessage.getType()) {
+            case MessageRepository.SETOWNERSTATE:
+                // Owner Messages
+                if(inMessage.getValue() < 0){
+                    throw new MessageException("Invalid value!", inMessage);
+                }
+                break;
             case MessageRepository.SETCUSTOMERSTATE:
-            case MessageRepository.SETCUSTINSHOP:
             case MessageRepository.SETGOODSBYCUST:
                 // Customers Messages
                 if ((inMessage.getCustId() < 0) || (inMessage.getCustId() >= nCustomers)) {
@@ -67,10 +73,25 @@ class RepositoryBroker {
                     throw new MessageException("Invalid Craftman Id!", inMessage);
                 }
                 break;
-            case MessageRepository.cenasDaOwnerParaRepositorio:
-                // Owner Messages
-                if ((inMessage.getCustId()!= -1) && (inMessage.getCraftId() != -1)){
-                    throw new MessageException("Invalid Owner message!", inMessage);
+            case MessageRepository.SETSHOPSTATE:
+            case MessageRepository.SETCUSTINSHOP:
+            case MessageRepository.SETGOODSINDISP:
+                // Shop Messages
+                if(inMessage.getValue() < 0){
+                    throw new MessageException("Invalid value!", inMessage);
+                }
+                break;
+            case MessageRepository.SETTRANSPRODTOSHOP:
+            case MessageRepository.SETSUPPLYMATTOFACT:
+                break;
+            case MessageRepository.SETPRIMEMATERIALSINFACT:
+            case MessageRepository.SETFINISHEDPRODUCTSINFACT:
+            case MessageRepository.SETSUPPLIEDTIMES:
+            case MessageRepository.SETPRIMEMATSUPPLIED:
+            case MessageRepository.SETPRODSMANUFACTURED:
+                // Factory Messages
+                if(inMessage.getValue() < 0){
+                    throw new MessageException("Invalid value!", inMessage);
                 }
                 break;
             default:
@@ -79,15 +100,16 @@ class RepositoryBroker {
 
         // seu processamento
         switch (inMessage.getType()) {
+            //*************** Owner Messages
+            case MessageRepository.SETOWNERSTATE:
+                int ownerState = inMessage.getValue();
+                repository.setOwnerState(ownerState);
+                outMessage = new MessageRepository(MessageRepository.ACK);
+                break;
             //*************** Customers Messages
             case MessageRepository.SETCUSTOMERSTATE:
                 int custState = inMessage.getValue();
                 repository.setCustomerState(inMessage.getCustId(), custState);
-                outMessage = new MessageRepository(MessageRepository.ACK);
-                break;
-            case MessageRepository.SETCUSTINSHOP:
-                int nCustomersInsideShop = inMessage.getValue();
-                repository.setnCustomersInsideShop(nCustomersInsideShop);
                 outMessage = new MessageRepository(MessageRepository.ACK);
                 break;
             case MessageRepository.SETGOODSBYCUST:
@@ -105,13 +127,60 @@ class RepositoryBroker {
                 int nGoodsCraftedByCraftman = inMessage.getValue();
                 repository.setnGoodsCraftedByCraftman(inMessage.getCraftId(), nGoodsCraftedByCraftman);
                 outMessage = new MessageRepository(MessageRepository.ACK);
+                break; 
+            //*************** Shop Messages
+            case MessageRepository.SETSHOPSTATE:
+                int shopState = inMessage.getValue();
+                repository.setShopState(shopState);
+                outMessage = new MessageRepository(MessageRepository.ACK);
                 break;
-            //*************** Owner Messages
-            case MessageRepository.cenasDaOwnerParaRepositorio:
-                
+            case MessageRepository.SETCUSTINSHOP:
+                int nCustomersInsideShop = inMessage.getValue();
+                repository.setnCustomersInsideShop(nCustomersInsideShop);
+                outMessage = new MessageRepository(MessageRepository.ACK);
+                break;
+            case MessageRepository.SETGOODSINDISP:
+                int goodsInDisp = inMessage.getValue();
+                repository.setnGoodsInDisplay(goodsInDisp);
+                outMessage = new MessageRepository(MessageRepository.ACK);
+                break;
+            case MessageRepository.SETTRANSPRODTOSHOP:
+                boolean transProdToShop = inMessage.isBool();
+                repository.setTranfsProductsToShop(transProdToShop);
+                outMessage = new MessageRepository(MessageRepository.ACK);
+                break;
+            case MessageRepository.SETSUPPLYMATTOFACT:
+                boolean supplyMatToFact = inMessage.isBool();
+                repository.setSupplyMaterialsToFactory(supplyMatToFact);
+                outMessage = new MessageRepository(MessageRepository.ACK);
+                break;
+            //*************** Factory Messages
+            case MessageRepository.SETPRIMEMATERIALSINFACT:
+                int primeMaterialsInFact = inMessage.getValue();
+                repository.setnPrimeMaterialsInFactory(primeMaterialsInFact);
+                outMessage = new MessageRepository(MessageRepository.ACK);
+                break;
+            case MessageRepository.SETFINISHEDPRODUCTSINFACT:
+                int finishedProductsInFact = inMessage.getValue();
+                repository.setnFinishedProductsInFactory(finishedProductsInFact);
+                outMessage = new MessageRepository(MessageRepository.ACK);
+                break;
+            case MessageRepository.SETSUPPLIEDTIMES:
+                int suppliedTimes = inMessage.getValue();
+                repository.setnSuppliedTimes(suppliedTimes);
+                outMessage = new MessageRepository(MessageRepository.ACK);
+                break;
+            case MessageRepository.SETPRIMEMATSUPPLIED:
+                int primeMatsSupplied = inMessage.getValue();
+                repository.setnPrimeMaterialsSupplied(primeMatsSupplied);
+                outMessage = new MessageRepository(MessageRepository.ACK);
+                break;
+            case MessageRepository.SETPRODSMANUFACTURED:
+                int prodsManufactured = inMessage.getValue();
+                repository.setnProductsManufactured(prodsManufactured);
+                outMessage = new MessageRepository(MessageRepository.ACK);
                 break;
         }
-
         return (outMessage);
     }
 }
