@@ -25,7 +25,17 @@ public class MessageStorage extends Message {
      * Message type: Owner collects some prime materials.
      * @serialField VISITSUPPLIES
      */
-    public static final int VISITSUPPLIES = 2;
+    public static final int VISITSUPPLIERS = 2;
+    
+    
+    //*************** OTHER MESSAGE TYPES
+    /**
+     * Message type: Other messages types to get info from Storage.
+     * @serialField GETNPRIMEMATERIALSDELIVERED
+     * @serialField GETMAXPRIMEMATERIALSTODELIVER
+     */
+    public static final int GETNPRIMEMATERIALSDELIVERED = 3;
+    public static final int GETMAXPRIMEMATERIALSTODELIVER = 5;
     
     
     //*************** Internal Variables

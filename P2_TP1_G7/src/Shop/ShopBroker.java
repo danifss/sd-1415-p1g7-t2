@@ -2,28 +2,13 @@ package Shop;
 
 import comInf.MessageShop;
 import comInf.MessageException;
-import comInf.MessageRepository;
-import genclass.GenericIO;
 
 /**
  * @author Daniel 51908
  * @author Raphael 64044
  * @version 2.0
  */
-public class ShopBroker implements ShopRepositoryInterface{
-
-    /**
-     * Repository server host name
-     * @serialField RPserverHostName
-     */
-    private String RPserverHostName = null;
-
-    /**
-     * Repository Server port
-     * @serialField RPserverPortNumb
-     */
-    private int RPserverPortNumb;
-    
+public class ShopBroker {
     
     /**
      * Shop Monitor
@@ -46,14 +31,10 @@ public class ShopBroker implements ShopRepositoryInterface{
 
     /**
      * Constructor of Shop Broker
-     * @param RPserverHostName      Repository Server Host Name
-     * @param RPserverPortNumb      Repository Server Port Number
      * @param shop Shop Monitor Object
      * @param nCustomers Total Number of Customers
      */
-    public ShopBroker(String RPserverHostName, int RPserverPortNumb, Shop shop, int nCustomers, int nCraftmans) {
-        this.RPserverHostName = RPserverHostName;
-        this.RPserverPortNumb = RPserverPortNumb;
+    public ShopBroker(Shop shop, int nCustomers, int nCraftmans) {
         this.shop = shop;
         this.nCustomers = nCustomers;
         this.nCraftmans = nCraftmans;
@@ -89,7 +70,7 @@ public class ShopBroker implements ShopRepositoryInterface{
                     throw new MessageException("Invalid Craftman Id!", inMessage);
                 }
                 break;
-            case MessageShop.cenasDaOwnerParaAShop:
+            case 0: //TODO: MessageShop.cenasDaOwnerParaAShop:
                 // Owner Messages
                 if ((inMessage.getCustId()!= -1) && (inMessage.getCraftId() != -1)){
                     throw new MessageException("Invalid Owner message!", inMessage);
@@ -143,105 +124,5 @@ public class ShopBroker implements ShopRepositoryInterface{
         }
 
         return (outMessage);
-    }
-
-    /**
-     * Set if the craftsman requested the transfer of finished products to the Shop.
-     * @param tranfsProductsToShop Boolean indicating if the Craftman requested
-     */
-    @Override
-    public void setTranfsProductsToShop(boolean tranfsProductsToShop) {
-        ClientCom con = new ClientCom(RPserverHostName, RPserverPortNumb);
-        MessageRepository inMessage, outMessage;
-        
-        outMessage = new MessageRepository(MessageRepository.SETTRANSPRODTOSHOP, tranfsProductsToShop);
-        con.writeObject(outMessage);
-        inMessage = (MessageRepository) con.readObject();
-        if(inMessage.getType() != MessageRepository.ACK){
-            GenericIO.writelnString("Shop: - Error setting the boolean to transfer products to Shop.");
-            GenericIO.writelnString(inMessage.toString());
-            System.exit(1);
-        }
-        con.close();
-    }
-
-    /**
-     * Set number of goods in display.
-     * @param nGoodsInDisplay Number of goods in display
-     */
-    @Override
-    public void setnGoodsInDisplay(int nGoodsInDisplay) {
-        ClientCom con = new ClientCom(RPserverHostName, RPserverPortNumb);
-        MessageRepository inMessage, outMessage;
-        
-        outMessage = new MessageRepository(MessageRepository.SETGOODSINDISP, -1, nGoodsInDisplay);
-        con.writeObject(outMessage);
-        inMessage = (MessageRepository) con.readObject();
-        if(inMessage.getType() != MessageRepository.ACK){
-            GenericIO.writelnString("Shop: - Error setting number of goods in display.");
-            GenericIO.writelnString(inMessage.toString());
-            System.exit(1);
-        }
-        con.close();
-    }
-
-    /**
-     * Set if the craftsman requested the supply of prime materials to the Factory.
-     * @param supplyMaterialsToFactory Boolean indicating if the Craftman requested
-     */
-    @Override
-    public void setSupplyMaterialsToFactory(boolean supplyMaterialsToFactory) {
-        ClientCom con = new ClientCom(RPserverHostName, RPserverPortNumb);
-        MessageRepository inMessage, outMessage;
-        
-        outMessage = new MessageRepository(MessageRepository.SETSUPPLYMATTOFACT, supplyMaterialsToFactory);
-        con.writeObject(outMessage);
-        inMessage = (MessageRepository) con.readObject();
-        if(inMessage.getType() != MessageRepository.ACK){
-            GenericIO.writelnString("Shop: - Error setting boolean to supply materials to Factory.");
-            GenericIO.writelnString(inMessage.toString());
-            System.exit(1);
-        }
-        con.close();
-    }
-
-    /**
-     * Set number of customers inside.
-     * @param nCustomersInsideShop Number of customers inside
-     */
-    @Override
-    public void setnCustomersInsideShop(int nCustomersInsideShop) {
-        ClientCom con = new ClientCom(RPserverHostName, RPserverPortNumb);
-        MessageRepository inMessage, outMessage;
-        
-        outMessage = new MessageRepository(MessageRepository.SETCUSTINSHOP, -1, nCustomersInsideShop);
-        con.writeObject(outMessage);
-        inMessage = (MessageRepository) con.readObject();
-        if(inMessage.getType() != MessageRepository.ACK){
-            GenericIO.writelnString("Shop: - Error setting number of customers inside Shop.");
-            GenericIO.writelnString(inMessage.toString());
-            System.exit(1);
-        }
-        con.close();
-    }
-
-    /**
-     * Set Shop State.
-     * @param state State of the shop
-     */
-    @Override
-    public void setShopState(int state) {
-        ClientCom con = new ClientCom(RPserverHostName, RPserverPortNumb);
-        MessageRepository inMessage, outMessage;
-        
-        outMessage = new MessageRepository(MessageRepository.SETSHOPSTATE, -1, state);
-        con.writeObject(outMessage);
-        inMessage = (MessageRepository) con.readObject();
-        if(inMessage.getType() != MessageRepository.ACK){
-            GenericIO.writelnString("Shop: - Error setting the state of the Shop.");
-            GenericIO.writelnString(inMessage.toString());
-            System.exit(1);
-        }
-        con.close();
     }
 }
