@@ -47,7 +47,7 @@ class RepositoryBroker {
      * @return response message
      * @throws MessageException if invalid message request
      */
-    public MessageShop processAndReply(MessageRepository inMessage) throws MessageException {
+    public MessageRepository processAndReply(MessageRepository inMessage) throws MessageException {
         MessageRepository outMessage = null;                           // mensagem de resposta
 
         // validacao da mensagem recebida
