@@ -54,6 +54,11 @@ public class CustomerBroker implements CustomerShopInterface, CustomerRepository
         MessageShop inMessage, outMessage;
         
         outMessage = new MessageShop(MessageShop.CHKDOOROPEN, customerId); // pede a realizacao do servico
+        while (!con.open ()){                                 // aguarda ligação
+            try{ 
+                Thread.sleep ((long) (10));
+            }catch (InterruptedException e) {}
+        }
         con.writeObject(outMessage);
         inMessage = (MessageShop) con.readObject();
         boolean result = false;
@@ -84,6 +89,11 @@ public class CustomerBroker implements CustomerShopInterface, CustomerRepository
         MessageShop inMessage, outMessage;
         
         outMessage = new MessageShop(MessageShop.ENTERSHOP, customerId); // pede a realizacao do servico
+        while (!con.open ()){                                 // aguarda ligação
+            try{ 
+                Thread.sleep ((long) (10));
+            }catch (InterruptedException e) {}
+        }
         con.writeObject(outMessage);
         inMessage = (MessageShop) con.readObject();
         if (inMessage.getType() != Message.ACK) {
@@ -105,6 +115,11 @@ public class CustomerBroker implements CustomerShopInterface, CustomerRepository
         MessageShop inMessage, outMessage;
         
         outMessage = new MessageShop(MessageShop.PERUSINGAROUND, customerId); // pede a realizacao do servico
+        while (!con.open ()){                                 // aguarda ligação
+            try{ 
+                Thread.sleep ((long) (10));
+            }catch (InterruptedException e) {}
+        }
         con.writeObject(outMessage);
         inMessage = (MessageShop) con.readObject();
         int result = 0;
@@ -132,6 +147,11 @@ public class CustomerBroker implements CustomerShopInterface, CustomerRepository
         MessageShop inMessage, outMessage;
         
         outMessage = new MessageShop(MessageShop.IWANTTHIS, customerId, nGoods); // pede a realizacao do servico
+        while (!con.open ()){                                 // aguarda ligação
+            try{ 
+                Thread.sleep ((long) (10));
+            }catch (InterruptedException e) {}
+        }
         con.writeObject(outMessage);
         inMessage = (MessageShop) con.readObject();
         if (inMessage.getType() != Message.ACK) {
@@ -152,6 +172,11 @@ public class CustomerBroker implements CustomerShopInterface, CustomerRepository
         MessageShop inMessage, outMessage;
         
         outMessage = new MessageShop(MessageShop.EXITSHOP, customerId); // pede a realizacao do servico
+        while (!con.open ()){                                 // aguarda ligação
+            try{ 
+                Thread.sleep ((long) (10));
+            }catch (InterruptedException e) {}
+        }
         con.writeObject(outMessage);
         inMessage = (MessageShop) con.readObject();
         if (inMessage.getType() != Message.ACK) {
@@ -173,6 +198,11 @@ public class CustomerBroker implements CustomerShopInterface, CustomerRepository
         MessageShop inMessage, outMessage;
         
         outMessage = new MessageShop(MessageShop.ENDOPER, customerId); // pede a realizacao do servico
+        while (!con.open ()){                                 // aguarda ligação
+            try{ 
+                Thread.sleep ((long) (10));
+            }catch (InterruptedException e) {}
+        }
         con.writeObject(outMessage);
         inMessage = (MessageShop) con.readObject();
         boolean result = true;
@@ -206,6 +236,11 @@ public class CustomerBroker implements CustomerShopInterface, CustomerRepository
         MessageRepository inMessage, outMessage;
         
         outMessage = new MessageRepository(MessageRepository.SETCUSTOMERSTATE, customerId, state); // pede a realizacao do servico
+        while (!con.open ()){                                 // aguarda ligação
+            try{ 
+                Thread.sleep ((long) (10));
+            }catch (InterruptedException e) {}
+        }
         con.writeObject(outMessage);
         inMessage = (MessageRepository) con.readObject();
         if (inMessage.getType() != Message.ACK) {
@@ -226,6 +261,11 @@ public class CustomerBroker implements CustomerShopInterface, CustomerRepository
         MessageRepository inMessage, outMessage;
         
         outMessage = new MessageRepository(MessageRepository.SETCUSTINSHOP, customerId, nCustomersInsideShop); // pede a realizacao do servico
+        while (!con.open ()){                                 // aguarda ligação
+            try{ 
+                Thread.sleep ((long) (10));
+            }catch (InterruptedException e) {}
+        }
         con.writeObject(outMessage);
         inMessage = (MessageRepository) con.readObject();
         if (inMessage.getType() != Message.ACK) {
@@ -247,6 +287,11 @@ public class CustomerBroker implements CustomerShopInterface, CustomerRepository
         MessageRepository inMessage, outMessage;
         
         outMessage = new MessageRepository(MessageRepository.SETGOODSBYCUST, customerId, nGoods); // pede a realizacao do servico
+        while (!con.open ()){                                 // aguarda ligação
+            try{ 
+                Thread.sleep ((long) (10));
+            }catch (InterruptedException e) {}
+        }
         con.writeObject(outMessage);
         inMessage = (MessageRepository) con.readObject();
         if (inMessage.getType() != Message.ACK) {
