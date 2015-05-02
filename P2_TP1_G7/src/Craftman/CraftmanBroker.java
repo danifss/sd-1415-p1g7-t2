@@ -82,6 +82,11 @@ public class CraftmanBroker implements CraftmanRepositoryInterface, CraftmanShop
         MessageRepository inMessage, outMessage;
         
         outMessage = new MessageRepository(MessageRepository.SETCRAFTMANSTATE, craftmanId, state);
+        while (!con.open ()){                                 // aguarda ligação
+            try{ 
+                Thread.sleep ((long) (10));
+            }catch (InterruptedException e) {}
+        }
         con.writeObject(outMessage);
         inMessage = (MessageRepository) con.readObject();
         if(inMessage.getType() != MessageRepository.ACK){
@@ -95,7 +100,7 @@ public class CraftmanBroker implements CraftmanRepositoryInterface, CraftmanShop
     /**
      * Communicate with Repository: Set total number of crafted goods by Craftman.
      * @param craftmanId id
-     * @param nGoodsCraftedByCraftman total goods of craftman
+     * @param nGoodsCraftedByCraftman total goods of Craftman
      */
     @Override
     public void setnGoodsCraftedByCraftman(int craftmanId, int nGoodsCraftedByCraftman) {
@@ -103,6 +108,11 @@ public class CraftmanBroker implements CraftmanRepositoryInterface, CraftmanShop
         MessageRepository inMessage, outMessage;
         
         outMessage = new MessageRepository(MessageRepository.SETGOODSCRAFTEDBYCRAFTMAN, craftmanId, nGoodsCraftedByCraftman);
+        while (!con.open ()){                                 // aguarda ligação
+            try{ 
+                Thread.sleep ((long) (10));
+            }catch (InterruptedException e) {}
+        }
         con.writeObject(outMessage);
         inMessage = (MessageRepository) con.readObject();
         if(inMessage.getType() != MessageRepository.ACK){
@@ -125,6 +135,11 @@ public class CraftmanBroker implements CraftmanRepositoryInterface, CraftmanShop
         MessageShop inMessage, outMessage;
         
         outMessage = new MessageShop(MessageShop.PRIMEMATERIALSNEEDED, craftmanId);
+        while (!con.open ()){                                 // aguarda ligação
+            try{ 
+                Thread.sleep ((long) (10));
+            }catch (InterruptedException e) {}
+        }
         con.writeObject(outMessage);
         inMessage = (MessageShop) con.readObject();
         if(inMessage.getType() != MessageShop.ACK){
@@ -145,6 +160,11 @@ public class CraftmanBroker implements CraftmanRepositoryInterface, CraftmanShop
         MessageShop inMessage, outMessage;
         
         outMessage = new MessageShop(MessageShop.READYFORTRANSFER, craftmanId);
+        while (!con.open ()){                                 // aguarda ligação
+            try{ 
+                Thread.sleep ((long) (10));
+            }catch (InterruptedException e) {}
+        }
         con.writeObject(outMessage);
         inMessage = (MessageShop) con.readObject();
         if(inMessage.getType() != MessageShop.ACK){
@@ -167,6 +187,11 @@ public class CraftmanBroker implements CraftmanRepositoryInterface, CraftmanShop
         MessageFactory inMessage, outMessage;
         
         outMessage = new MessageFactory(MessageFactory.READYFORTRANSFER, craftmanId);
+        while (!con.open ()){                                 // aguarda ligação
+            try{ 
+                Thread.sleep ((long) (10));
+            }catch (InterruptedException e) {}
+        }
         con.writeObject(outMessage);
         inMessage = (MessageFactory) con.readObject();
         if(inMessage.getType() != MessageFactory.ACK){
@@ -188,6 +213,11 @@ public class CraftmanBroker implements CraftmanRepositoryInterface, CraftmanShop
         MessageFactory inMessage, outMessage;
         
         outMessage = new MessageFactory(MessageFactory.CHECKCONTACTPRODUCT, craftmanId);
+        while (!con.open ()){                                 // aguarda ligação
+            try{ 
+                Thread.sleep ((long) (10));
+            }catch (InterruptedException e) {}
+        }
         con.writeObject(outMessage);
         inMessage = (MessageFactory) con.readObject();
         boolean result = false;
@@ -216,6 +246,11 @@ public class CraftmanBroker implements CraftmanRepositoryInterface, CraftmanShop
         MessageFactory inMessage, outMessage;
         
         outMessage = new MessageFactory(MessageFactory.CHECKFORMATERIALS, craftmanId);
+        while (!con.open ()){                                 // aguarda ligação
+            try{ 
+                Thread.sleep ((long) (10));
+            }catch (InterruptedException e) {}
+        }
         con.writeObject(outMessage);
         inMessage = (MessageFactory) con.readObject();
         boolean result = false;
@@ -244,6 +279,11 @@ public class CraftmanBroker implements CraftmanRepositoryInterface, CraftmanShop
         MessageFactory inMessage, outMessage;
         
         outMessage = new MessageFactory(MessageFactory.CHECKFORRESTOCK, craftmanId);
+        while (!con.open ()){                                 // aguarda ligação
+            try{ 
+                Thread.sleep ((long) (10));
+            }catch (InterruptedException e) {}
+        }
         con.writeObject(outMessage);
         inMessage = (MessageFactory) con.readObject();
         boolean result = false;
@@ -272,6 +312,11 @@ public class CraftmanBroker implements CraftmanRepositoryInterface, CraftmanShop
         MessageFactory inMessage, outMessage;
         
         outMessage = new MessageFactory(MessageFactory.COLLECTMATERIALS, craftmanId);
+        while (!con.open ()){                                 // aguarda ligação
+            try{ 
+                Thread.sleep ((long) (10));
+            }catch (InterruptedException e) {}
+        }
         con.writeObject(outMessage);
         inMessage = (MessageFactory) con.readObject();
         int result = 0;
@@ -300,6 +345,11 @@ public class CraftmanBroker implements CraftmanRepositoryInterface, CraftmanShop
         MessageFactory inMessage, outMessage;
         
         outMessage = new MessageFactory(MessageFactory.ENDOFPRIMEMATERIALS, craftmanId);
+        while (!con.open ()){                                 // aguarda ligação
+            try{ 
+                Thread.sleep ((long) (10));
+            }catch (InterruptedException e) {}
+        }
         con.writeObject(outMessage);
         inMessage = (MessageFactory) con.readObject();
         boolean result = false;
@@ -328,6 +378,11 @@ public class CraftmanBroker implements CraftmanRepositoryInterface, CraftmanShop
         MessageFactory inMessage, outMessage;
         
         outMessage = new MessageFactory(MessageFactory.FLAGPRIMEACTIVATED, craftmanId);
+        while (!con.open ()){                                 // aguarda ligação
+            try{ 
+                Thread.sleep ((long) (10));
+            }catch (InterruptedException e) {}
+        }
         con.writeObject(outMessage);
         inMessage = (MessageFactory) con.readObject();
         boolean result = false;
@@ -356,6 +411,11 @@ public class CraftmanBroker implements CraftmanRepositoryInterface, CraftmanShop
         MessageFactory inMessage, outMessage;
         
         outMessage = new MessageFactory(MessageFactory.GETNPRIMEPERPRODUCT, craftmanId);
+        while (!con.open ()){                                 // aguarda ligação
+            try{ 
+                Thread.sleep ((long) (10));
+            }catch (InterruptedException e) {}
+        }
         con.writeObject(outMessage);
         inMessage = (MessageFactory) con.readObject();
         int result = 0;
@@ -385,6 +445,11 @@ public class CraftmanBroker implements CraftmanRepositoryInterface, CraftmanShop
         MessageFactory inMessage, outMessage;
         
         outMessage = new MessageFactory(MessageFactory.GOTOSTORE, craftmanId, nProd);
+        while (!con.open ()){                                 // aguarda ligação
+            try{ 
+                Thread.sleep ((long) (10));
+            }catch (InterruptedException e) {}
+        }
         con.writeObject(outMessage);
         inMessage = (MessageFactory) con.readObject();
         int result = 0;
@@ -413,6 +478,11 @@ public class CraftmanBroker implements CraftmanRepositoryInterface, CraftmanShop
         MessageFactory inMessage, outMessage;
         
         outMessage = new MessageFactory(MessageFactory.PRIMEMATERIALSNEEDED, craftmanId);
+        while (!con.open ()){                                 // aguarda ligação
+            try{ 
+                Thread.sleep ((long) (10));
+            }catch (InterruptedException e) {}
+        }
         con.writeObject(outMessage);
         inMessage = (MessageFactory) con.readObject();
         boolean result = false;
