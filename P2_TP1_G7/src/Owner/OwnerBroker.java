@@ -9,7 +9,7 @@ import genclass.GenericIO;
 /**
  * @author Daniel 51908
  * @author Raphael 64044
- * @version 1.0
+ * @version 2.0
  */
 public class OwnerBroker implements OwnerFactoryInterface, OwnerRepositoryInterface, OwnerShopInterface, OwnerStorageInterface{
     
@@ -83,8 +83,7 @@ public class OwnerBroker implements OwnerFactoryInterface, OwnerRepositoryInterf
         ClientCom con = new ClientCom(RPserverHostName, RPserverPortNumb);
         MessageRepository inMessage, outMessage;
         
-        // OutMessage com erro, construtor nao feito
-        outMessage = new MessageRepository(MessageRepository.SETOWNERSTATE, state);
+        outMessage = new MessageRepository(MessageRepository.SETOWNERSTATE, -1, state);
         con.writeObject(outMessage);
         inMessage = (MessageRepository) con.readObject();
         if(inMessage.getType() != MessageRepository.ACK){
@@ -107,9 +106,8 @@ public class OwnerBroker implements OwnerFactoryInterface, OwnerRepositoryInterf
         ClientCom con = new ClientCom(ShopServerHostName, ShopServerPortNumb);
         MessageShop inMessage, outMessage;
         
-        // OutMessage com erro, construtor nao feito
-        //outMessage = new MessageRepository(MessageRepository.SETOWNERSTATE, state);
-        //con.writeObject(outMessage);
+        outMessage = new MessageShop(MessageShop.OPENTHESHOP);
+        con.writeObject(outMessage);
         inMessage = (MessageShop) con.readObject();
         if(inMessage.getType() != MessageRepository.ACK){
             GenericIO.writelnString("Owner: - Error openning the door.");
@@ -128,9 +126,8 @@ public class OwnerBroker implements OwnerFactoryInterface, OwnerRepositoryInterf
         ClientCom con = new ClientCom(ShopServerHostName, ShopServerPortNumb);
         MessageShop inMessage, outMessage;
         
-        // OutMessage com erro, construtor nao feito
-        //outMessage = new MessageRepository(MessageRepository.SETOWNERSTATE, state);
-        //con.writeObject(outMessage);
+        outMessage = new MessageShop(MessageShop.ISTRANFSPRODSTOSHOP);
+        con.writeObject(outMessage);
         inMessage = (MessageShop) con.readObject();
         boolean result = false;
         switch(inMessage.getType()){
@@ -156,9 +153,8 @@ public class OwnerBroker implements OwnerFactoryInterface, OwnerRepositoryInterf
         ClientCom con = new ClientCom(ShopServerHostName, ShopServerPortNumb);
         MessageShop inMessage, outMessage;
         
-        // OutMessage com erro, construtor nao feito
-        //outMessage = new MessageRepository(MessageRepository.SETOWNERSTATE, state);
-        //con.writeObject(outMessage);
+        outMessage = new MessageShop(MessageShop.ISSUPPLYMATERIALSTOFACT);
+        con.writeObject(outMessage);
         inMessage = (MessageShop) con.readObject();
         boolean result = false;
         switch(inMessage.getType()){
@@ -184,7 +180,25 @@ public class OwnerBroker implements OwnerFactoryInterface, OwnerRepositoryInterf
      */
     @Override
     public int appraiseSit() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        ClientCom con = new ClientCom(ShopServerHostName, ShopServerPortNumb);
+        MessageShop inMessage, outMessage;
+        
+        outMessage = new MessageShop(MessageShop.APPRAISESIT);
+        con.writeObject(outMessage);
+        inMessage = (MessageShop) con.readObject();
+        int result = -1;
+        switch(inMessage.getType()){
+            case MessageShop.ACK:
+                    result = inMessage.getValue();
+                break;
+            default:
+                GenericIO.writelnString("Owner: - Error seeing what the Owner should do.");
+                GenericIO.writelnString(inMessage.toString());
+                System.exit(1);
+                break;
+        }
+        con.close();
+        return result;
     }
     
     /**
@@ -197,9 +211,8 @@ public class OwnerBroker implements OwnerFactoryInterface, OwnerRepositoryInterf
         ClientCom con = new ClientCom(ShopServerHostName, ShopServerPortNumb);
         MessageShop inMessage, outMessage;
         
-        // OutMessage com erro, construtor nao feito
-        //outMessage = new MessageRepository(MessageRepository.SETOWNERSTATE, state);
-        //con.writeObject(outMessage);
+        outMessage = new MessageShop(MessageShop.CLOSETHEDOOR);
+        con.writeObject(outMessage);
         inMessage = (MessageShop) con.readObject();
         if(inMessage.getType() != MessageRepository.ACK){
             GenericIO.writelnString("Owner: - Error closing the door.");
@@ -215,7 +228,25 @@ public class OwnerBroker implements OwnerFactoryInterface, OwnerRepositoryInterf
      */
     @Override
     public boolean customersInTheShop() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        ClientCom con = new ClientCom(ShopServerHostName, ShopServerPortNumb);
+        MessageShop inMessage, outMessage;
+        
+        outMessage = new MessageShop(MessageShop.CUSTOMERSINTHESHOP);
+        con.writeObject(outMessage);
+        inMessage = (MessageShop) con.readObject();
+        boolean result = false;
+        switch(inMessage.getType()){
+            case MessageShop.ACK:
+                    result = inMessage.isBool();
+                break;
+            default:
+                GenericIO.writelnString("Owner: - Error verifying if there is Customers in the Shop.");
+                GenericIO.writelnString(inMessage.toString());
+                System.exit(1);
+                break;
+        }
+        con.close();
+        return result;
     }
     
     /**
@@ -225,7 +256,25 @@ public class OwnerBroker implements OwnerFactoryInterface, OwnerRepositoryInterf
      */
     @Override
     public int addressACustomer() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        ClientCom con = new ClientCom(ShopServerHostName, ShopServerPortNumb);
+        MessageShop inMessage, outMessage;
+        
+        outMessage = new MessageShop(MessageShop.ADDRESSACUSTOMER);
+        con.writeObject(outMessage);
+        inMessage = (MessageShop) con.readObject();
+        int result = -1;
+        switch(inMessage.getType()){
+            case MessageShop.ACK:
+                    result = inMessage.getValue();
+                break;
+            default:
+                GenericIO.writelnString("Owner: - Error addressing a Customer.");
+                GenericIO.writelnString(inMessage.toString());
+                System.exit(1);
+                break;
+        }
+        con.close();
+        return result;
     }
     
     /**
@@ -236,7 +285,25 @@ public class OwnerBroker implements OwnerFactoryInterface, OwnerRepositoryInterf
      */
     @Override
     public int serviceCustomer() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        ClientCom con = new ClientCom(ShopServerHostName, ShopServerPortNumb);
+        MessageShop inMessage, outMessage;
+        
+        outMessage = new MessageShop(MessageShop.SERVICECUSTOMER);
+        con.writeObject(outMessage);
+        inMessage = (MessageShop) con.readObject();
+        int result = -1;
+        switch(inMessage.getType()){
+            case MessageShop.ACK:
+                    result = inMessage.getValue();
+                break;
+            default:
+                GenericIO.writelnString("Owner: - Error servicing a Customer.");
+                GenericIO.writelnString(inMessage.toString());
+                System.exit(1);
+                break;
+        }
+        con.close();
+        return result;
     }
     
     /**
@@ -246,7 +313,18 @@ public class OwnerBroker implements OwnerFactoryInterface, OwnerRepositoryInterf
      */
     @Override
     public void sayGoodByeToCustomer() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        ClientCom con = new ClientCom(ShopServerHostName, ShopServerPortNumb);
+        MessageShop inMessage, outMessage;
+        
+        outMessage = new MessageShop(MessageShop.SAYGOODBYETOCUST);
+        con.writeObject(outMessage);
+        inMessage = (MessageShop) con.readObject();
+        if(inMessage.getType() != MessageRepository.ACK){
+            GenericIO.writelnString("Owner: - Error saying goodbye to a Customer.");
+            GenericIO.writelnString(inMessage.toString());
+            System.exit(1);
+        }
+        con.close();
     }
     
     /**
@@ -255,7 +333,25 @@ public class OwnerBroker implements OwnerFactoryInterface, OwnerRepositoryInterf
      */
     @Override
     public boolean isShopStillOpen() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        ClientCom con = new ClientCom(ShopServerHostName, ShopServerPortNumb);
+        MessageShop inMessage, outMessage;
+        
+        outMessage = new MessageShop(MessageShop.ISSHOPSTILLOPEN);
+        con.writeObject(outMessage);
+        inMessage = (MessageShop) con.readObject();
+        boolean result = false;
+        switch(inMessage.getType()){
+            case MessageShop.ACK:
+                    result = inMessage.isBool();
+                break;
+            default:
+                GenericIO.writelnString("Owner: - Error verifying if Shop is open.");
+                GenericIO.writelnString(inMessage.toString());
+                System.exit(1);
+                break;
+        }
+        con.close();
+        return result;
     }
     
     /**
@@ -263,7 +359,18 @@ public class OwnerBroker implements OwnerFactoryInterface, OwnerRepositoryInterf
      */
     @Override
     public void goToWorkshopShop() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        ClientCom con = new ClientCom(ShopServerHostName, ShopServerPortNumb);
+        MessageShop inMessage, outMessage;
+        
+        outMessage = new MessageShop(MessageShop.GOTOWORKSHOP);
+        con.writeObject(outMessage);
+        inMessage = (MessageShop) con.readObject();
+        if(inMessage.getType() != MessageRepository.ACK){
+            GenericIO.writelnString("Owner: - Error going to Factory (Shop).");
+            GenericIO.writelnString(inMessage.toString());
+            System.exit(1);
+        }
+        con.close();
     }
     
     /**
@@ -272,7 +379,18 @@ public class OwnerBroker implements OwnerFactoryInterface, OwnerRepositoryInterf
      */
     @Override
     public void addnGoodsInDisplay(int goods) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        ClientCom con = new ClientCom(ShopServerHostName, ShopServerPortNumb);
+        MessageShop inMessage, outMessage;
+        
+        outMessage = new MessageShop(MessageShop.ADDNGOODSINDISPLAY, -1, goods);
+        con.writeObject(outMessage);
+        inMessage = (MessageShop) con.readObject();
+        if(inMessage.getType() != MessageRepository.ACK){
+            GenericIO.writelnString("Owner: - Error adding products in display.");
+            GenericIO.writelnString(inMessage.toString());
+            System.exit(1);
+        }
+        con.close();
     }
     
     /**
@@ -280,7 +398,18 @@ public class OwnerBroker implements OwnerFactoryInterface, OwnerRepositoryInterf
      */
     @Override
     public void replenishStockShop() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        ClientCom con = new ClientCom(ShopServerHostName, ShopServerPortNumb);
+        MessageShop inMessage, outMessage;
+        
+        outMessage = new MessageShop(MessageShop.REPLENISHSTOCK);
+        con.writeObject(outMessage);
+        inMessage = (MessageShop) con.readObject();
+        if(inMessage.getType() != MessageRepository.ACK){
+            GenericIO.writelnString("Owner: - Error replenish stock (Shop).");
+            GenericIO.writelnString(inMessage.toString());
+            System.exit(1);
+        }
+        con.close();
     }
     
     /**
@@ -291,7 +420,25 @@ public class OwnerBroker implements OwnerFactoryInterface, OwnerRepositoryInterf
      */
     @Override
     public boolean endOper() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        ClientCom con = new ClientCom(ShopServerHostName, ShopServerPortNumb);
+        MessageShop inMessage, outMessage;
+        
+        outMessage = new MessageShop(MessageShop.ENDOPER);
+        con.writeObject(outMessage);
+        inMessage = (MessageShop) con.readObject();
+        boolean result = false;
+        switch(inMessage.getType()){
+            case MessageShop.ACK:
+                    result = inMessage.isBool();
+                break;
+            default:
+                GenericIO.writelnString("Owner: - Error verifying if he can stop working.");
+                GenericIO.writelnString(inMessage.toString());
+                System.exit(1);
+                break;
+        }
+        con.close();
+        return result;
     }
     
     
@@ -306,12 +453,11 @@ public class OwnerBroker implements OwnerFactoryInterface, OwnerRepositoryInterf
         ClientCom con = new ClientCom(FactoryServerHostName, FactoryServerPortNumb);
         MessageFactory inMessage, outMessage;
         
-        // OutMessage com erro, construtor nao feito
-        //outMessage = new MessageRepository(MessageRepository.SETOWNERSTATE, state);
-        //con.writeObject(outMessage);
+        outMessage = new MessageFactory(MessageFactory.REPLENISHSTOCK, -1, nPrimeMaterials);
+        con.writeObject(outMessage);
         inMessage = (MessageFactory) con.readObject();
         if(inMessage.getType() != MessageRepository.ACK){
-            GenericIO.writelnString("Owner: - Error delivering prime materials to Factory.");
+            GenericIO.writelnString("Owner: - Error replenish stock (Factory).");
             GenericIO.writelnString(inMessage.toString());
             System.exit(1);
         }
@@ -329,7 +475,25 @@ public class OwnerBroker implements OwnerFactoryInterface, OwnerRepositoryInterf
      */
     @Override
     public int goToWorkshopFactory() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        ClientCom con = new ClientCom(FactoryServerHostName, FactoryServerPortNumb);
+        MessageFactory inMessage, outMessage;
+        
+        outMessage = new MessageFactory(MessageFactory.GOTOWORKSHOP);
+        con.writeObject(outMessage);
+        inMessage = (MessageFactory) con.readObject();
+        int result = -1;
+        switch(inMessage.getType()){
+            case MessageShop.ACK:
+                    result = inMessage.getValue();
+                break;
+            default:
+                GenericIO.writelnString("Owner: - Error going to Factory (Factory).");
+                GenericIO.writelnString(inMessage.toString());
+                System.exit(1);
+                break;
+        }
+        con.close();
+        return result;
     }
 
 
@@ -343,7 +507,25 @@ public class OwnerBroker implements OwnerFactoryInterface, OwnerRepositoryInterf
      */
     @Override
     public boolean isPrimeMaterialsAvailabe() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        ClientCom con = new ClientCom(StorageServerHostName, StorageServerPortNumb);
+        MessageStorage inMessage, outMessage;
+        
+        outMessage = new MessageStorage(MessageStorage.PRIMEMATERIALSAVAILABLE);
+        con.writeObject(outMessage);
+        inMessage = (MessageStorage) con.readObject();
+        boolean result = false;
+        switch(inMessage.getType()){
+            case MessageShop.ACK:
+                    result = inMessage.isBool();
+                break;
+            default:
+                GenericIO.writelnString("Owner: - Error verifying if the storage has prime materials.");
+                GenericIO.writelnString(inMessage.toString());
+                System.exit(1);
+                break;
+        }
+        con.close();
+        return result;
     }
     
     /**
@@ -356,8 +538,24 @@ public class OwnerBroker implements OwnerFactoryInterface, OwnerRepositoryInterf
      */
     @Override
     public int visitSuppliers() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        ClientCom con = new ClientCom(FactoryServerHostName, FactoryServerPortNumb);
+        MessageStorage inMessage, outMessage;
+        
+        outMessage = new MessageStorage(MessageStorage.VISITSUPPLIES);
+        con.writeObject(outMessage);
+        inMessage = (MessageStorage) con.readObject();
+        int result = -1;
+        switch(inMessage.getType()){
+            case MessageShop.ACK:
+                    result = inMessage.getValue();
+                break;
+            default:
+                GenericIO.writelnString("Owner: - Error visiting suppliers.");
+                GenericIO.writelnString(inMessage.toString());
+                System.exit(1);
+                break;
+        }
+        con.close();
+        return result;
     }
-    
-    
 }
