@@ -77,16 +77,16 @@ public class MessageFactory extends Message {
     
     //*************** OWNER MESSAGE TYPES
     /**
-     * Message type: 
-     * @serialField GOTOWORKSHOP
-     */
-    public static final int GOTOWORKSHOP = 11;
-    
-    /**
-     * Message type: 
+     * Message type: Owner goes to Factory to restock prime materials.
      * @serialField REPLENISHSTOCK
      */
-    public static final int REPLENISHSTOCK = 12;
+    public static final int REPLENISHSTOCK = 30;
+    
+    /**
+     * Message type: Owner goes to the Factory to collect products.
+     * @serialField GOTOWORKSHOP
+     */
+    public static final int GOTOWORKSHOP = 31;
     
     
     //*************** Internal Variables
