@@ -35,7 +35,7 @@ public class MessageStorage extends Message {
      * @serialField GETMAXPRIMEMATERIALSTODELIVER
      */
     public static final int GETNPRIMEMATERIALSDELIVERED = 3;
-    public static final int GETMAXPRIMEMATERIALSTODELIVER = 5;
+    public static final int GETMAXPRIMEMATERIALSTODELIVER = 4;
     
     
     //*************** Internal Variables
