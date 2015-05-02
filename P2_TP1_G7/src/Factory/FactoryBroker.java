@@ -121,6 +121,11 @@ public class FactoryBroker implements FactoryRepositoryInterface{
         MessageRepository inMessage, outMessage;
         
         outMessage = new MessageRepository(MessageRepository.SETPRIMEMATERIALSINFACT, -1, nPrimeMaterialsInFactory);
+        while (!con.open ()){                                 // aguarda ligação
+            try{ 
+                Thread.sleep ((long) (10));
+            }catch (InterruptedException e) {}
+        }
         con.writeObject(outMessage);
         inMessage = (MessageRepository) con.readObject();
         if(inMessage.getType() != MessageRepository.ACK){
@@ -141,6 +146,11 @@ public class FactoryBroker implements FactoryRepositoryInterface{
         MessageRepository inMessage, outMessage;
         
         outMessage = new MessageRepository(MessageRepository.SETFINISHEDPRODUCTSINFACT, -1, nFinishedProductsInFactory);
+        while (!con.open ()){                                 // aguarda ligação
+            try{ 
+                Thread.sleep ((long) (10));
+            }catch (InterruptedException e) {}
+        }
         con.writeObject(outMessage);
         inMessage = (MessageRepository) con.readObject();
         if(inMessage.getType() != MessageRepository.ACK){
@@ -161,6 +171,11 @@ public class FactoryBroker implements FactoryRepositoryInterface{
         MessageRepository inMessage, outMessage;
         
         outMessage = new MessageRepository(MessageRepository.SETPRODSMANUFACTURED, -1, nProductsManufactured);
+        while (!con.open ()){                                 // aguarda ligação
+            try{ 
+                Thread.sleep ((long) (10));
+            }catch (InterruptedException e) {}
+        }
         con.writeObject(outMessage);
         inMessage = (MessageRepository) con.readObject();
         if(inMessage.getType() != MessageRepository.ACK){
@@ -181,6 +196,11 @@ public class FactoryBroker implements FactoryRepositoryInterface{
         MessageRepository inMessage, outMessage;
         
         outMessage = new MessageRepository(MessageRepository.SETSUPPLIEDTIMES, -1, nSuppliedTimes);
+        while (!con.open ()){                                 // aguarda ligação
+            try{ 
+                Thread.sleep ((long) (10));
+            }catch (InterruptedException e) {}
+        }
         con.writeObject(outMessage);
         inMessage = (MessageRepository) con.readObject();
         if(inMessage.getType() != MessageRepository.ACK){
@@ -201,6 +221,11 @@ public class FactoryBroker implements FactoryRepositoryInterface{
         MessageRepository inMessage, outMessage;
         
         outMessage = new MessageRepository(MessageRepository.SETPRIMEMATSUPPLIED, -1, nPrimeMaterialsSupplied);
+        while (!con.open ()){                                 // aguarda ligação
+            try{ 
+                Thread.sleep ((long) (10));
+            }catch (InterruptedException e) {}
+        }
         con.writeObject(outMessage);
         inMessage = (MessageRepository) con.readObject();
         if(inMessage.getType() != MessageRepository.ACK){

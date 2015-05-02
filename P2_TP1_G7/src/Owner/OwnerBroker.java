@@ -96,6 +96,11 @@ public class OwnerBroker implements OwnerFactoryInterface, OwnerRepositoryInterf
         MessageRepository inMessage, outMessage;
         
         outMessage = new MessageRepository(MessageRepository.SETOWNERSTATE, -1, state);
+        while (!con.open ()){                                 // aguarda ligação
+            try{ 
+                Thread.sleep ((long) (10));
+            }catch (InterruptedException e) {}
+        }
         con.writeObject(outMessage);
         inMessage = (MessageRepository) con.readObject();
         if(inMessage.getType() != MessageRepository.ACK){
@@ -119,6 +124,11 @@ public class OwnerBroker implements OwnerFactoryInterface, OwnerRepositoryInterf
         MessageShop inMessage, outMessage;
         
         outMessage = new MessageShop(MessageShop.OPENTHESHOP);
+        while (!con.open ()){                                 // aguarda ligação
+            try{ 
+                Thread.sleep ((long) (10));
+            }catch (InterruptedException e) {}
+        }
         con.writeObject(outMessage);
         inMessage = (MessageShop) con.readObject();
         if(inMessage.getType() != MessageRepository.ACK){
@@ -139,6 +149,11 @@ public class OwnerBroker implements OwnerFactoryInterface, OwnerRepositoryInterf
         MessageShop inMessage, outMessage;
         
         outMessage = new MessageShop(MessageShop.ISTRANFSPRODSTOSHOP);
+        while (!con.open ()){                                 // aguarda ligação
+            try{ 
+                Thread.sleep ((long) (10));
+            }catch (InterruptedException e) {}
+        }
         con.writeObject(outMessage);
         inMessage = (MessageShop) con.readObject();
         boolean result = false;
@@ -166,6 +181,11 @@ public class OwnerBroker implements OwnerFactoryInterface, OwnerRepositoryInterf
         MessageShop inMessage, outMessage;
         
         outMessage = new MessageShop(MessageShop.ISSUPPLYMATERIALSTOFACT);
+        while (!con.open ()){                                 // aguarda ligação
+            try{ 
+                Thread.sleep ((long) (10));
+            }catch (InterruptedException e) {}
+        }
         con.writeObject(outMessage);
         inMessage = (MessageShop) con.readObject();
         boolean result = false;
@@ -196,6 +216,11 @@ public class OwnerBroker implements OwnerFactoryInterface, OwnerRepositoryInterf
         MessageShop inMessage, outMessage;
         
         outMessage = new MessageShop(MessageShop.APPRAISESIT);
+        while (!con.open ()){                                 // aguarda ligação
+            try{ 
+                Thread.sleep ((long) (10));
+            }catch (InterruptedException e) {}
+        }
         con.writeObject(outMessage);
         inMessage = (MessageShop) con.readObject();
         int result = -1;
@@ -224,6 +249,11 @@ public class OwnerBroker implements OwnerFactoryInterface, OwnerRepositoryInterf
         MessageShop inMessage, outMessage;
         
         outMessage = new MessageShop(MessageShop.CLOSETHEDOOR);
+        while (!con.open ()){                                 // aguarda ligação
+            try{ 
+                Thread.sleep ((long) (10));
+            }catch (InterruptedException e) {}
+        }
         con.writeObject(outMessage);
         inMessage = (MessageShop) con.readObject();
         if(inMessage.getType() != MessageRepository.ACK){
@@ -244,6 +274,11 @@ public class OwnerBroker implements OwnerFactoryInterface, OwnerRepositoryInterf
         MessageShop inMessage, outMessage;
         
         outMessage = new MessageShop(MessageShop.CUSTOMERSINTHESHOP);
+        while (!con.open ()){                                 // aguarda ligação
+            try{ 
+                Thread.sleep ((long) (10));
+            }catch (InterruptedException e) {}
+        }
         con.writeObject(outMessage);
         inMessage = (MessageShop) con.readObject();
         boolean result = false;
@@ -272,6 +307,11 @@ public class OwnerBroker implements OwnerFactoryInterface, OwnerRepositoryInterf
         MessageShop inMessage, outMessage;
         
         outMessage = new MessageShop(MessageShop.ADDRESSACUSTOMER);
+        while (!con.open ()){                                 // aguarda ligação
+            try{ 
+                Thread.sleep ((long) (10));
+            }catch (InterruptedException e) {}
+        }
         con.writeObject(outMessage);
         inMessage = (MessageShop) con.readObject();
         int result = -1;
@@ -301,6 +341,11 @@ public class OwnerBroker implements OwnerFactoryInterface, OwnerRepositoryInterf
         MessageShop inMessage, outMessage;
         
         outMessage = new MessageShop(MessageShop.SERVICECUSTOMER);
+        while (!con.open ()){                                 // aguarda ligação
+            try{ 
+                Thread.sleep ((long) (10));
+            }catch (InterruptedException e) {}
+        }
         con.writeObject(outMessage);
         inMessage = (MessageShop) con.readObject();
         int result = -1;
@@ -329,6 +374,11 @@ public class OwnerBroker implements OwnerFactoryInterface, OwnerRepositoryInterf
         MessageShop inMessage, outMessage;
         
         outMessage = new MessageShop(MessageShop.SAYGOODBYETOCUST);
+        while (!con.open ()){                                 // aguarda ligação
+            try{ 
+                Thread.sleep ((long) (10));
+            }catch (InterruptedException e) {}
+        }
         con.writeObject(outMessage);
         inMessage = (MessageShop) con.readObject();
         if(inMessage.getType() != MessageRepository.ACK){
@@ -349,6 +399,11 @@ public class OwnerBroker implements OwnerFactoryInterface, OwnerRepositoryInterf
         MessageShop inMessage, outMessage;
         
         outMessage = new MessageShop(MessageShop.ISSHOPSTILLOPEN);
+        while (!con.open ()){                                 // aguarda ligação
+            try{ 
+                Thread.sleep ((long) (10));
+            }catch (InterruptedException e) {}
+        }
         con.writeObject(outMessage);
         inMessage = (MessageShop) con.readObject();
         boolean result = false;
@@ -375,6 +430,11 @@ public class OwnerBroker implements OwnerFactoryInterface, OwnerRepositoryInterf
         MessageShop inMessage, outMessage;
         
         outMessage = new MessageShop(MessageShop.GOTOWORKSHOP);
+        while (!con.open ()){                                 // aguarda ligação
+            try{ 
+                Thread.sleep ((long) (10));
+            }catch (InterruptedException e) {}
+        }
         con.writeObject(outMessage);
         inMessage = (MessageShop) con.readObject();
         if(inMessage.getType() != MessageRepository.ACK){
@@ -395,6 +455,11 @@ public class OwnerBroker implements OwnerFactoryInterface, OwnerRepositoryInterf
         MessageShop inMessage, outMessage;
         
         outMessage = new MessageShop(MessageShop.ADDNGOODSINDISPLAY, -1, goods);
+        while (!con.open ()){                                 // aguarda ligação
+            try{ 
+                Thread.sleep ((long) (10));
+            }catch (InterruptedException e) {}
+        }
         con.writeObject(outMessage);
         inMessage = (MessageShop) con.readObject();
         if(inMessage.getType() != MessageRepository.ACK){
@@ -414,6 +479,11 @@ public class OwnerBroker implements OwnerFactoryInterface, OwnerRepositoryInterf
         MessageShop inMessage, outMessage;
         
         outMessage = new MessageShop(MessageShop.REPLENISHSTOCK);
+        while (!con.open ()){                                 // aguarda ligação
+            try{ 
+                Thread.sleep ((long) (10));
+            }catch (InterruptedException e) {}
+        }
         con.writeObject(outMessage);
         inMessage = (MessageShop) con.readObject();
         if(inMessage.getType() != MessageRepository.ACK){
@@ -436,6 +506,11 @@ public class OwnerBroker implements OwnerFactoryInterface, OwnerRepositoryInterf
         MessageShop inMessage, outMessage;
         
         outMessage = new MessageShop(MessageShop.ENDOPER);
+        while (!con.open ()){                                 // aguarda ligação
+            try{ 
+                Thread.sleep ((long) (10));
+            }catch (InterruptedException e) {}
+        }
         con.writeObject(outMessage);
         inMessage = (MessageShop) con.readObject();
         boolean result = false;
@@ -466,6 +541,11 @@ public class OwnerBroker implements OwnerFactoryInterface, OwnerRepositoryInterf
         MessageFactory inMessage, outMessage;
         
         outMessage = new MessageFactory(MessageFactory.REPLENISHSTOCK, -1, nPrimeMaterials);
+        while (!con.open ()){                                 // aguarda ligação
+            try{ 
+                Thread.sleep ((long) (10));
+            }catch (InterruptedException e) {}
+        }
         con.writeObject(outMessage);
         inMessage = (MessageFactory) con.readObject();
         if(inMessage.getType() != MessageRepository.ACK){
@@ -491,6 +571,11 @@ public class OwnerBroker implements OwnerFactoryInterface, OwnerRepositoryInterf
         MessageFactory inMessage, outMessage;
         
         outMessage = new MessageFactory(MessageFactory.GOTOWORKSHOP);
+        while (!con.open ()){                                 // aguarda ligação
+            try{ 
+                Thread.sleep ((long) (10));
+            }catch (InterruptedException e) {}
+        }
         con.writeObject(outMessage);
         inMessage = (MessageFactory) con.readObject();
         int result = -1;
@@ -523,6 +608,11 @@ public class OwnerBroker implements OwnerFactoryInterface, OwnerRepositoryInterf
         MessageStorage inMessage, outMessage;
         
         outMessage = new MessageStorage(MessageStorage.PRIMEMATERIALSAVAILABLE);
+        while (!con.open ()){                                 // aguarda ligação
+            try{ 
+                Thread.sleep ((long) (10));
+            }catch (InterruptedException e) {}
+        }
         con.writeObject(outMessage);
         inMessage = (MessageStorage) con.readObject();
         boolean result = false;
@@ -554,6 +644,11 @@ public class OwnerBroker implements OwnerFactoryInterface, OwnerRepositoryInterf
         MessageStorage inMessage, outMessage;
         
         outMessage = new MessageStorage(MessageStorage.VISITSUPPLIERS);
+        while (!con.open ()){                                 // aguarda ligação
+            try{ 
+                Thread.sleep ((long) (10));
+            }catch (InterruptedException e) {}
+        }
         con.writeObject(outMessage);
         inMessage = (MessageStorage) con.readObject();
         int result = -1;
