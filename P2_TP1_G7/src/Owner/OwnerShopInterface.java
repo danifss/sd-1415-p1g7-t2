@@ -3,7 +3,7 @@ package Owner;
 /**
  * @author Daniel 51908
  * @author Raphael 64044
- * @version 1.0
+ * @version 2.0
  */
 
 public interface OwnerShopInterface {
