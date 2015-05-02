@@ -75,6 +75,12 @@ public class MessageRepository extends Message {
      */
     private int value;
     
+    /**
+     * Variable to save a boolean value.
+     * @serialField bool
+     */
+    private boolean bool = false;
+    
     
     //*************** Constructors
     /**
@@ -86,7 +92,7 @@ public class MessageRepository extends Message {
     }
     
     /**
-     * Message Repository constructor (form 1)
+     * Message Repository constructor (form 2)
      * @param type Message type
      * @param id ID
      */
@@ -104,6 +110,16 @@ public class MessageRepository extends Message {
         super(type, id);
         this.value = value;
     }
+    
+    /**
+     * Message Repository constructor (form 4)
+     * @param type Message type
+     * @param bool boolean
+     */
+    public MessageRepository(int type, boolean bool) {
+        super(type);
+        this.bool = bool;
+    }
 
     
     //*************** Internal Functions
@@ -115,4 +131,11 @@ public class MessageRepository extends Message {
         return value;
     }
     
+    /**
+     * Get generic boolean variable.
+     * @return boolean value of variable bool
+     */
+    public boolean isBool(){
+        return bool;
+    }
 }
