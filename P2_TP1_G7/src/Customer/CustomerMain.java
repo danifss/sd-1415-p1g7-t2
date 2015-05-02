@@ -1,8 +1,9 @@
 package Customer;
 
 /**
- *
- * @author Daniel
+ * @author Daniel 51908
+ * @author Raphael 64044
+ * @version 2.0
  */
 public class CustomerMain {
     public static void main(String[] args){
