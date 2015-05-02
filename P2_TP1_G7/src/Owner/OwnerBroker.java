@@ -61,6 +61,18 @@ public class OwnerBroker implements OwnerFactoryInterface, OwnerRepositoryInterf
      */
     private int StorageServerPortNumb;
     
+    /**
+     * Craftman Broker constructor
+     * 
+     * @param ShopServerHostName    Shop Server Host Name
+     * @param ShopServerPortNumb    Shop Server Port Number
+     * @param RPserverHostName      Repository Server Host Name
+     * @param RPserverPortNumb      Repository Server Port Number
+     * @param FactoryServerHostName Factory Server Host Name
+     * @param FactoryServerPortNumb Factory Server Port Number
+     * @param StorageServerHostName Storage Server Host Name
+     * @param StorageServerPortNumb Storage Server Port Number
+     */
     public OwnerBroker(String ShopServerHostName, int ShopServerPortNumb, String RPserverHostName, int RPserverPortNumb, 
                             String FactoryServerHostName, int FactoryServerPortNumb, String StorageServerHostName, int StorageServerPortNumb){
         this.ShopServerHostName = ShopServerHostName;
