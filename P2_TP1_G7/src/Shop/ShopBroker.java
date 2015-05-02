@@ -2,13 +2,29 @@ package Shop;
 
 import comInf.MessageShop;
 import comInf.MessageException;
+import comInf.MessageRepository;
+import genclass.GenericIO;
 
 /**
- *
- * @author Daniel
+ * @author Daniel 51908
+ * @author Raphael 64044
+ * @version 2.0
  */
-public class ShopBroker {
+public class ShopBroker implements ShopRepositoryInterface{
 
+    /**
+     * Repository server host name
+     * @serialField RPserverHostName
+     */
+    private String RPserverHostName = null;
+
+    /**
+     * Repository Server port
+     * @serialField RPserverPortNumb
+     */
+    private int RPserverPortNumb;
+    
+    
     /**
      * Shop Monitor
      *
@@ -30,11 +46,14 @@ public class ShopBroker {
 
     /**
      * Constructor of Shop Broker
-     *
+     * @param RPserverHostName      Repository Server Host Name
+     * @param RPserverPortNumb      Repository Server Port Number
      * @param shop Shop Monitor Object
      * @param nCustomers Total Number of Customers
      */
-    public ShopBroker(Shop shop, int nCustomers, int nCraftmans) {
+    public ShopBroker(String RPserverHostName, int RPserverPortNumb, Shop shop, int nCustomers, int nCraftmans) {
+        this.RPserverHostName = RPserverHostName;
+        this.RPserverPortNumb = RPserverPortNumb;
         this.shop = shop;
         this.nCustomers = nCustomers;
         this.nCraftmans = nCraftmans;
@@ -124,5 +143,85 @@ public class ShopBroker {
         }
 
         return (outMessage);
+    }
+
+    @Override
+    public void setTranfsProductsToShop(boolean tranfsProductsToShop) {
+        ClientCom con = new ClientCom(RPserverHostName, RPserverPortNumb);
+        MessageRepository inMessage, outMessage;
+        
+        outMessage = new MessageRepository(MessageRepository.SETTRANSPRODTOSHOP, tranfsProductsToShop);
+        con.writeObject(outMessage);
+        inMessage = (MessageRepository) con.readObject();
+        if(inMessage.getType() != MessageRepository.ACK){
+            GenericIO.writelnString("Shop: - Error setting the boolean to transfer products to Shop.");
+            GenericIO.writelnString(inMessage.toString());
+            System.exit(1);
+        }
+        con.close();
+    }
+
+    @Override
+    public void setnGoodsInDisplay(int nGoodsInDisplay) {
+        ClientCom con = new ClientCom(RPserverHostName, RPserverPortNumb);
+        MessageRepository inMessage, outMessage;
+        
+        outMessage = new MessageRepository(MessageRepository.SETGOODSINDISP, -1, nGoodsInDisplay);
+        con.writeObject(outMessage);
+        inMessage = (MessageRepository) con.readObject();
+        if(inMessage.getType() != MessageRepository.ACK){
+            GenericIO.writelnString("Shop: - Error setting number of goods in display.");
+            GenericIO.writelnString(inMessage.toString());
+            System.exit(1);
+        }
+        con.close();
+    }
+
+    @Override
+    public void setSupplyMaterialsToFactory(boolean supplyMaterialsToFactory) {
+        ClientCom con = new ClientCom(RPserverHostName, RPserverPortNumb);
+        MessageRepository inMessage, outMessage;
+        
+        outMessage = new MessageRepository(MessageRepository.SETSUPPLYMATTOFACT, supplyMaterialsToFactory);
+        con.writeObject(outMessage);
+        inMessage = (MessageRepository) con.readObject();
+        if(inMessage.getType() != MessageRepository.ACK){
+            GenericIO.writelnString("Shop: - Error setting boolean to supply materials to Factory.");
+            GenericIO.writelnString(inMessage.toString());
+            System.exit(1);
+        }
+        con.close();
+    }
+
+    @Override
+    public void setnCustomersInsideShop(int nCustomersInsideShop) {
+        ClientCom con = new ClientCom(RPserverHostName, RPserverPortNumb);
+        MessageRepository inMessage, outMessage;
+        
+        outMessage = new MessageRepository(MessageRepository.SETCUSTINSHOP, -1, nCustomersInsideShop);
+        con.writeObject(outMessage);
+        inMessage = (MessageRepository) con.readObject();
+        if(inMessage.getType() != MessageRepository.ACK){
+            GenericIO.writelnString("Shop: - Error setting number of customers inside Shop.");
+            GenericIO.writelnString(inMessage.toString());
+            System.exit(1);
+        }
+        con.close();
+    }
+
+    @Override
+    public void setShopState(int state) {
+        ClientCom con = new ClientCom(RPserverHostName, RPserverPortNumb);
+        MessageRepository inMessage, outMessage;
+        
+        outMessage = new MessageRepository(MessageRepository.SETSHOPSTATE, -1, state);
+        con.writeObject(outMessage);
+        inMessage = (MessageRepository) con.readObject();
+        if(inMessage.getType() != MessageRepository.ACK){
+            GenericIO.writelnString("Shop: - Error setting the state of the Shop.");
+            GenericIO.writelnString(inMessage.toString());
+            System.exit(1);
+        }
+        con.close();
     }
 }
