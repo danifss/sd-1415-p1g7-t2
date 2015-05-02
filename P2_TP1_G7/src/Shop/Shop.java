@@ -35,7 +35,7 @@ public class Shop implements ShopInterface {
      * General Repository.
      * @serialField sharedInfo
      */
-    private final MonInfo sharedInfo;
+    private final ShopRepositoryInterface sharedInfo;
 
     /**
      * FIFO with Customers waiting for their turn to buy something.
@@ -105,7 +105,7 @@ public class Shop implements ShopInterface {
      * @param sharedInfo General repository
      * @param totalProducts Total number of products that the shop can have in this experience
      */
-    public Shop(int nInitialProductsInShop, int nCustomer, MonInfo sharedInfo, int totalProducts) {
+    public Shop(int nInitialProductsInShop, int nCustomer, ShopRepositoryInterface sharedInfo, int totalProducts) {
         this.sharedInfo = sharedInfo;
         shopState = CLOSED;
         customerInsideShop = 0;
