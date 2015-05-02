@@ -1,8 +1,9 @@
 package comInf;
 
 /**
- *
- * @author Daniel
+ * @author Daniel 51908
+ * @author Raphael 64044
+ * @version 2.0
  */
 public class MessageFactory extends Message {
     
@@ -94,7 +95,7 @@ public class MessageFactory extends Message {
      * Variable to save a integer value.
      * @serialField value
      */
-    private int value = 0;
+    private int value = -1;
     
     /**
      * Generic boolean variable
