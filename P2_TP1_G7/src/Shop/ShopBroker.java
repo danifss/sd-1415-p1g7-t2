@@ -145,6 +145,10 @@ public class ShopBroker implements ShopRepositoryInterface{
         return (outMessage);
     }
 
+    /**
+     * Set if the craftsman requested the transfer of finished products to the Shop.
+     * @param tranfsProductsToShop Boolean indicating if the Craftman requested
+     */
     @Override
     public void setTranfsProductsToShop(boolean tranfsProductsToShop) {
         ClientCom con = new ClientCom(RPserverHostName, RPserverPortNumb);
@@ -161,6 +165,10 @@ public class ShopBroker implements ShopRepositoryInterface{
         con.close();
     }
 
+    /**
+     * Set number of goods in display.
+     * @param nGoodsInDisplay Number of goods in display
+     */
     @Override
     public void setnGoodsInDisplay(int nGoodsInDisplay) {
         ClientCom con = new ClientCom(RPserverHostName, RPserverPortNumb);
@@ -177,6 +185,10 @@ public class ShopBroker implements ShopRepositoryInterface{
         con.close();
     }
 
+    /**
+     * Set if the craftsman requested the supply of prime materials to the Factory.
+     * @param supplyMaterialsToFactory Boolean indicating if the Craftman requested
+     */
     @Override
     public void setSupplyMaterialsToFactory(boolean supplyMaterialsToFactory) {
         ClientCom con = new ClientCom(RPserverHostName, RPserverPortNumb);
@@ -193,6 +205,10 @@ public class ShopBroker implements ShopRepositoryInterface{
         con.close();
     }
 
+    /**
+     * Set number of customers inside.
+     * @param nCustomersInsideShop Number of customers inside
+     */
     @Override
     public void setnCustomersInsideShop(int nCustomersInsideShop) {
         ClientCom con = new ClientCom(RPserverHostName, RPserverPortNumb);
@@ -209,6 +225,10 @@ public class ShopBroker implements ShopRepositoryInterface{
         con.close();
     }
 
+    /**
+     * Set Shop State.
+     * @param state State of the shop
+     */
     @Override
     public void setShopState(int state) {
         ClientCom con = new ClientCom(RPserverHostName, RPserverPortNumb);
