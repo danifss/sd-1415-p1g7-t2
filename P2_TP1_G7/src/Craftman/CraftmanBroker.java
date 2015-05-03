@@ -52,14 +52,14 @@ public class CraftmanBroker implements CraftmanRepositoryInterface, CraftmanShop
     /**
      * Craftman Broker constructor
      * 
-     * @param ShopServerHostName    Shop Server Host Name
-     * @param ShopServerPortNumb    Shop Server Port Number
      * @param RPserverHostName      Repository Server Host Name
      * @param RPserverPortNumb      Repository Server Port Number
+     * @param ShopServerHostName    Shop Server Host Name
+     * @param ShopServerPortNumb    Shop Server Port Number
      * @param FactoryServerHostName Factory Server Host Name
      * @param FactoryServerPortNumb Factory Server Port Number
      */
-    public CraftmanBroker(String ShopServerHostName, int ShopServerPortNumb, String RPserverHostName, int RPserverPortNumb, 
+    public CraftmanBroker(String RPserverHostName, int RPserverPortNumb, String ShopServerHostName, int ShopServerPortNumb, 
                             String FactoryServerHostName, int FactoryServerPortNumb) {
         this.ShopServerHostName = ShopServerHostName;
         this.ShopServerPortNumb = ShopServerPortNumb;

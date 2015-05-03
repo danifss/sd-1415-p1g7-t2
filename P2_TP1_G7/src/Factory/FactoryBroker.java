@@ -27,6 +27,12 @@ public class FactoryBroker {
      * @serialField nCraftmans
      */
     private final int nCraftmans;
+    
+    /**
+     * Factory Monitor Object
+     * @serialField factory
+     */
+    private final Factory factory;
 
     /**
      * Constructor of Factory Broker
@@ -35,6 +41,7 @@ public class FactoryBroker {
      * @param nCraftmans            Number of Craftmans
      */
     public FactoryBroker(Factory factory, String RPserverHostName, int RPserverPortNumb, int nCraftmans) {
+        this.factory = factory;
         this.RPserverHostName = RPserverHostName;
         this.RPserverPortNumb = RPserverPortNumb;
         this.nCraftmans = nCraftmans;
@@ -63,7 +70,8 @@ public class FactoryBroker {
             case MessageFactory.GETNPRIMEPERPRODUCT:
             case MessageFactory.ENDOFPRIMEMATERIALS:
                 // Craftmans Messages
-                if ((inMessage.getCraftId() < 0) || (inMessage.getCraftId() >= nCraftmans)) {
+                // Tem de se validar com o custId devido a forma como esta feito o Message.
+                if ((inMessage.getCustId()< 0) || (inMessage.getCustId() >= nCraftmans)) {
                     throw new MessageException("Invalid Craftman Id!", inMessage);
                 }
                 break;
@@ -78,31 +86,60 @@ public class FactoryBroker {
                 throw new MessageException("Invalid message type!", inMessage);
         }
 
+        boolean result = false;
+        int value = -1;
+        int id = inMessage.getCustId(); // Tem de se usar o custId
         // seu processamento
         switch (inMessage.getType()) {
             //*************** Craftmans Messages
+            case MessageFactory.CHECKFORRESTOCK:
+                result = factory.checkForRestock();
+                outMessage = new MessageFactory(MessageFactory.ACK, id, result);
+                break;
             case MessageFactory.CHECKFORMATERIALS:
+                result = factory.checkForMaterials();
+                outMessage = new MessageFactory(MessageFactory.ACK, id, result);
                 break;
             case MessageFactory.COLLECTMATERIALS:
+                value = factory.collectMaterials();
+                outMessage = new MessageFactory(MessageFactory.ACK, id, value);
                 break;
             case MessageFactory.GOTOSTORE:
+                value = factory.goToStore(inMessage.getValue());
+                outMessage = new MessageFactory(MessageFactory.ACK, id, value);
                 break;
             case MessageFactory.READYFORTRANSFER:
+                factory.batchReadyForTransfer();
+                outMessage = new MessageFactory(MessageFactory.ACK, id);
                 break;
             case MessageFactory.CHECKCONTACTPRODUCT:
+                result = factory.checkContactProduct();
+                outMessage = new MessageFactory(MessageFactory.ACK, id, result);
                 break;
             case MessageFactory.PRIMEMATERIALSNEEDED:
+                result = factory.primeMaterialsNeeded();
+                outMessage = new MessageFactory(MessageFactory.ACK, id, result);
                 break;
             case MessageFactory.FLAGPRIMEACTIVATED:
+                result = factory.flagPrimeActivated();
+                outMessage = new MessageFactory(MessageFactory.ACK, id, result);
                 break;
             case MessageFactory.GETNPRIMEPERPRODUCT:
+                value = factory.getnPrimePerProduct();
+                outMessage = new MessageFactory(MessageFactory.ACK, id, value);
                 break;
             case MessageFactory.ENDOFPRIMEMATERIALS:
+                result = factory.endOfPrimeMaterials();
+                outMessage = new MessageFactory(MessageFactory.ACK, id, result);
                 break;
             //*************** Owner Messages
             case MessageFactory.GOTOWORKSHOP:
+                value = factory.goToWorkshop();
+                outMessage = new MessageFactory(MessageFactory.ACK, id, value);
                 break;
             case MessageFactory.REPLENISHSTOCK:
+                value = factory.goToStore(inMessage.getValue());
+                outMessage = new MessageFactory(MessageFactory.ACK, id, value);
                 break;
         }
 
