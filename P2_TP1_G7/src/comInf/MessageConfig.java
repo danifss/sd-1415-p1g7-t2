@@ -70,6 +70,53 @@ public class MessageConfig extends Message {
     public static final int GETNMINPRIMEMATERIALSFORRESTOCK = 9;
     
     
+    //*************** SETTING MESSAGES OF HOSTS AND PORTS
+    /**
+     * @serialField SETREPOSITORYHOST
+     * @serialField GETREPOSITORYHOST
+     * @serialField SETREPOSITORYPORT
+     * @serialField GETREPOSITORYPORT
+     */
+    public static final int SETREPOSITORYHOST = 20;
+    public static final int GETREPOSITORYHOST = 21;
+    public static final int SETREPOSITORYPORT = 22;
+    public static final int GETREPOSITORYPORT = 23;
+    
+    /**
+     * @serialField SETSHOPHOST
+     * @serialField GETSHOPHOST
+     * @serialField SETSHOPPORT
+     * @serialField GETSHOPPORT
+     */
+    public static final int SETSHOPHOST = 24;
+    public static final int GETSHOPHOST = 25;
+    public static final int SETSHOPPORT = 26;
+    public static final int GETSHOPPORT = 27;
+    
+    /**
+     * @serialField SETSTORAGEHOST
+     * @serialField GETSTORAGEHOST
+     * @serialField SETSTORAGEPORT
+     * @serialField GETSTORAGEPORT
+     */
+    public static final int SETSTORAGEHOST = 28;
+    public static final int GETSTORAGEHOST = 29;
+    public static final int SETSTORAGEPORT = 30;
+    public static final int GETSTORAGEPORT = 31;
+    
+    /**
+     * @serialField SETFACTORYHOST
+     * @serialField GETFACTORYHOST
+     * @serialField SETFACTORYPORT
+     * @serialField GETFACTORYPORT
+     */
+    public static final int SETFACTORYHOST = 32;
+    public static final int GETFACTORYHOST = 33;
+    public static final int SETFACTORYPORT = 34;
+    public static final int GETFACTORYPORT = 35;
+    
+    
+    
     //*************** Internal Variables
     /**
      * Variable to save an integer value.
@@ -88,6 +135,14 @@ public class MessageConfig extends Message {
     /**
      * Message Config Constructor (form 1)
      * @param type Message type
+     */
+    public MessageConfig(int type){
+        super(type);
+    }
+    
+    /**
+     * Message Config Constructor (form 2)
+     * @param type Message type
      * @param value 
      */
     public MessageConfig(int type, int value){
@@ -96,7 +151,7 @@ public class MessageConfig extends Message {
     }
     
     /**
-     * Message Config Constructor (form 2)
+     * Message Config Constructor (form 3)
      * @param type Message type
      * @param str 
      */
