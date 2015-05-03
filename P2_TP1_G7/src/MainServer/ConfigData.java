@@ -1,7 +1,7 @@
 package MainServer;
 
 
-public class ConfigData {
+public class ConfigData implements ConfigDataInterface {
 
     /**
      * Logging file name
@@ -80,6 +80,7 @@ public class ConfigData {
      * Get logging file name.
      * @return log name
      */
+    @Override
     public String getfName(){
         return fName;
     }
@@ -88,6 +89,7 @@ public class ConfigData {
      * Logging file name.
      * @param fName file name
      */
+    @Override
     public void setfName(String fName){
         this.fName = fName;
     }
@@ -96,6 +98,7 @@ public class ConfigData {
      * Number of Craftmans.
      * @return number of craftmans
      */
+    @Override
     public int getnCraftmans(){
         return nCraftmans;
     }
@@ -104,6 +107,7 @@ public class ConfigData {
      * Number of Craftmans.
      * @param nCraftmans number of craftmans
      */
+    @Override
     public void setnCraftmans(int nCraftmans){
         this.nCraftmans = nCraftmans;
     }
@@ -112,6 +116,7 @@ public class ConfigData {
      * Number of Customers.
      * @return number of customers
      */
+    @Override
     public int getnCustomers(){
         return nCustomers;
     }
@@ -120,6 +125,7 @@ public class ConfigData {
      * Number of Customers.
      * @param nCustomers number of customers
      */
+    @Override
     public void setnCustomers(int nCustomers){
         this.nCustomers = nCustomers;
     }
@@ -128,6 +134,7 @@ public class ConfigData {
      * Num Prime Materials In Factory.
      * @return nPrimeMaterialsInFactory
      */
+    @Override
     public int getnPrimeMaterialsInFactory(){
         return nPrimeMaterialsInFactory;
     }
@@ -136,6 +143,7 @@ public class ConfigData {
      * Set num Prime Materials In Factory.
      * @param nPrimeMaterialsInFactory 
      */
+    @Override
     public void setnPrimeMaterialsInFactory(int nPrimeMaterialsInFactory){
         this.nPrimeMaterialsInFactory = nPrimeMaterialsInFactory;
     }
@@ -144,6 +152,7 @@ public class ConfigData {
      * Get num Initial Products In Shop.
      * @return nInitialProductsInShop
      */
+    @Override
     public int getnInitialProductsInShop(){
         return nInitialProductsInShop;
     }
@@ -152,6 +161,7 @@ public class ConfigData {
      * Set num Initial Products In Shop.
      * @param nInitialProductsInShop 
      */
+    @Override
     public void setnInitialProductsInShop(int nInitialProductsInShop){
         this.nInitialProductsInShop = nInitialProductsInShop;
     }
@@ -160,6 +170,7 @@ public class ConfigData {
      * Get num Initial Prime Materials In Storage.
      * @return nInitialPrimeMaterialsInStorage
      */
+    @Override
     public int getnInitialPrimeMaterialsInStorage(){
         return nInitialPrimeMaterialsInStorage;
     }
@@ -168,6 +179,7 @@ public class ConfigData {
      * Set num Initial Prime Materials In Storage.
      * @param nInitialPrimeMaterialsInStorage 
      */
+    @Override
     public void setnInitialPrimeMaterialsInStorage(int nInitialPrimeMaterialsInStorage){
         this.nInitialPrimeMaterialsInStorage = nInitialPrimeMaterialsInStorage;
     }
@@ -176,6 +188,7 @@ public class ConfigData {
      * Get num Prime Materials By Product.
      * @return nPrimeMaterialsByProduct
      */
+    @Override
     public int getnPrimeMaterialsByProduct(){
         return nPrimeMaterialsByProduct;
     }
@@ -184,6 +197,7 @@ public class ConfigData {
      * Set num Prime Materials By Product.
      * @param nPrimeMaterialsByProduct 
      */
+    @Override
     public void setnPrimeMaterialsByProduct(int nPrimeMaterialsByProduct){
         this.nPrimeMaterialsByProduct = nPrimeMaterialsByProduct;
     }
@@ -192,6 +206,7 @@ public class ConfigData {
      * Get num Max Products Collect.
      * @return nMaxProductsCollect
      */
+    @Override
     public int getnMaxProductsCollect(){
         return nMaxProductsCollect;
     }
@@ -200,6 +215,7 @@ public class ConfigData {
      * Set num Max Products Collect.
      * @param nMaxProductsCollect 
      */
+    @Override
     public void setnMaxProductsCollect(int nMaxProductsCollect){
         this.nMaxProductsCollect = nMaxProductsCollect;
     }
@@ -208,6 +224,7 @@ public class ConfigData {
      * Get num Min Prime Materials For Restock.
      * @return nMinPrimeMaterialsForRestock
      */
+    @Override
     public int getnMinPrimeMaterialsForRestock(){
         return nMinPrimeMaterialsForRestock;
     }
@@ -216,6 +233,7 @@ public class ConfigData {
      * Set num Min Prime Materials For Restock.
      * @param nMinPrimeMaterialsForRestock 
      */
+    @Override
     public void setnMinPrimeMaterialsForRestock(int nMinPrimeMaterialsForRestock){
         this.nMinPrimeMaterialsForRestock = nMinPrimeMaterialsForRestock;
     }
@@ -224,6 +242,7 @@ public class ConfigData {
      * Get total Products.
      * @return totalProducts
      */
+    @Override
     public int gettotalProducts(){
         return totalProducts;
     }
@@ -232,6 +251,7 @@ public class ConfigData {
      * Set total Products.
      * @param totalProducts 
      */
+    @Override
     public void settotalProducts(int totalProducts){
         this.totalProducts = totalProducts;
     }
