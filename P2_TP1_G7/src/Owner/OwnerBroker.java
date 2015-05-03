@@ -82,7 +82,7 @@ public class OwnerBroker implements OwnerFactoryInterface, OwnerRepositoryInterf
         this.FactoryServerHostName = FactoryServerHostName;
         this.FactoryServerPortNumb = FactoryServerPortNumb;
         this.StorageServerHostName = StorageServerHostName;
-        this.StorageServerPortNumb = FactoryServerPortNumb;
+        this.StorageServerPortNumb = StorageServerPortNumb;
     }
     
     //*************** Repository Communication
