@@ -8,7 +8,7 @@ package Owner;
 public class OwnerMain {
     public static void main(String[] args){
         Owner owner;
-        OwnerBroker broker = new OwnerBroker("localhost", 22171, "localhost", 220170, "localhost", 220172, "localhost", 220173);
+        OwnerBroker broker = new OwnerBroker("localhost", 22171, "localhost", 22170, "localhost", 22172, "localhost", 22173);
         
         owner = new Owner(broker, broker, broker, broker);
         
