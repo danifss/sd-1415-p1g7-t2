@@ -69,7 +69,7 @@ class RepositoryBroker {
             case MessageRepository.SETCRAFTMANSTATE:
             case MessageRepository.SETGOODSCRAFTEDBYCRAFTMAN:
                 // Craftmans Messages
-                if ((inMessage.getCraftId() < 0) || (inMessage.getCraftId() >= nCraftmans)) {
+                if ((inMessage.getCustId() < 0) || (inMessage.getCustId() >= nCraftmans)) {
                     throw new MessageException("Invalid Craftman Id!", inMessage);
                 }
                 break;
