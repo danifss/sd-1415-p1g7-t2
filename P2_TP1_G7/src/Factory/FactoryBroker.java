@@ -9,18 +9,6 @@ import comInf.MessageFactory;
  * @version 2.0
  */
 public class FactoryBroker {
-
-    /**
-     * Repository server host name
-     * @serialField RPserverHostName
-     */
-    private String RPserverHostName = null;
-
-    /**
-     * Repository Server port
-     * @serialField RPserverPortNumb
-     */
-    private int RPserverPortNumb;
     
     /**
      * Total number of Craftmans
@@ -36,14 +24,12 @@ public class FactoryBroker {
 
     /**
      * Constructor of Factory Broker
-     * @param RPserverHostName      Repository Server Host Name
-     * @param RPserverPortNumb      Repository Server Port Number
-     * @param nCraftmans            Number of Craftmans
+     * 
+     * @param factory Factory Monitor
+     * @param nCraftmans Number of Craftmans
      */
-    public FactoryBroker(Factory factory, String RPserverHostName, int RPserverPortNumb, int nCraftmans) {
+    public FactoryBroker(Factory factory, int nCraftmans) {
         this.factory = factory;
-        this.RPserverHostName = RPserverHostName;
-        this.RPserverPortNumb = RPserverPortNumb;
         this.nCraftmans = nCraftmans;
     }
 
