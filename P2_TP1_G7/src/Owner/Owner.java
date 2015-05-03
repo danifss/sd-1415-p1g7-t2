@@ -94,7 +94,7 @@ public class Owner extends Thread implements OwnerInterface {
     @Override
     public void run() {
         System.out.println("Iniciado o Owner.");
-
+        
         shop.openTheDoor(); // Owner needs to open the shop before he starts working
         
         while(!endOper()){
