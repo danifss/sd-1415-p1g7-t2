@@ -29,7 +29,8 @@ public class StorageServer {
         
         storage = new Storage(nInitialPrimeMaterialsInStorage, nPrimeOwnerCarry);
         storageInterface = new StorageBroker(storage);
-        GenericIO.writelnString("Storage: O serviço foi estabelecido!");
+        GenericIO.writelnString("Storage");
+        GenericIO.writelnString("O serviço foi estabelecido!");
         GenericIO.writelnString("O servidor esta em escuta.");
 
         /* processamento de pedidos */
