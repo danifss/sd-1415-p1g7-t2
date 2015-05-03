@@ -3,8 +3,9 @@ package Factory;
 import genclass.GenericIO;
 
 /**
- *
- * @author Daniel
+ * @author Daniel 51908
+ * @author Raphael 64044
+ * @version 2.0
  */
 public class FactoryServer {
 
@@ -15,11 +16,11 @@ public class FactoryServer {
     private static final int portNumb = 22172;
     
     public static void main(String[] args){
-        Factory factory;                                              // Shop (servico a ser prestado)
-        FactoryBroker factoryInterface;                               // Interface a Shop
+        Factory factory;                                        // Shop (servico a ser prestado)
+        FactoryBroker factoryInterface;                         // Interface a Shop
         ServerCom scon, sconi;                                  // canais de comunicacao
         ClientProxy cliProxy;                                   // thread agente prestador do servico
-        FactoryBrokerRepository repository;                        // Repository Broker client
+        FactoryBrokerRepository repository;                     // Repository Broker client
         
         int nCraftmans = 3;
         int nPrimeMaterialsInFactory = 10;
@@ -34,7 +35,7 @@ public class FactoryServer {
         
         repository = new FactoryBrokerRepository("localhost", 22170); // ativacao do servico
         factory = new Factory(repository, nPrimeMaterialsInFactory, nTotalPrime, nPrimePerProduct, nPrimeRestock, nProductsCollect); // activacao do servico
-        factoryInterface = new FactoryBroker(factory, "localhost", 22170, nCraftmans); // activacao do interface com o servico
+        factoryInterface = new FactoryBroker(factory, nCraftmans); // activacao do interface com o servico
         GenericIO.writelnString("Factory");
         GenericIO.writelnString("O serviço foi estabelecido!");
         GenericIO.writelnString("O servidor esta em escuta.");

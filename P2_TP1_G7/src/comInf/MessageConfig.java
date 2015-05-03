@@ -21,15 +21,54 @@ public class MessageConfig extends Message {
      */
     public static final int GETFNAME = 1;
     
-    // int nCraftsman = 3;
-    // int nCustomers = 3;
-    // int nPrimeMaterialsInFactory = 10;
-    // int nInitialProductsInShop = 10;
-    // int nInitialPrimeMaterialsInStorage = 20;
-    // int nPrimeMaterialsByProduct = 2;
-    // int nPrimeOwnerCarry = 10;
-    // int nMinPrimeMaterialsForRestock = 10;
-    // int nMaxProductsCollect = 5;
+    /**
+     * Message type: Get numbers of Craftmans
+     * @serialField GETNCRAFTMANS
+     */
+    public static final int GETNCRAFTMANS = 2;
+    
+    /**
+     * Message type: Get number of Customers
+     * @serialField GETNCUSTOMERS
+     */
+    public static final int GETNCUSTOMERS = 3;
+    
+    /**
+     * Message type: Initial number of prime materials in the Factory
+     * @serialField GETNPRIMEMATERIALSINFACTORY
+     */
+    public static final int GETNPRIMEMATERIALSINFACTORY = 4;
+    
+    /**
+     * Message type: Initial number of products in the Shop
+     * @serialField GETNINITIALPRODUCTSINSHOP
+     */
+    public static final int GETNINITIALPRODUCTSINSHOP = 5;
+    
+    /**
+     * Message type: Initial number of prime materials in the Storage
+     * @serialField GETNINITIALPRIMEMATERIALSINSTORAGE
+     */
+    public static final int GETNINITIALPRIMEMATERIALSINSTORAGE = 6;
+    
+    /**
+     * Message type: Prime materials needed per product
+     * @serialField GETNPRIMEMATERIALSBYPRODUCT
+     */
+    public static final int GETNPRIMEMATERIALSBYPRODUCT = 7;
+
+    /**
+     * Message type: Maximum number of products that the owner can carry
+     * @serialField GETNMAXPRODUCTSCOLLECT
+     */
+    public static final int GETNMAXPRODUCTSCOLLECT = 8;
+    
+    /**
+     * Message type: Minimum number of prime materials for restock
+     * @serialField GETNMINPRIMEMATERIALSFORRESTOCK
+     */
+    public static final int GETNMINPRIMEMATERIALSFORRESTOCK = 9;
+    
     
     //*************** Internal Variables
     /**
