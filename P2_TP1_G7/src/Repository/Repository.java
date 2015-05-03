@@ -151,7 +151,7 @@ public class Repository implements RepositoryInterface {
         // Initialization of the Shop's variables
         this.stateShop = CLOSED;
         this.nCustomersInsideShop = 0;
-        this.nGoodsInDisplay = 0;
+        this.nGoodsInDisplay = 10;
         this.transfProductsToShop = false;
         this.supplyMaterialsToFactory = false;
 
