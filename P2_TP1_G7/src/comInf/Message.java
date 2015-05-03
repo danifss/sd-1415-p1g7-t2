@@ -4,8 +4,8 @@ import java.io.*;
 
 /**
  * Este tipo de dados define as mensagens que são trocadas entre os clientes e o servidor numa
- * solução do Problema dos Barbeiros Sonolentos que implementa o modelo cliente-servidor de tipo 2
- * (replicação do servidor) com lançamento estático dos threads barbeiro. A comunicação propriamente
+ * solução do Problema Aveiro Handicraft que implementa o modelo cliente-servidor de tipo 2
+ * (replicação do servidor) com lançamento estático dos threads. A comunicação propriamente
  * dita baseia-se na troca de objectos de tipo Message num canal TCP.
  */
 public abstract class Message implements Serializable {
@@ -58,7 +58,7 @@ public abstract class Message implements Serializable {
      * Instantiation of a message (form 2)
      *
      * @param type Message type
-     * @param customerId Customer ID
+     * @param id ID
      */
     public Message(int type, int id) {
         msgType = type;
@@ -75,8 +75,8 @@ public abstract class Message implements Serializable {
     }
 
     /**
-     * Get the Customer Id
-     * @return customer Id
+     * Get the Id
+     * @return Id
      */
     public int getId() {
         return id;
