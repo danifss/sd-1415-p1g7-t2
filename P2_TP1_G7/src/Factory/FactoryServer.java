@@ -33,9 +33,11 @@ public class FactoryServer {
         scon = new ServerCom(portNumb);                         // criacao do canal de escuta e sua associacao
         scon.start();                                           // com o endereco publico
         
-        repository = new FactoryBrokerRepository("localhost", 22170); // ativacao do servico
+        //repository = new FactoryBrokerRepository("localhost", 22170); // ativacao do servico
+        repository = new FactoryBrokerRepository("l040101-ws01.ua.pt", 22170); // ativacao do servico
         factory = new Factory(repository, nPrimeMaterialsInFactory, nTotalPrime, nPrimePerProduct, nPrimeRestock, nProductsCollect); // activacao do servico
-        factoryInterface = new FactoryBroker(factory, nCraftmans); // activacao do interface com o servico
+        //factoryInterface = new FactoryBroker(factory, "localhost", 22170, nCraftmans); // activacao do interface com o servico
+        factoryInterface = new FactoryBroker(factory, "l040101-ws01.ua.pt", 22170, nCraftmans); // activacao do interface com o servico
         GenericIO.writelnString("Factory");
         GenericIO.writelnString("O serviço foi estabelecido!");
         GenericIO.writelnString("O servidor esta em escuta.");

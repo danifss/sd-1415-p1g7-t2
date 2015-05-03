@@ -22,11 +22,11 @@ public class ShopServer {
         ClientProxy cliProxy;                                   // thread agente prestador do servico
         ShopBrokerRepository repository;                        // Repository Broker client
 
-        int nCustomers = 3;
-        int nCraftmans = 3;
+        int nCustomers = 10;
+        int nCraftmans = 10;
         int nInitialProductsInShop = 10;                        // Initial number of products in the Shop
-        int nInitialPrimeMaterialsInStorage = 20;               // Initial number of prime materials in the Storage
-        int nPrimeMaterialsInFactory = 10;                      // Initial number of prime materials in the Factory
+        int nInitialPrimeMaterialsInStorage = 80;               // Initial number of prime materials in the Storage
+        int nPrimeMaterialsInFactory = 40;                      // Initial number of prime materials in the Factory
         int nPrimeMaterialsByProduct = 2;                       // Prime materials needed per product
         int totalProducts = ((nPrimeMaterialsInFactory + nInitialPrimeMaterialsInStorage) / nPrimeMaterialsByProduct) + nInitialProductsInShop;
         
@@ -34,7 +34,8 @@ public class ShopServer {
         scon = new ServerCom(portNumb);                         // criacao do canal de escuta e sua associacao
         scon.start();                                           // com o endereco publico
         
-        repository = new ShopBrokerRepository("localhost", 22170); // ativacao do servico
+        //repository = new ShopBrokerRepository("localhost", 22170); // ativacao do servico
+        repository = new ShopBrokerRepository("l040101-ws01.ua.pt", 22170); // ativacao do servico
         shop = new Shop(nInitialProductsInShop, nCustomers, repository, totalProducts); // activacao do servico
         shopInterface = new ShopBroker(shop, nCustomers, nCraftmans); // activacao do interface com o servico
         GenericIO.writelnString("Shop");
