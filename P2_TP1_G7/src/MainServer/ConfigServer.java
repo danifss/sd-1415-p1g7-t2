@@ -3,8 +3,9 @@ package MainServer;
 import genclass.GenericIO;
 
 /**
- *
- * @author silva
+ * @author Daniel 51908
+ * @author Raphael 64044
+ * @version 2.0
  */
 public class ConfigServer {
     
@@ -26,17 +27,6 @@ public class ConfigServer {
     public static void main(String[] args){
         
         ConfigData data = new ConfigData();
-
-        // String fName = "log.txt";
-        // int nCraftsman = 3;
-        // int nCustomers = 3;
-        // int nPrimeMaterialsInFactory = 10;
-        // int nInitialProductsInShop = 10;
-        // int nInitialPrimeMaterialsInStorage = 20;
-        // int nPrimeMaterialsByProduct = 2;
-        // int nPrimeOwnerCarry = 10;
-        // int nMinPrimeMaterialsForRestock = 10;
-        // int nMaxProductsCollect = 5;
 
         GenericIO.writelnString("\tConfiguration Server of problem 2: Aveiro Handicraft\n");
         
@@ -71,13 +61,14 @@ public class ConfigServer {
             GenericIO.writeString("Number of prime materials needed by product: ");
             data.setnPrimeMaterialsByProduct(GenericIO.readlnInt());
 
+            // Maximum number of products that the owner can carry
+            GenericIO.writeString("Number of maximum products that the owner can carry: ");
+            data.setnMaxProductsCollect(GenericIO.readlnInt());            
+
             // Minimum number of prime materials for restock
             GenericIO.writeString("Number of minimum prime materials for restock: ");
             data.setnMinPrimeMaterialsForRestock(GenericIO.readlnInt());
-
-            // Maximum number of products that the owner can carry
-            GenericIO.writeString("Number of maximum products that the owner can carry: ");
-            data.setnMaxProductsCollect(GenericIO.readlnInt());
+            
         }
         // Number of total products
         int totalProducts = ((data.getnPrimeMaterialsInFactory() + data.getnInitialPrimeMaterialsInStorage()) / data.getnPrimeMaterialsByProduct()) + data.getnInitialProductsInShop();
@@ -91,6 +82,8 @@ public class ConfigServer {
         /* estabelecimento do servico */
         scon = new ServerCom(portNumb);                         // criacao do canal de escuta e sua associacao
         scon.start();                                           // com o endereco publico
+        
+        configInterface = new ConfigBroker(data);               // activacao do interface com o servico
 
         GenericIO.writelnString("Configuration Server");
         GenericIO.writelnString("O serviço foi estabelecido!");
