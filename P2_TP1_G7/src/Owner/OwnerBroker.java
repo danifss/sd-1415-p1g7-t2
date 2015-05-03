@@ -505,7 +505,7 @@ public class OwnerBroker implements OwnerFactoryInterface, OwnerRepositoryInterf
         ClientCom con = new ClientCom(ShopServerHostName, ShopServerPortNumb);
         MessageShop inMessage, outMessage;
         
-        outMessage = new MessageShop(MessageShop.ENDOPER);
+        outMessage = new MessageShop(MessageShop.ENDOPEROWNER);
         while (!con.open ()){                                 // aguarda ligação
             try{ 
                 Thread.sleep ((long) (10));
