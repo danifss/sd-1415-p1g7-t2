@@ -71,19 +71,19 @@ public class FactoryBroker {
             case MessageFactory.ENDOFPRIMEMATERIALS:
                 // Craftmans Messages
                 // Tem de se validar com o custId devido a forma como esta feito o Message.
-                if ((inMessage.getCustId()< 0) || (inMessage.getCustId() >= nCraftmans)) {
+                if ((inMessage.getId()< 0) || (inMessage.getId() >= nCraftmans)) {
                     throw new MessageException("Invalid Craftman Id!", inMessage);
                 }
                 break;
             case MessageFactory.GOTOWORKSHOP:
                 // Owner Messages
-                if (inMessage.getCustId()!= -1 || inMessage.getCraftId() != -1){
+                if (inMessage.getId()!= -1 || inMessage.getId() != -1){
                     throw new MessageException("Invalid Owner message!", inMessage);
                 }
                 break;
             case MessageFactory.REPLENISHSTOCK:
                 // Owner Messages
-                if (inMessage.getCustId()!= -1 || inMessage.getCraftId() != -1  || inMessage.getValue()<0){
+                if (inMessage.getId()!= -1 || inMessage.getId() != -1  || inMessage.getValue()<0){
                     throw new MessageException("Invalid Owner message!", inMessage);
                 }
                 break;
@@ -93,7 +93,7 @@ public class FactoryBroker {
 
         boolean result = false;
         int value = -1;
-        int id = inMessage.getCustId(); // Tem de se usar o custId
+        int id = inMessage.getId(); // Tem de se usar o custId
         // seu processamento
         switch (inMessage.getType()) {
             //*************** Craftmans Messages

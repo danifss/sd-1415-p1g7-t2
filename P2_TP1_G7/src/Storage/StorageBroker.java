@@ -40,7 +40,7 @@ class StorageBroker {
             case MessageStorage.VISITSUPPLIERS:
             case MessageStorage.GETNPRIMEMATERIALSDELIVERED:
             case MessageStorage.GETMAXPRIMEMATERIALSTODELIVER:
-                if ((inMessage.getCustId()!= -1) && (inMessage.getCraftId() != -1)){
+                if ((inMessage.getId()!= -1) && (inMessage.getId() != -1)){
                     throw new MessageException("Invalid Owner message!", inMessage);
                 }
                 break;
