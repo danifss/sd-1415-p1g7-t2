@@ -68,6 +68,41 @@ public class ConfigData implements ConfigDataInterface {
      * @serialField totalProducts
      */
     private int totalProducts = 0;
+    
+    
+    //*************** SERVERS INFO
+    /**
+     * Repository Server
+     * @serialField repositoryHostName
+     * @serialField repositoryPortNum
+     */
+    private String repositoryHostName = "localhost";
+    private int repositoryPortNum = -1;
+    
+    /**
+     * Shop Server
+     * @serialField shopHostName
+     * @serialField shopPortNum
+     */
+    private String shopHostName = "localhost";
+    private int shopPortNum = -1;
+    
+    /**
+     * Storage Server
+     * @serialField storageHostName
+     * @serialField storagePortNum
+     */
+    private String storageHostName = "localhost";
+    private int storagePortNum = -1;
+    
+    /**
+     * Factory Server
+     * @serialField factoryHostName
+     * @serialField factoryPortNum
+     */
+    private String factoryHostName = "localhost";
+    private int factoryPortNum = -1;
+    
 
     /**
      * Configurations Server Constructor
@@ -254,6 +289,70 @@ public class ConfigData implements ConfigDataInterface {
     @Override
     public void settotalProducts(int totalProducts){
         this.totalProducts = totalProducts;
+    }
+
+    public String getRepositoryHostName(){
+        return repositoryHostName;
+    }
+
+    public void setRepositoryHostName(String repositoryHostName){
+        this.repositoryHostName = repositoryHostName;
+    }
+
+    public int getRepositoryPortNum(){
+        return repositoryPortNum;
+    }
+
+    public void setRepositoryPortNum(int repositoryPortNum){
+        this.repositoryPortNum = repositoryPortNum;
+    }
+
+    public String getShopHostName(){
+        return shopHostName;
+    }
+
+    public void setShopHostName(String shopHostName){
+        this.shopHostName = shopHostName;
+    }
+
+    public int getShopPortNum(){
+        return shopPortNum;
+    }
+
+    public void setShopPortNum(int shopPortNum){
+        this.shopPortNum = shopPortNum;
+    }
+
+    public String getStorageHostName(){
+        return storageHostName;
+    }
+
+    public void setStorageHostName(String storageHostName){
+        this.storageHostName = storageHostName;
+    }
+
+    public int getStoragePortNum(){
+        return storagePortNum;
+    }
+
+    public void setStoragePortNum(int storagePortNum){
+        this.storagePortNum = storagePortNum;
+    }
+
+    public String getFactoryHostName(){
+        return factoryHostName;
+    }
+
+    public void setFactoryHostName(String factoryHostName){
+        this.factoryHostName = factoryHostName;
+    }
+
+    public int getFactoryPortNum(){
+        return factoryPortNum;
+    }
+
+    public void setFactoryPortNum(int factoryPortNum){
+        this.factoryPortNum = factoryPortNum;
     }
     
 }
