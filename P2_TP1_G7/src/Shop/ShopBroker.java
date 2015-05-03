@@ -70,9 +70,27 @@ public class ShopBroker {
                     throw new MessageException("Invalid Craftman Id!", inMessage);
                 }
                 break;
-            case 0: //TODO: MessageShop.cenasDaOwnerParaAShop:
+            case MessageShop.ADDNGOODSINDISPLAY:
                 // Owner Messages
-                if ((inMessage.getCustId()!= -1) && (inMessage.getCraftId() != -1)){
+                if (inMessage.getCustId()!= -1 || inMessage.getCraftId() != -1 || inMessage.getValue() < 0){
+                    throw new MessageException("Invalid Owner message!", inMessage);
+                }
+                break;
+            case MessageShop.OPENTHESHOP:
+            case MessageShop.APPRAISESIT:
+            case MessageShop.CLOSETHEDOOR:
+            case MessageShop.CUSTOMERSINTHESHOP:
+            case MessageShop.ADDRESSACUSTOMER:
+            case MessageShop.SERVICECUSTOMER:
+            case MessageShop.SAYGOODBYETOCUST:
+            case MessageShop.ISSHOPSTILLOPEN:
+            case MessageShop.GOTOWORKSHOP:
+            case MessageShop.REPLENISHSTOCK:
+            case MessageShop.ISSUPPLYMATERIALSTOFACT:
+            case MessageShop.ISTRANFSPRODSTOSHOP:
+            case MessageShop.ENDOPEROWNER:
+                // Owner Messages
+                if (inMessage.getCustId()!= -1 || inMessage.getCraftId() != -1){
                     throw new MessageException("Invalid Owner message!", inMessage);
                 }
                 break;
@@ -120,7 +138,62 @@ public class ShopBroker {
                 outMessage = new MessageShop(MessageShop.ACK,inMessage.getCraftId());
                 break;
             //*************** Owner Messages
-                //TODO: Owner cases
+            case MessageShop.ADDNGOODSINDISPLAY:
+                shop.addnGoodsInDisplay(inMessage.getValue());
+                outMessage = new MessageShop(MessageShop.ACK);
+                break;
+            case MessageShop.OPENTHESHOP:
+                shop.openTheDoor();
+                outMessage = new MessageShop(MessageShop.ACK);
+                break;
+            case MessageShop.APPRAISESIT:
+                int custAppId = shop.appraiseSit();
+                outMessage = new MessageShop(MessageShop.ACK, -1, custAppId);
+                break;
+            case MessageShop.CLOSETHEDOOR:
+                shop.closeTheDoor();
+                outMessage = new MessageShop(MessageShop.ACK);
+                break;
+            case MessageShop.CUSTOMERSINTHESHOP:
+                boolean custInTheShop = shop.customersInTheShop();
+                outMessage = new MessageShop(MessageShop.ACK, -1, custInTheShop);
+                break;
+            case MessageShop.ADDRESSACUSTOMER:
+                int custAddId = shop.addressACustomer();
+                outMessage = new MessageShop(MessageShop.ACK, -1, custAddId);
+                break;
+            case MessageShop.SERVICECUSTOMER:
+                int nGoodsCustIsBuying = shop.serviceCustomer();
+                outMessage = new MessageShop(MessageShop.ACK, -1, nGoodsCustIsBuying);
+                break;
+            case MessageShop.SAYGOODBYETOCUST:
+                shop.sayGoodByeToCustomer();
+                outMessage = new MessageShop(MessageShop.ACK);
+                break;
+            case MessageShop.ISSHOPSTILLOPEN:
+                boolean shopStill = shop.isShopStillOpen();
+                outMessage = new MessageShop(MessageShop.ACK, -1, shopStill);
+                break;
+            case MessageShop.GOTOWORKSHOP:
+                shop.goToWorkshop();
+                outMessage = new MessageShop(MessageShop.ACK);
+                break;
+            case MessageShop.REPLENISHSTOCK:
+                shop.replenishStock();
+                outMessage = new MessageShop(MessageShop.ACK);
+                break;
+            case MessageShop.ISSUPPLYMATERIALSTOFACT:
+                boolean isSupplyMatToFact = shop.isSupplyMaterialsToFactory();
+                outMessage = new MessageShop(MessageShop.ACK, -1, isSupplyMatToFact);
+                break;
+            case MessageShop.ISTRANFSPRODSTOSHOP:
+                boolean isTranfsProdsToShop = shop.isTranfsProductsToShop();
+                outMessage = new MessageShop(MessageShop.ACK, -1, isTranfsProdsToShop);
+                break;
+            case MessageShop.ENDOPEROWNER:
+                boolean endOperOwner = shop.endOper();
+                outMessage = new MessageShop(MessageShop.ACK, -1, endOperOwner);
+                break;
         }
 
         return (outMessage);

@@ -37,7 +37,7 @@ public class ShopServer {
         repository = new ShopBrokerRepository("localhost", 22170); // ativacao do servico
         shop = new Shop(nInitialProductsInShop, nCustomers, repository, totalProducts); // activacao do servico
         shopInterface = new ShopBroker(shop, nCustomers, nCraftmans); // activacao do interface com o servico
-        GenericIO.writelnString("O serviço foi estabelecido!");
+        GenericIO.writelnString("Shop: O serviço foi estabelecido!");
         GenericIO.writelnString("O servidor esta em escuta.");
 
         /* processamento de pedidos */

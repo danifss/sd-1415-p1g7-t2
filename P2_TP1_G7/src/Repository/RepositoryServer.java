@@ -30,7 +30,7 @@ public class RepositoryServer {
         scon.start();                                           // com o endereco publico
         repository = new Repository(nCraftmans, nCustomers, fName, nPrimeMaterialsInFactory); // activacao do servico
         repositoryInterface = new RepositoryBroker(repository, nCustomers, nCraftmans);       // activacao do interface com o servico
-        GenericIO.writelnString("O serviço foi estabelecido!");
+        GenericIO.writelnString("Repositório: O serviço foi estabelecido!");
         GenericIO.writelnString("O servidor esta em escuta.");
 
         /* processamento de pedidos */
