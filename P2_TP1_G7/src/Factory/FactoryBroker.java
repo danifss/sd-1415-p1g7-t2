@@ -76,9 +76,14 @@ public class FactoryBroker {
                 }
                 break;
             case MessageFactory.GOTOWORKSHOP:
+                // Owner Messages
+                if (inMessage.getCustId()!= -1 || inMessage.getCraftId() != -1){
+                    throw new MessageException("Invalid Owner message!", inMessage);
+                }
+                break;
             case MessageFactory.REPLENISHSTOCK:
                 // Owner Messages
-                if ((inMessage.getCustId()!= -1) && (inMessage.getCraftId() != -1)){
+                if (inMessage.getCustId()!= -1 || inMessage.getCraftId() != -1  || inMessage.getValue()<0){
                     throw new MessageException("Invalid Owner message!", inMessage);
                 }
                 break;
@@ -138,8 +143,8 @@ public class FactoryBroker {
                 outMessage = new MessageFactory(MessageFactory.ACK, id, value);
                 break;
             case MessageFactory.REPLENISHSTOCK:
-                value = factory.goToStore(inMessage.getValue());
-                outMessage = new MessageFactory(MessageFactory.ACK, id, value);
+                factory.replenishStock(inMessage.getValue());
+                outMessage = new MessageFactory(MessageFactory.ACK);
                 break;
         }
 
