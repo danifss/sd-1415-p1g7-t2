@@ -8,11 +8,12 @@ package Craftman;
 public class CraftmanMain {
     public static void main(String[] args){
         //TODO: create and start 3 Craftmans
-        int nCraftmans = 3;
+        int nCraftmans = 10;
         // Array de Craftmans
         Craftman[] craftman = new Craftman[nCraftmans];
         // PORTAS: 221GX -> G = grupo 7 -> X 0-9
-        CraftmanBroker broker = new CraftmanBroker("localhost", 22170, "localhost", 22171, "localhost", 22172);
+        //CraftmanBroker broker = new CraftmanBroker("localhost", 22170, "localhost", 22171, "localhost", 22172);
+        CraftmanBroker broker = new CraftmanBroker("l040101-ws01.ua.pt", 22170, "l040101-ws03.ua.pt", 22171, "l040101-ws04.ua.pt", 22172);
         
         //Initialization of Craftmans
         for (int i = 0; i < nCraftmans; i++)

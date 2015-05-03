@@ -20,8 +20,8 @@ public class StorageServer {
         ServerCom scon, sconi;                                  // canais de comunicacao
         ClientProxy cliProxy;                                   // thread agente prestador do servico
         
-        int nInitialPrimeMaterialsInStorage = 20;               // Initial number of prime materials in the Storage
-        int nPrimeOwnerCarry = 10;                              // Number of prime materials that the owner can carry
+        int nInitialPrimeMaterialsInStorage = 80;               // Initial number of prime materials in the Storage
+        int nPrimeOwnerCarry = 20;                              // Number of prime materials that the owner can carry
         
         /* estabelecimento do servico */
         scon = new ServerCom(portNumb);                         // criacao do canal de escuta e sua associacao
