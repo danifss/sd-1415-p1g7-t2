@@ -12,7 +12,7 @@ public class CustomerMain {
         // Array de Clientes
         Customer[] customer = new Customer[nCustomers];
         // PORTAS: 221GX -> G = grupo 7 -> X 0-9
-        CustomerBroker broker = new CustomerBroker("localhost", 22170, "localhost", 220171);
+        CustomerBroker broker = new CustomerBroker("localhost", 22171, "localhost", 22170);
         
         //Initialization of Customers
         for (int i = 0; i < nCustomers; i++)

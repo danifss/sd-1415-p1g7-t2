@@ -12,7 +12,7 @@ public class CraftmanMain {
         // Array de Craftmans
         Craftman[] craftman = new Craftman[nCraftmans];
         // PORTAS: 221GX -> G = grupo 7 -> X 0-9
-        CraftmanBroker broker = new CraftmanBroker("localhost", 22171, "localhost", 22170, "localhost", 22172);
+        CraftmanBroker broker = new CraftmanBroker("localhost", 22170, "localhost", 22171, "localhost", 22172);
         
         //Initialization of Craftmans
         for (int i = 0; i < nCraftmans; i++)
