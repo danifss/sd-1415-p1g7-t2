@@ -640,7 +640,7 @@ public class OwnerBroker implements OwnerFactoryInterface, OwnerRepositoryInterf
      */
     @Override
     public int visitSuppliers() {
-        ClientCom con = new ClientCom(FactoryServerHostName, FactoryServerPortNumb);
+        ClientCom con = new ClientCom(StorageServerHostName, StorageServerPortNumb);
         MessageStorage inMessage, outMessage;
         
         outMessage = new MessageStorage(MessageStorage.VISITSUPPLIERS);
