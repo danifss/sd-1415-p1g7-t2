@@ -39,18 +39,11 @@ public abstract class Message implements Serializable {
     private int msgType = -1;
 
     /**
-     * Customer ID
+     * ID
      *
-     * @serialField customerId
+     * @serialField id
      */
-    private int customerId = -1;
-    
-    /**
-     * Craftman ID
-     * 
-     * @serialField craftmanId
-     */
-    private int craftmanId = -1;
+    private int id = -1;
 
     /**
      * Instantiation of a message (form 1)
@@ -67,9 +60,9 @@ public abstract class Message implements Serializable {
      * @param type Message type
      * @param customerId Customer ID
      */
-    public Message(int type, int customerId) {
+    public Message(int type, int id) {
         msgType = type;
-        this.customerId = customerId;
+        this.id = id;
     }
 
     /**
@@ -85,16 +78,8 @@ public abstract class Message implements Serializable {
      * Get the Customer Id
      * @return customer Id
      */
-    public int getCustId() {
-        return customerId;
-    }
-
-    /**
-     * Get the Craftman Id
-     * @return craftman Id
-     */
-    public int getCraftId() {
-        return craftmanId;
+    public int getId() {
+        return id;
     }
     
     /**
@@ -104,6 +89,6 @@ public abstract class Message implements Serializable {
      */
     @Override
     public String toString() {
-        return ("Tipo = " + msgType + "\nCustomer ID = " + customerId);
+        return ("Tipo = " + msgType + "\nID = " + id);
     }
 }

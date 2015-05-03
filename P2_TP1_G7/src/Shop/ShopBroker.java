@@ -59,20 +59,20 @@ public class ShopBroker {
             case MessageShop.EXITSHOP:
             case MessageShop.ENDOPER:
                 // Customers Messages
-                if ((inMessage.getCustId() < 0) || (inMessage.getCustId() >= nCustomers)) {
+                if ((inMessage.getId() < 0) || (inMessage.getId() >= nCustomers)) {
                     throw new MessageException("Invalid Customer Id!", inMessage);
                 }
                 break;
             case MessageShop.PRIMEMATERIALSNEEDED:
             case MessageShop.READYFORTRANSFER:
                 // Craftmans Messages
-                if ((inMessage.getCustId() < 0) || (inMessage.getCustId() >= nCraftmans)) {
+                if ((inMessage.getId() < 0) || (inMessage.getId() >= nCraftmans)) {
                     throw new MessageException("Invalid Craftman Id!", inMessage);
                 }
                 break;
             case MessageShop.ADDNGOODSINDISPLAY:
                 // Owner Messages
-                if (inMessage.getCustId()!= -1 || inMessage.getCraftId() != -1 || inMessage.getValue() < 0){
+                if (inMessage.getId()!= -1 || inMessage.getId() != -1 || inMessage.getValue() < 0){
                     throw new MessageException("Invalid Owner message!", inMessage);
                 }
                 break;
@@ -90,7 +90,7 @@ public class ShopBroker {
             case MessageShop.ISTRANFSPRODSTOSHOP:
             case MessageShop.ENDOPEROWNER:
                 // Owner Messages
-                if (inMessage.getCustId()!= -1 || inMessage.getCraftId() != -1){
+                if (inMessage.getId()!= -1 || inMessage.getId() != -1){
                     throw new MessageException("Invalid Owner message!", inMessage);
                 }
                 break;
@@ -113,11 +113,11 @@ public class ShopBroker {
                 break;
             case MessageShop.PERUSINGAROUND:
                 int nGoods = shop.perusingAround(); // Customer chooses what to buy
-                outMessage = new MessageShop(MessageShop.ACK, inMessage.getCustId(), nGoods);
+                outMessage = new MessageShop(MessageShop.ACK, inMessage.getId(), nGoods);
                 break;
             case MessageShop.IWANTTHIS:
                 int goodsToBuy = inMessage.getValue();
-                shop.iWantThis(inMessage.getCustId(), goodsToBuy); // Customer goes to queue
+                shop.iWantThis(inMessage.getId(), goodsToBuy); // Customer goes to queue
                 outMessage = new MessageShop(MessageShop.ACK);
                 break;
             case MessageShop.EXITSHOP:
@@ -126,16 +126,16 @@ public class ShopBroker {
                 break;
             case MessageShop.ENDOPER:
                 boolean result = shop.endOper();
-                outMessage = new MessageShop(MessageShop.ACK, inMessage.getCustId(), result);
+                outMessage = new MessageShop(MessageShop.ACK, inMessage.getId(), result);
                 break;
             //*************** Craftmans Messages
             case MessageShop.PRIMEMATERIALSNEEDED:
                 shop.primeMaterialsNeeded();
-                outMessage = new MessageShop(MessageShop.ACK,inMessage.getCraftId());
+                outMessage = new MessageShop(MessageShop.ACK,inMessage.getId());
                 break;
             case MessageShop.READYFORTRANSFER:
                 shop.batchReadyForTransfer();
-                outMessage = new MessageShop(MessageShop.ACK,inMessage.getCraftId());
+                outMessage = new MessageShop(MessageShop.ACK,inMessage.getId());
                 break;
             //*************** Owner Messages
             case MessageShop.ADDNGOODSINDISPLAY:

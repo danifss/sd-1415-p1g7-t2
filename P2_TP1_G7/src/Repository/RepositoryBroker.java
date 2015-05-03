@@ -62,14 +62,14 @@ class RepositoryBroker {
             case MessageRepository.SETCUSTOMERSTATE:
             case MessageRepository.SETGOODSBYCUST:
                 // Customers Messages
-                if ((inMessage.getCustId() < 0) || (inMessage.getCustId() >= nCustomers)) {
+                if ((inMessage.getId() < 0) || (inMessage.getId() >= nCustomers)) {
                     throw new MessageException("Invalid Customer Id!", inMessage);
                 }
                 break;
             case MessageRepository.SETCRAFTMANSTATE:
             case MessageRepository.SETGOODSCRAFTEDBYCRAFTMAN:
                 // Craftmans Messages
-                if ((inMessage.getCustId() < 0) || (inMessage.getCustId() >= nCraftmans)) {
+                if ((inMessage.getId() < 0) || (inMessage.getId() >= nCraftmans)) {
                     throw new MessageException("Invalid Craftman Id!", inMessage);
                 }
                 break;
@@ -109,23 +109,23 @@ class RepositoryBroker {
             //*************** Customers Messages
             case MessageRepository.SETCUSTOMERSTATE:
                 int custState = inMessage.getValue();
-                repository.setCustomerState(inMessage.getCustId(), custState);
+                repository.setCustomerState(inMessage.getId(), custState);
                 outMessage = new MessageRepository(MessageRepository.ACK);
                 break;
             case MessageRepository.SETGOODSBYCUST:
                 int nGoods = inMessage.getValue();
-                repository.setnGoodsByCustomer(inMessage.getCustId(), nGoods);
+                repository.setnGoodsByCustomer(inMessage.getId(), nGoods);
                 outMessage = new MessageRepository(MessageRepository.ACK);
                 break;
             //*************** Craftmans Messages
             case MessageRepository.SETCRAFTMANSTATE:
                 int craftState = inMessage.getValue();
-                repository.setCraftmanState(inMessage.getCraftId(), craftState);
+                repository.setCraftmanState(inMessage.getId(), craftState);
                 outMessage = new MessageRepository(MessageRepository.ACK);
                 break;
             case MessageRepository.SETGOODSCRAFTEDBYCRAFTMAN:
                 int nGoodsCraftedByCraftman = inMessage.getValue();
-                repository.setnGoodsCraftedByCraftman(inMessage.getCraftId(), nGoodsCraftedByCraftman);
+                repository.setnGoodsCraftedByCraftman(inMessage.getId(), nGoodsCraftedByCraftman);
                 outMessage = new MessageRepository(MessageRepository.ACK);
                 break; 
             //*************** Shop Messages
