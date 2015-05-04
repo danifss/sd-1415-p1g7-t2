@@ -32,9 +32,13 @@ public class MessageStorage extends Message {
     /**
      * Message type: Other messages types to get info from Storage.
      * @serial GETNPRIMEMATERIALSDELIVERED
-     * @serial GETMAXPRIMEMATERIALSTODELIVER
      */
     public static final int GETNPRIMEMATERIALSDELIVERED = 3;
+    
+    /**
+     * Message type: Other messages types to get info from Storage.
+     * @serial GETMAXPRIMEMATERIALSTODELIVER
+     */
     public static final int GETMAXPRIMEMATERIALSTODELIVER = 4;
     
     
