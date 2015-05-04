@@ -21,7 +21,6 @@ public class CustomerMain {
         int repositoryPort = contactMainServer(MessageConfig.GETREPOSITORYPORT, -1);
         
         // PORTAS: 221GX -> G = grupo 7 -> X 0-9
-        //CustomerBroker broker = new CustomerBroker("localhost", 22171, "localhost", 22170);
         CustomerBroker broker = new CustomerBroker(shopHost, shopPort, repositoryHost, repositoryPort);
         
         //Initialization of Customers
