@@ -42,6 +42,7 @@ public class ConfigBroker {
             case MessageConfig.GETNPRIMEMATERIALSBYPRODUCT:
             case MessageConfig.GETNMAXPRODUCTSCOLLECT:
             case MessageConfig.GETNMINPRIMEMATERIALSFORRESTOCK:
+            case MessageConfig.GETTOTALPRODUCTS:
             // REPOSITORY
             case MessageConfig.GETREPOSITORYHOST:
             case MessageConfig.GETREPOSITORYPORT:
@@ -117,6 +118,10 @@ public class ConfigBroker {
                 break;
             case MessageConfig.GETNMINPRIMEMATERIALSFORRESTOCK:
                 value = data.getnMinPrimeMaterialsForRestock();
+                outMessage = new MessageConfig(MessageConfig.ACK, value);
+                break;
+            case MessageConfig.GETTOTALPRODUCTS:
+                value = data.gettotalProducts();
                 outMessage = new MessageConfig(MessageConfig.ACK, value);
                 break;
             //****************************************

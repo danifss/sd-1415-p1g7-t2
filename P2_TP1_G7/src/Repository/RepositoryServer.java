@@ -86,7 +86,7 @@ public class RepositoryServer {
     }
     
     private static String contactMainServer(int msgType, String str){
-        //Jigar ao Main Server e pedir valores que necessita.
+        //Ligar ao Main Server e pedir valores que necessita.
         ClientCom con = new ClientCom(ServerInfo.getMainServerHostName(), ServerInfo.getMainServerPortNum());
         MessageConfig inMessage, outMessage;
         
@@ -114,7 +114,7 @@ public class RepositoryServer {
     }
     
     private static void setRepositoryHostOnMainServer(int msgType) throws UnknownHostException {
-        //TODO: ligar ao Main Server e informar o seu ip.
+        //Ligar ao Main Server e informar o seu ip.
         ClientCom con = new ClientCom(ServerInfo.getMainServerHostName(), ServerInfo.getMainServerPortNum());
         MessageConfig inMessage, outMessage;
         
