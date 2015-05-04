@@ -1,6 +1,6 @@
 package MainServer;
 
-import genclass.GenericIO;
+import java.util.Scanner;
 
 /**
  * @author Daniel 51908
@@ -27,47 +27,48 @@ public class ConfigServer {
     public static void main(String[] args){
         
         ConfigData data = new ConfigData();
+        Scanner in = new Scanner(System.in);
 
-        GenericIO.writelnString("\tConfiguration Server of problem 2: Aveiro Handicraft\n");
+        System.out.println("\tConfiguration Server of problem 2: Aveiro Handicraft\n");
         
         // Option to select values when the program starts.
-        GenericIO.writeString("Use default values?(y/n) ");
-        if(GenericIO.readlnString().equalsIgnoreCase("n")){
+        System.out.println("Use default values?(y/n) ");
+        if(in.nextLine().equalsIgnoreCase("n")){
             // Logging file name
-            GenericIO.writeString ("Name of logging file? ");
-            data.setfName(GenericIO.readlnString());
+            System.out.println ("Name of logging file? ");
+            data.setfName(in.nextLine());
 
             // nCustomers
-            GenericIO.writeString("Number of Customers: ");
-            data.setnCustomers(GenericIO.readlnInt());
+            System.out.println("Number of Customers: ");
+            data.setnCustomers(in.nextInt());
 
             // nCraftmans
-            GenericIO.writeString("Number of Craftmans: ");
-            data.setnCraftmans(GenericIO.readlnInt());
+            System.out.println("Number of Craftmans: ");
+            data.setnCraftmans(in.nextInt());
 
             // Initial number of prime materials in the Factory
-            GenericIO.writeString("Number of initial prime materials in Factory: ");
-            data.setnPrimeMaterialsInFactory(GenericIO.readlnInt());
+            System.out.println("Number of initial prime materials in Factory: ");
+            data.setnPrimeMaterialsInFactory(in.nextInt());
 
             // Initial number of products in the Shop
-            GenericIO.writeString("Number of initial products in Shop: ");
-            data.setnInitialProductsInShop(GenericIO.readlnInt());
+            System.out.println("Number of initial products in Shop: ");
+            data.setnInitialProductsInShop(in.nextInt());
 
             // Initial number of prime materials in the Storage
-            GenericIO.writeString("Number of initial prime materials in Storage: ");
-            data.setnInitialPrimeMaterialsInStorage(GenericIO.readlnInt());
+            System.out.println("Number of initial prime materials in Storage: ");
+            data.setnInitialPrimeMaterialsInStorage(in.nextInt());
             
             // Prime materials needed per product
-            GenericIO.writeString("Number of prime materials needed by product: ");
-            data.setnPrimeMaterialsByProduct(GenericIO.readlnInt());
+            System.out.println("Number of prime materials needed by product: ");
+            data.setnPrimeMaterialsByProduct(in.nextInt());
 
             // Maximum number of products that the owner can carry
-            GenericIO.writeString("Number of maximum products that the owner can carry: ");
-            data.setnMaxProductsCollect(GenericIO.readlnInt());            
+            System.out.println("Number of maximum products that the owner can carry: ");
+            data.setnMaxProductsCollect(in.nextInt());            
 
             // Minimum number of prime materials for restock
-            GenericIO.writeString("Number of minimum prime materials for restock: ");
-            data.setnMinPrimeMaterialsForRestock(GenericIO.readlnInt());
+            System.out.println("Number of minimum prime materials for restock: ");
+            data.setnMinPrimeMaterialsForRestock(in.nextInt());
             
         }
         // Number of total products
@@ -85,9 +86,9 @@ public class ConfigServer {
         
         configInterface = new ConfigBroker(data);               // activacao do interface com o servico
 
-        GenericIO.writelnString("Configuration Server");
-        GenericIO.writelnString("O serviço foi estabelecido!");
-        GenericIO.writelnString("O servidor esta em escuta.");
+        System.out.println("Configuration Server");
+        System.out.println("O serviço foi estabelecido!");
+        System.out.println("O servidor esta em escuta.");
 
         /* processamento de pedidos */
         while (true) {

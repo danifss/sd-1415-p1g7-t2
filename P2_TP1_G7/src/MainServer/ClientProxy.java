@@ -1,6 +1,5 @@
 package MainServer;
 
-import genclass.GenericIO;
 import comInf.MessageException;
 import comInf.MessageConfig;
 
@@ -58,8 +57,8 @@ public class ClientProxy extends Thread {
         try {
             outMessage = configInter.processAndReply(inMessage);      // processá-lo
         } catch (MessageException e) {
-            GenericIO.writelnString("Thread " + getName() + ": " + e.getMessage() + "!");
-            GenericIO.writelnString(e.getMessageVal().toString());
+            System.out.println("Thread " + getName() + ": " + e.getMessage() + "!");
+            System.out.println(e.getMessageVal().toString());
             System.exit(1);
         }
         sconi.writeObject(outMessage);                              // enviar resposta ao cliente
@@ -79,7 +78,7 @@ public class ClientProxy extends Thread {
         try {
             cl = (Class<ClientProxy>) Class.forName("MainServer.ClientProxy");
         } catch (ClassNotFoundException e) {
-            GenericIO.writelnString("O tipo de dados ClientProxy não foi encontrado!");
+            System.out.println("O tipo de dados ClientProxy não foi encontrado!");
             e.printStackTrace();
             System.exit(1);
         }
