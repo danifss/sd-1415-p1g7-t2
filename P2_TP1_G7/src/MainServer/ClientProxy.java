@@ -77,7 +77,7 @@ public class ClientProxy extends Thread {
         int proxyId;                              // identificador da instanciação
 
         try {
-            cl = (Class<ClientProxy>) Class.forName("ConfigBroker.ClientProxy");
+            cl = (Class<ClientProxy>) Class.forName("MainServer.ClientProxy");
         } catch (ClassNotFoundException e) {
             GenericIO.writelnString("O tipo de dados ClientProxy não foi encontrado!");
             e.printStackTrace();

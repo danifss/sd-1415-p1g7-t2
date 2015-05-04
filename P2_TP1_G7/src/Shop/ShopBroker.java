@@ -33,6 +33,7 @@ public class ShopBroker {
      * Constructor of Shop Broker
      * @param shop Shop Monitor Object
      * @param nCustomers Total Number of Customers
+     * @param nCraftmans Total Number of Craftmans
      */
     public ShopBroker(Shop shop, int nCustomers, int nCraftmans) {
         this.shop = shop;
