@@ -36,7 +36,7 @@ public class FactoryServer {
         int nPrimePerProduct = contactMainServer(MessageConfig.GETNPRIMEMATERIALSBYPRODUCT, -1);
         int nPrimeRestock = contactMainServer(MessageConfig.GETNMINPRIMEMATERIALSFORRESTOCK, -1);
         int nProductsCollect = contactMainServer(MessageConfig.GETNMAXPRODUCTSCOLLECT, -1);
-        String repositoryHost = getHost(MessageConfig.GETREPOSITORYHOST, -1);
+        String repositoryHost = contactMainServer(MessageConfig.GETREPOSITORYHOST, "");
         int repositoryPort = contactMainServer(MessageConfig.GETREPOSITORYPORT, -1);
         
         
@@ -89,12 +89,12 @@ public class FactoryServer {
         return result;
     }
     
-    private static String getHost(int msgType, int value){
-        //TODO: ligar ao Main Server e informar o seu ip e porta e pedir valores que necessita.
+    private static String contactMainServer(int msgType, String str){
+        //Jigar ao Main Server e pedir valores que necessita.
         ClientCom con = new ClientCom(ServerInfo.getMainServerHostName(), ServerInfo.getMainServerPortNum());
         MessageConfig inMessage, outMessage;
         
-        outMessage = new MessageConfig(msgType, value); // pede a realizacao do servico
+        outMessage = new MessageConfig(msgType, str); // pede a realizacao do servico
         while (!con.open ()){                           // aguarda ligação
             try{
                 Thread.sleep ((long) (10));
@@ -102,7 +102,7 @@ public class FactoryServer {
         }
         con.writeObject(outMessage);
         inMessage = (MessageConfig) con.readObject();
-        String result = null;
+        String result = "";
         switch(inMessage.getType()){
             case MessageConfig.ACK:
                 result = inMessage.getStr();
