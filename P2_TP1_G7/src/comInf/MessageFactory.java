@@ -116,7 +116,7 @@ public class MessageFactory extends Message {
     /**
      * Message Factory Constructor (form 2)
      * @param type Message type
-     * @param id 
+     * @param id ID
      */
     public MessageFactory(int type, int id){
         super(type, id);
@@ -136,7 +136,7 @@ public class MessageFactory extends Message {
     /**
      * Message Factory Constructor (form 4)
      * @param type Message type
-     * @param id
+     * @param id ID
      * @param bool Generic boolean variable
      */
     public MessageFactory(int type, int id, boolean bool){
