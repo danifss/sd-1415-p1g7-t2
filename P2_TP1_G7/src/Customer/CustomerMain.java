@@ -3,8 +3,6 @@ package Customer;
 import genclass.GenericIO;
 import MainServer.ServerInfo;
 import comInf.MessageConfig;
-import java.net.Inet4Address;
-import java.net.UnknownHostException;
 
 /**
  * @author Daniel 51908
@@ -13,7 +11,7 @@ import java.net.UnknownHostException;
  */
 public class CustomerMain {
     public static void main(String[] args){
-        //TODO: create and start 3 Customers
+        //TODO: create and start n Customers
         int nCustomers = contactMainServer(MessageConfig.GETNCUSTOMERS, -1);
         // Array de Clientes
         Customer[] customer = new Customer[nCustomers];
