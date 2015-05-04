@@ -18,8 +18,8 @@ public class OwnerMain {
         int repositoryPort = contactMainServer(MessageConfig.GETREPOSITORYPORT, -1);
         String factoryHost = contactMainServer(MessageConfig.GETFACTORYHOST, "");
         int factoryPort = contactMainServer(MessageConfig.GETFACTORYPORT, -1);
-        String storageHost = contactMainServer(MessageConfig.GETFACTORYHOST, "");
-        int storagePort = contactMainServer(MessageConfig.GETFACTORYPORT, -1);
+        String storageHost = contactMainServer(MessageConfig.GETSTORAGEHOST, "");
+        int storagePort = contactMainServer(MessageConfig.GETSTORAGEPORT, -1);
         
         OwnerBroker broker = new OwnerBroker(shopHost, shopPort, repositoryHost, repositoryPort, factoryHost, factoryPort, storageHost, storagePort);
         
