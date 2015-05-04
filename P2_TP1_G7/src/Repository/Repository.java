@@ -1,7 +1,9 @@
 package Repository;
 
-import genclass.GenericIO;
-import genclass.TextFile;
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
 
 /**
  * This class is responsible to host the Craftmans.
@@ -52,15 +54,15 @@ public class Repository implements RepositoryInterface {
     
     /**
      * Owner needed information.
-     * @serialField stateOwner state of the Owner
+     * @serial stateOwner state of the Owner
      */
     private int stateOwner;
     
     /**
      * Customers needed information.
-     * @serialField nCustomer Number of Customers
-     * @serialField stateCustomer State of the customer
-     * @serialField nGoodsByCustomer Number of goods (accumulation) bought by the customer
+     * @serial nCustomer Number of Customers
+     * @serial stateCustomer State of the customer
+     * @serial nGoodsByCustomer Number of goods (accumulation) bought by the customer
      */
     private final int nCustomer;
     private int[] stateCustomer;
@@ -68,9 +70,9 @@ public class Repository implements RepositoryInterface {
     
     /**
      * Craftman needed information.
-     * @serialField nCraftsman Number of Craftsman
-     * @serialField stateCraftman State of the Craftman
-     * @serialField nGoodsCraftedByCraftman Number of goods produced by each Craftman
+     * @serial nCraftsman Number of Craftsman
+     * @serial stateCraftman State of the Craftman
+     * @serial nGoodsCraftedByCraftman Number of goods produced by each Craftman
      */
     private final int nCraftman;
     private int[] stateCraftman;
@@ -78,11 +80,11 @@ public class Repository implements RepositoryInterface {
 
     /**
      * Shop needed information.
-     * @serialField stateShop State of the shop
-     * @serialField nCustomersInsideShop Number of customers inside
-     * @serialField nGoodsInDisplay Number of goods in display
-     * @serialField transfProductsToShop A phone call was made by a craftsman requesting the transfer of finished products to the shop
-     * @serialField supplyMaterialsToFactory A phone call was made by a craftsman requesting the supply of prime materials to the workshop
+     * @serial stateShop State of the shop
+     * @serial nCustomersInsideShop Number of customers inside
+     * @serial nGoodsInDisplay Number of goods in display
+     * @serial transfProductsToShop A phone call was made by a craftsman requesting the transfer of finished products to the shop
+     * @serial supplyMaterialsToFactory A phone call was made by a craftsman requesting the supply of prime materials to the workshop
      */
     private int stateShop;
     private int nCustomersInsideShop;
@@ -92,11 +94,11 @@ public class Repository implements RepositoryInterface {
     
     /**
      * Workshop needed information.
-     * @serialField nPrimeMaterialsInFactory Amount of prime materials presently in the workshop
-     * @serialField nFinishedProductsInFactory Number of finished products presently in the workshop
-     * @serialField nSuppliedTimes Number of times that a supply of prime materials was delivered to the workshop
-     * @serialField nPrimeMaterialsSupplied total amount of prime materials that have already been supplied (accumulation)
-     * @serialField nProductsManufactured total number of products that have already been manufactured (accumulation)
+     * @serial nPrimeMaterialsInFactory Amount of prime materials presently in the workshop
+     * @serial nFinishedProductsInFactory Number of finished products presently in the workshop
+     * @serial nSuppliedTimes Number of times that a supply of prime materials was delivered to the workshop
+     * @serial nPrimeMaterialsSupplied total amount of prime materials that have already been supplied (accumulation)
+     * @serial nProductsManufactured total number of products that have already been manufactured (accumulation)
      */
     private int nPrimeMaterialsInFactory;
     private int nFinishedProductsInFactory;
@@ -106,7 +108,7 @@ public class Repository implements RepositoryInterface {
     
     /**
      * Name of the logging file.
-     * @serialField fName
+     * @serial fName
      */
     private String fName = "log.txt";
 
@@ -167,38 +169,47 @@ public class Repository implements RepositoryInterface {
      * Write initial state (internal operation).
      */
     private void reportInitialStatus() {
-        TextFile log = new TextFile();                  // instanciacao de uma variavel de tipo ficheiro de texto
+        try {
+            File f = new File(this.fName);
 
-        if (!log.openForWriting(".", this.fName)) {
-            GenericIO.writelnString("A operação de criação do ficheiro " + this.fName + " falhou!");
+            if (!f.exists() && !f.isDirectory()){
+                f.createNewFile(); // creating new file
+            }
+
+            if (!f.canRead()) {
+                System.out.println("A operação de criação do ficheiro " + this.fName + " falhou!");
+                System.exit(1);
+            }
+
+            FileWriter fw = new FileWriter(f.getAbsoluteFile());
+            BufferedWriter log = new BufferedWriter(fw);
+            log.write("        Aveiro Handicraft SARL - Description of the internal state\n");
+        
+            String line1 = "ENTREPRE ";
+            String line2 = "  Stat   ";
+            for(int i=0;i<nCustomer;i++){
+                line1 += String.format("%9s","CUST_"+i);
+                line2 += String.format("%9s", "Stat BP");
+            }
+            line1 += "  ";
+            line2 += "  ";
+            for(int i=0;i<nCraftman;i++){
+                line1 += String.format("%9s","CRAFT_"+i);
+                line2 += String.format("%9s","Stat PP");
+            }
+            line1 += "            SHOP                  WORKSHOP";
+            line2 += "    Stat NCI NPI PCR PMR    APMI NPI NSPM TAPM TNP";
+            log.write(line1);
+            log.write(line2);
+
+            log.close();
+            
+            reportStatus();
+        } catch(IOException e) {
+            System.out.println("A operação sobre o ficheiro " + this.fName + " falhou!");
+            e.printStackTrace();
             System.exit(1);
         }
-        log.writelnString("        Aveiro Handicraft SARL - Description of the internal state\n");
-        
-        String line1 = "ENTREPRE ";
-        String line2 = "  Stat   ";
-        for(int i=0;i<nCustomer;i++){
-            line1 += String.format("%9s","CUST_"+i);
-            line2 += String.format("%9s", "Stat BP");
-        }
-        line1 += "  ";
-        line2 += "  ";
-        for(int i=0;i<nCraftman;i++){
-            line1 += String.format("%9s","CRAFT_"+i);
-            line2 += String.format("%9s","Stat PP");
-        }
-        line1 += "            SHOP                  WORKSHOP";
-        line2 += "    Stat NCI NPI PCR PMR    APMI NPI NSPM TAPM TNP";
-        log.writelnString(line1);
-        log.writelnString(line2);
-        
-        //log.writelnString("ENTREPRE  CUST_0  CUST_1  CUST_2   CRAFT_0 CRAFT_1 CRAFT_2          SHOP                WORKSHOP");
-        //log.writelnString("  Stat   Stat BP Stat BP Stat BP   Stat PP Stat PP Stat PP  Stat NCI NPI PCR PMR  APMI NPI NSPM TAPM TNP");
-        if (!log.close()) {
-            GenericIO.writelnString("A operação de fecho do ficheiro " + this.fName + " falhou!");
-            System.exit(1);
-        }
-        reportStatus();
     }
 
     /**
@@ -206,119 +217,126 @@ public class Repository implements RepositoryInterface {
      * One line of text about the system is written in the file.
      */
     private void reportStatus() {
-        TextFile log = new TextFile();
+        try {
+            File f = new File(this.fName);
 
-        String lineStatus = "";
+            if (!f.canRead()) {
+                System.out.println("A operação de criação do ficheiro " + this.fName + " falhou!");
+                System.exit(1);
+            }
 
-        if (!log.openForAppending(".", fName)) {
-            GenericIO.writelnString("A operação de criação do ficheiro " + fName + " falhou!");
-            System.exit(1);
-        }
-     
-        switch(stateOwner){
-            case OPENING_THE_SHOP:
-                lineStatus += String.format("%6s", "OTS");
-                break;
-            case WAITING_FOR_NEXT_TASK:
-                lineStatus += String.format("%6s", "WFNT");
-                break;
-            case ATTENDING_A_CUSTOMER:
-                lineStatus += String.format("%6s", "AAC");
-                break;
-            case CLOSING_THE_SHOP:
-                lineStatus += String.format("%6s", "CTS");
-                break;
-            case DELIVERING_PRIME_MATERIALS:
-                lineStatus += String.format("%6s", "DPM");
-                break;
-            case COLLECTING_A_BATCH_OF_PRODUCTS:
-                lineStatus += String.format("%6s", "CBOP");
-                break;
-            case BUYING_PRIME_MATERIALS:
-                lineStatus += String.format("%6s", "BPM");
-                break;
-        }
-        lineStatus += "    ";
-        for (int i = 0; i < nCustomer; i++) {
-            switch (stateCustomer[i]) {
-                case CARRYING_OUT_DAILY_CHORES:
-                    lineStatus += String.format("%5s", "CODC");
+            FileWriter fw = new FileWriter(f.getAbsoluteFile(), true);
+            BufferedWriter log = new BufferedWriter(fw);
+
+            String lineStatus = "";
+
+            switch(stateOwner){
+                case OPENING_THE_SHOP:
+                    lineStatus += String.format("%6s", "OTS");
                     break;
-                case CHECKING_DOOR_OPEN:
-                    lineStatus += String.format("%5s", "CDO");
+                case WAITING_FOR_NEXT_TASK:
+                    lineStatus += String.format("%6s", "WFNT");
                     break;
-                case APPRAISING_OFFER_IN_DISPLAY:
-                    lineStatus += String.format("%5s", "AOID");
+                case ATTENDING_A_CUSTOMER:
+                    lineStatus += String.format("%6s", "AAC");
                     break;
-                case BUYING_SOME_GOODS:
-                    lineStatus += String.format("%5s", "BSG");
+                case CLOSING_THE_SHOP:
+                    lineStatus += String.format("%6s", "CTS");
+                    break;
+                case DELIVERING_PRIME_MATERIALS:
+                    lineStatus += String.format("%6s", "DPM");
+                    break;
+                case COLLECTING_A_BATCH_OF_PRODUCTS:
+                    lineStatus += String.format("%6s", "CBOP");
+                    break;
+                case BUYING_PRIME_MATERIALS:
+                    lineStatus += String.format("%6s", "BPM");
+                    break;
+            }
+            lineStatus += "    ";
+            for (int i = 0; i < nCustomer; i++) {
+                switch (stateCustomer[i]) {
+                    case CARRYING_OUT_DAILY_CHORES:
+                        lineStatus += String.format("%5s", "CODC");
+                        break;
+                    case CHECKING_DOOR_OPEN:
+                        lineStatus += String.format("%5s", "CDO");
+                        break;
+                    case APPRAISING_OFFER_IN_DISPLAY:
+                        lineStatus += String.format("%5s", "AOID");
+                        break;
+                    case BUYING_SOME_GOODS:
+                        lineStatus += String.format("%5s", "BSG");
+                        break;
+                }
+                lineStatus += " ";
+                lineStatus += String.format("%2d", nGoodsByCustomer[i]);
+                lineStatus += " ";
+            }
+            lineStatus += "  ";
+            for (int i = 0; i < nCraftman; i++) {
+                switch (stateCraftman[i]) {
+                    case FETCHING_PRIME_MATERIALS:
+                        lineStatus += String.format("%5s", "FPM");
+                        break;
+                    case PRODUCING_A_NEW_PIECE:
+                        lineStatus += String.format("%5s", "PANP");
+                        break;
+                    case STORING_IT_FOR_TRANSFER:
+                        lineStatus += String.format("%5s", "SIFT");
+                        break;
+                    case CONTACTING_THE_ENTREPRENEUR:
+                        lineStatus += String.format("%5s", "CTE");
+                        break;
+                }
+                lineStatus += " ";
+                lineStatus += String.format("%2d", nGoodsCraftedByCraftman[i]);
+                lineStatus += " ";
+            }
+            lineStatus += "   ";
+            switch(stateShop){
+                case CLOSED:
+                    lineStatus += String.format("%4s", "CLOS");
+                    break;
+                case STILL_OPEN:
+                    lineStatus += String.format("%4s", "STIL");
+                    break;
+                case OPEN:
+                    lineStatus += String.format("%4s", "OPEN");
                     break;
             }
             lineStatus += " ";
-            lineStatus += String.format("%2d", nGoodsByCustomer[i]);
+            lineStatus += String.format("%3d", nCustomersInsideShop);
             lineStatus += " ";
-        }
-        lineStatus += "  ";
-        for (int i = 0; i < nCraftman; i++) {
-            switch (stateCraftman[i]) {
-                case FETCHING_PRIME_MATERIALS:
-                    lineStatus += String.format("%5s", "FPM");
-                    break;
-                case PRODUCING_A_NEW_PIECE:
-                    lineStatus += String.format("%5s", "PANP");
-                    break;
-                case STORING_IT_FOR_TRANSFER:
-                    lineStatus += String.format("%5s", "SIFT");
-                    break;
-                case CONTACTING_THE_ENTREPRENEUR:
-                    lineStatus += String.format("%5s", "CTE");
-                    break;
-            }
+            lineStatus += String.format("%3d", nGoodsInDisplay);
             lineStatus += " ";
-            lineStatus += String.format("%2d", nGoodsCraftedByCraftman[i]);
+            if(transfProductsToShop)
+                lineStatus += String.format("%3s", "T");
+            else
+                lineStatus += String.format("%3s", "F");
             lineStatus += " ";
-        }
-        lineStatus += "   ";
-        switch(stateShop){
-            case CLOSED:
-                lineStatus += String.format("%4s", "CLOS");
-                break;
-            case STILL_OPEN:
-                lineStatus += String.format("%4s", "STIL");
-                break;
-            case OPEN:
-                lineStatus += String.format("%4s", "OPEN");
-                break;
-        }
-        lineStatus += " ";
-        lineStatus += String.format("%3d", nCustomersInsideShop);
-        lineStatus += " ";
-        lineStatus += String.format("%3d", nGoodsInDisplay);
-        lineStatus += " ";
-        if(transfProductsToShop)
-            lineStatus += String.format("%3s", "T");
-        else
-            lineStatus += String.format("%3s", "F");
-        lineStatus += " ";
-        if(supplyMaterialsToFactory)
-            lineStatus += String.format("%3s", "T");
-        else
-            lineStatus += String.format("%3s", "F");
-        lineStatus += "    ";
-        lineStatus += String.format("%4d", nPrimeMaterialsInFactory);
-        lineStatus += " ";
-        lineStatus += String.format("%3d", nFinishedProductsInFactory);
-        lineStatus += " ";
-        lineStatus += String.format("%4d", nSuppliedTimes);
-        lineStatus += " ";
-        lineStatus += String.format("%4d", nPrimeMaterialsSupplied);
-        lineStatus += " ";
-        lineStatus += String.format("%3d", nProductsManufactured);
+            if(supplyMaterialsToFactory)
+                lineStatus += String.format("%3s", "T");
+            else
+                lineStatus += String.format("%3s", "F");
+            lineStatus += "    ";
+            lineStatus += String.format("%4d", nPrimeMaterialsInFactory);
+            lineStatus += " ";
+            lineStatus += String.format("%3d", nFinishedProductsInFactory);
+            lineStatus += " ";
+            lineStatus += String.format("%4d", nSuppliedTimes);
+            lineStatus += " ";
+            lineStatus += String.format("%4d", nPrimeMaterialsSupplied);
+            lineStatus += " ";
+            lineStatus += String.format("%3d", nProductsManufactured);
 
-        
-        log.writelnString(lineStatus);
-        if (!log.close()) {
-            GenericIO.writelnString("A operação de fecho do ficheiro " + fName + " falhou!");
+
+            log.write(lineStatus);
+            log.close();
+            
+        } catch(IOException e) {
+            e.printStackTrace();
+            System.out.println("A operação sobre o ficheiro " + this.fName + " falhou!");
             System.exit(1);
         }
     }
