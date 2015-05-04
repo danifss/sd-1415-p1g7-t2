@@ -1,6 +1,5 @@
 package Owner;
 
-import genclass.GenericIO;
 import MainServer.ServerInfo;
 import comInf.MessageConfig;
 
@@ -12,6 +11,7 @@ import comInf.MessageConfig;
 public class OwnerMain {
     public static void main(String[] args){
         Owner owner;
+        
         String shopHost = contactMainServer(MessageConfig.GETSHOPHOST, "");
         int shopPort = contactMainServer(MessageConfig.GETSHOPPORT, -1);
         String repositoryHost = contactMainServer(MessageConfig.GETREPOSITORYHOST, "");
@@ -29,7 +29,7 @@ public class OwnerMain {
     }
     
     private static int contactMainServer(int msgType, int value){
-        //TODO: ligar ao Main Server e informar o seu ip e porta e pedir valores que necessita.
+        // ligar ao Main Server e informar o seu ip e porta e pedir valores que necessita.
         ClientCom con = new ClientCom(ServerInfo.getMainServerHostName(), ServerInfo.getMainServerPortNum());
         MessageConfig inMessage, outMessage;
         
@@ -47,8 +47,8 @@ public class OwnerMain {
                 result = inMessage.getValue();
                 break;
             default:
-                GenericIO.writelnString("Repository: Error contacting Main Server..");
-                GenericIO.writelnString(inMessage.toString());
+                System.out.println("Repository: Error contacting Main Server..");
+                System.out.println(inMessage.toString());
                 System.exit(1);
                 break;
         }
@@ -57,7 +57,7 @@ public class OwnerMain {
     }
     
     private static String contactMainServer(int msgType, String str){
-        //Jigar ao Main Server e pedir valores que necessita.
+        //Ligar ao Main Server e pedir valores que necessita.
         ClientCom con = new ClientCom(ServerInfo.getMainServerHostName(), ServerInfo.getMainServerPortNum());
         MessageConfig inMessage, outMessage;
         
@@ -75,8 +75,8 @@ public class OwnerMain {
                 result = inMessage.getStr();
                 break;
             default:
-                GenericIO.writelnString("Repository: Error contacting Main Server..");
-                GenericIO.writelnString(inMessage.toString());
+                System.out.println("Repository: Error contacting Main Server..");
+                System.out.println(inMessage.toString());
                 System.exit(1);
                 break;
         }
