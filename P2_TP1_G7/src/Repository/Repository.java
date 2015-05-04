@@ -1,9 +1,9 @@
 package Repository;
 
 import java.io.BufferedWriter;
-import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.io.PrintWriter;
 
 /**
  * This class is responsible to host the Craftmans.
@@ -170,19 +170,8 @@ public class Repository implements RepositoryInterface {
      */
     private void reportInitialStatus() {
         try {
-            File f = new File(this.fName);
+            PrintWriter log = new PrintWriter(fName);
 
-            if (!f.exists() && !f.isDirectory()){
-                f.createNewFile(); // creating new file
-            }
-
-            if (!f.canRead()) {
-                System.out.println("A operação de criação do ficheiro " + this.fName + " falhou!");
-                System.exit(1);
-            }
-
-            FileWriter fw = new FileWriter(f.getAbsoluteFile());
-            BufferedWriter log = new BufferedWriter(fw);
             log.write("        Aveiro Handicraft SARL - Description of the internal state\n");
         
             String line1 = "ENTREPRE ";
@@ -218,16 +207,18 @@ public class Repository implements RepositoryInterface {
      */
     private void reportStatus() {
         try {
-            File f = new File(this.fName);
+//            File f = new File(this.fName);
+//
+//            if (!f.canRead()) {
+//                System.out.println("A operação de criação do ficheiro " + this.fName + " falhou!");
+//                System.exit(1);
+//            }
+//
+//            FileWriter fw = new FileWriter(f.getAbsoluteFile(), true);
+//            BufferedWriter log = new BufferedWriter(fw);
 
-            if (!f.canRead()) {
-                System.out.println("A operação de criação do ficheiro " + this.fName + " falhou!");
-                System.exit(1);
-            }
-
-            FileWriter fw = new FileWriter(f.getAbsoluteFile(), true);
-            BufferedWriter log = new BufferedWriter(fw);
-
+            PrintWriter log = new PrintWriter(new BufferedWriter(new FileWriter(fName, true)));
+            
             String lineStatus = "";
 
             switch(stateOwner){
