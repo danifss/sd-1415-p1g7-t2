@@ -10,78 +10,79 @@ public class MessageConfig extends Message {
     /**
      * Serialization key
      * 
-     * @serialField serialVersionUID
+     * @serial serialVersionUID
      */
     private static final long serialVersionUID = 220415L;
     
     //*************** CONFIGURATIONS MESSAGES TYPES
     /**
      * Message type: Get logging file name
-     * @serialField GETFNAME
+     * @serial GETFNAME
      */
     public static final int GETFNAME = 1;
     
     /**
      * Message type: Get numbers of Craftmans
-     * @serialField GETNCRAFTMANS
+     * @serial GETNCRAFTMANS
      */
     public static final int GETNCRAFTMANS = 2;
     
     /**
      * Message type: Get number of Customers
-     * @serialField GETNCUSTOMERS
+     * @serial GETNCUSTOMERS
      */
     public static final int GETNCUSTOMERS = 3;
     
     /**
      * Message type: Initial number of prime materials in the Factory
-     * @serialField GETNPRIMEMATERIALSINFACTORY
+     * @serial GETNPRIMEMATERIALSINFACTORY
      */
     public static final int GETNPRIMEMATERIALSINFACTORY = 4;
     
     /**
      * Message type: Initial number of products in the Shop
-     * @serialField GETNINITIALPRODUCTSINSHOP
+     * @serial GETNINITIALPRODUCTSINSHOP
      */
     public static final int GETNINITIALPRODUCTSINSHOP = 5;
     
     /**
      * Message type: Initial number of prime materials in the Storage
-     * @serialField GETNINITIALPRIMEMATERIALSINSTORAGE
+     * @serial GETNINITIALPRIMEMATERIALSINSTORAGE
      */
     public static final int GETNINITIALPRIMEMATERIALSINSTORAGE = 6;
     
     /**
      * Message type: Prime materials needed per product
-     * @serialField GETNPRIMEMATERIALSBYPRODUCT
+     * @serial GETNPRIMEMATERIALSBYPRODUCT
      */
     public static final int GETNPRIMEMATERIALSBYPRODUCT = 7;
 
     /**
      * Message type: Maximum number of products that the owner can carry
-     * @serialField GETNMAXPRODUCTSCOLLECT
+     * @serial GETNMAXPRODUCTSCOLLECT
      */
     public static final int GETNMAXPRODUCTSCOLLECT = 8;
     
     /**
      * Message type: Minimum number of prime materials for restock
-     * @serialField GETNMINPRIMEMATERIALSFORRESTOCK
+     * @serial GETNMINPRIMEMATERIALSFORRESTOCK
      */
     public static final int GETNMINPRIMEMATERIALSFORRESTOCK = 9;
     
     /**
      * Message type: Number of total products
-     * @serialField GETTOTALPRODUCTS
+     * @serial GETTOTALPRODUCTS
      */
     public static final int GETTOTALPRODUCTS = 10;
     
     
     //*************** SETTING MESSAGES OF HOSTS AND PORTS
     /**
-     * @serialField SETREPOSITORYHOST
-     * @serialField GETREPOSITORYHOST
-     * @serialField SETREPOSITORYPORT
-     * @serialField GETREPOSITORYPORT
+     * Message type: Set and Get Repository Host name and Port number.
+     * @serial SETREPOSITORYHOST
+     * @serial GETREPOSITORYHOST
+     * @serial SETREPOSITORYPORT
+     * @serial GETREPOSITORYPORT
      */
     public static final int SETREPOSITORYHOST = 20;
     public static final int GETREPOSITORYHOST = 21;
@@ -89,10 +90,10 @@ public class MessageConfig extends Message {
     public static final int GETREPOSITORYPORT = 23;
     
     /**
-     * @serialField SETSHOPHOST
-     * @serialField GETSHOPHOST
-     * @serialField SETSHOPPORT
-     * @serialField GETSHOPPORT
+     * @serial SETSHOPHOST
+     * @serial GETSHOPHOST
+     * @serial SETSHOPPORT
+     * @serial GETSHOPPORT
      */
     public static final int SETSHOPHOST = 24;
     public static final int GETSHOPHOST = 25;
@@ -100,10 +101,10 @@ public class MessageConfig extends Message {
     public static final int GETSHOPPORT = 27;
     
     /**
-     * @serialField SETSTORAGEHOST
-     * @serialField GETSTORAGEHOST
-     * @serialField SETSTORAGEPORT
-     * @serialField GETSTORAGEPORT
+     * @serial SETSTORAGEHOST
+     * @serial GETSTORAGEHOST
+     * @serial SETSTORAGEPORT
+     * @serial GETSTORAGEPORT
      */
     public static final int SETSTORAGEHOST = 28;
     public static final int GETSTORAGEHOST = 29;
@@ -111,10 +112,10 @@ public class MessageConfig extends Message {
     public static final int GETSTORAGEPORT = 31;
     
     /**
-     * @serialField SETFACTORYHOST
-     * @serialField GETFACTORYHOST
-     * @serialField SETFACTORYPORT
-     * @serialField GETFACTORYPORT
+     * @serial SETFACTORYHOST
+     * @serial GETFACTORYHOST
+     * @serial SETFACTORYPORT
+     * @serial GETFACTORYPORT
      */
     public static final int SETFACTORYHOST = 32;
     public static final int GETFACTORYHOST = 33;
@@ -126,13 +127,13 @@ public class MessageConfig extends Message {
     //*************** Internal Variables
     /**
      * Variable to save an integer value.
-     * @serialField value
+     * @serial value
      */
     private int value = -1;
     
     /**
      * Variable to save a String value.
-     * @serialField str
+     * @serial str
      */
     private String str = "";
     
@@ -149,7 +150,7 @@ public class MessageConfig extends Message {
     /**
      * Message Config Constructor (form 2)
      * @param type Message type
-     * @param value 
+     * @param value value
      */
     public MessageConfig(int type, int value){
         super(type);
@@ -159,7 +160,7 @@ public class MessageConfig extends Message {
     /**
      * Message Config Constructor (form 3)
      * @param type Message type
-     * @param str 
+     * @param str string
      */
     public MessageConfig(int type, String str){
         super(type);
