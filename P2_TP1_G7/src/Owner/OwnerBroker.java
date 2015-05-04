@@ -4,7 +4,6 @@ import comInf.MessageShop;
 import comInf.MessageRepository;
 import comInf.MessageFactory;
 import comInf.MessageStorage;
-import genclass.GenericIO;
 
 /**
  * @author Daniel 51908
@@ -15,49 +14,49 @@ public class OwnerBroker implements OwnerFactoryInterface, OwnerRepositoryInterf
     
     /**
      * Repository server host name
-     * @serialField RPserverHostName
+     * @serial RPserverHostName
      */
     private String RPserverHostName = null;
 
     /**
      * Repository Server port
-     * @serialField RPserverPortNumb
+     * @serial RPserverPortNumb
      */
     private int RPserverPortNumb;
     
     /**
      * Shop server host name
-     * @serialField ShopServerHostName
+     * @serial ShopServerHostName
      */
     private String ShopServerHostName = null;
 
     /**
      * Shop Server port
-     * @serialField ShopServerPortNumb
+     * @serial ShopServerPortNumb
      */
     private int ShopServerPortNumb;
     
     /**
      * Factory server host name
-     * @serialField FactoryServerHostName
+     * @serial FactoryServerHostName
      */
     private String FactoryServerHostName = null;
 
     /**
      * Factory Server port
-     * @serialField FactoryServerPortNumb
+     * @serial FactoryServerPortNumb
      */
     private int FactoryServerPortNumb;
     
     /**
      * Storage server host name
-     * @serialField FactoryServerHostName
+     * @serial FactoryServerHostName
      */
     private String StorageServerHostName = null;
 
     /**
      * Storage Server port
-     * @serialField FactoryServerPortNumb
+     * @serial FactoryServerPortNumb
      */
     private int StorageServerPortNumb;
     
@@ -104,8 +103,8 @@ public class OwnerBroker implements OwnerFactoryInterface, OwnerRepositoryInterf
         con.writeObject(outMessage);
         inMessage = (MessageRepository) con.readObject();
         if(inMessage.getType() != MessageRepository.ACK){
-            GenericIO.writelnString("Owner: - Error setting Owner State.");
-            GenericIO.writelnString(inMessage.toString());
+            System.out.println("Owner: - Error setting Owner State.");
+            System.out.println(inMessage.toString());
             System.exit(1);
         }
         con.close();
@@ -132,8 +131,8 @@ public class OwnerBroker implements OwnerFactoryInterface, OwnerRepositoryInterf
         con.writeObject(outMessage);
         inMessage = (MessageShop) con.readObject();
         if(inMessage.getType() != MessageRepository.ACK){
-            GenericIO.writelnString("Owner: - Error openning the door.");
-            GenericIO.writelnString(inMessage.toString());
+            System.out.println("Owner: - Error openning the door.");
+            System.out.println(inMessage.toString());
             System.exit(1);
         }
         con.close();
@@ -162,8 +161,8 @@ public class OwnerBroker implements OwnerFactoryInterface, OwnerRepositoryInterf
                     result = inMessage.isBool();
                 break;
             default:
-                GenericIO.writelnString("Owner: - Error verifying if he can collect products.");
-                GenericIO.writelnString(inMessage.toString());
+                System.out.println("Owner: - Error verifying if he can collect products.");
+                System.out.println(inMessage.toString());
                 System.exit(1);
                 break;
         }
@@ -194,8 +193,8 @@ public class OwnerBroker implements OwnerFactoryInterface, OwnerRepositoryInterf
                     result = inMessage.isBool();
                 break;
             default:
-                GenericIO.writelnString("Owner: - Error verifying if Factory needs prime materials.");
-                GenericIO.writelnString(inMessage.toString());
+                System.out.println("Owner: - Error verifying if Factory needs prime materials.");
+                System.out.println(inMessage.toString());
                 System.exit(1);
                 break;
         }
@@ -229,8 +228,8 @@ public class OwnerBroker implements OwnerFactoryInterface, OwnerRepositoryInterf
                     result = inMessage.getValue();
                 break;
             default:
-                GenericIO.writelnString("Owner: - Error seeing what the Owner should do.");
-                GenericIO.writelnString(inMessage.toString());
+                System.out.println("Owner: - Error seeing what the Owner should do.");
+                System.out.println(inMessage.toString());
                 System.exit(1);
                 break;
         }
@@ -257,8 +256,8 @@ public class OwnerBroker implements OwnerFactoryInterface, OwnerRepositoryInterf
         con.writeObject(outMessage);
         inMessage = (MessageShop) con.readObject();
         if(inMessage.getType() != MessageRepository.ACK){
-            GenericIO.writelnString("Owner: - Error closing the door.");
-            GenericIO.writelnString(inMessage.toString());
+            System.out.println("Owner: - Error closing the door.");
+            System.out.println(inMessage.toString());
             System.exit(1);
         }
         con.close();
@@ -287,8 +286,8 @@ public class OwnerBroker implements OwnerFactoryInterface, OwnerRepositoryInterf
                     result = inMessage.isBool();
                 break;
             default:
-                GenericIO.writelnString("Owner: - Error verifying if there is Customers in the Shop.");
-                GenericIO.writelnString(inMessage.toString());
+                System.out.println("Owner: - Error verifying if there is Customers in the Shop.");
+                System.out.println(inMessage.toString());
                 System.exit(1);
                 break;
         }
@@ -320,8 +319,8 @@ public class OwnerBroker implements OwnerFactoryInterface, OwnerRepositoryInterf
                     result = inMessage.getValue();
                 break;
             default:
-                GenericIO.writelnString("Owner: - Error addressing a Customer.");
-                GenericIO.writelnString(inMessage.toString());
+                System.out.println("Owner: - Error addressing a Customer.");
+                System.out.println(inMessage.toString());
                 System.exit(1);
                 break;
         }
@@ -354,8 +353,8 @@ public class OwnerBroker implements OwnerFactoryInterface, OwnerRepositoryInterf
                     result = inMessage.getValue();
                 break;
             default:
-                GenericIO.writelnString("Owner: - Error servicing a Customer.");
-                GenericIO.writelnString(inMessage.toString());
+                System.out.println("Owner: - Error servicing a Customer.");
+                System.out.println(inMessage.toString());
                 System.exit(1);
                 break;
         }
@@ -382,8 +381,8 @@ public class OwnerBroker implements OwnerFactoryInterface, OwnerRepositoryInterf
         con.writeObject(outMessage);
         inMessage = (MessageShop) con.readObject();
         if(inMessage.getType() != MessageRepository.ACK){
-            GenericIO.writelnString("Owner: - Error saying goodbye to a Customer.");
-            GenericIO.writelnString(inMessage.toString());
+            System.out.println("Owner: - Error saying goodbye to a Customer.");
+            System.out.println(inMessage.toString());
             System.exit(1);
         }
         con.close();
@@ -412,8 +411,8 @@ public class OwnerBroker implements OwnerFactoryInterface, OwnerRepositoryInterf
                     result = inMessage.isBool();
                 break;
             default:
-                GenericIO.writelnString("Owner: - Error verifying if Shop is open.");
-                GenericIO.writelnString(inMessage.toString());
+                System.out.println("Owner: - Error verifying if Shop is open.");
+                System.out.println(inMessage.toString());
                 System.exit(1);
                 break;
         }
@@ -438,8 +437,8 @@ public class OwnerBroker implements OwnerFactoryInterface, OwnerRepositoryInterf
         con.writeObject(outMessage);
         inMessage = (MessageShop) con.readObject();
         if(inMessage.getType() != MessageRepository.ACK){
-            GenericIO.writelnString("Owner: - Error going to Factory (Shop).");
-            GenericIO.writelnString(inMessage.toString());
+            System.out.println("Owner: - Error going to Factory (Shop).");
+            System.out.println(inMessage.toString());
             System.exit(1);
         }
         con.close();
@@ -463,8 +462,8 @@ public class OwnerBroker implements OwnerFactoryInterface, OwnerRepositoryInterf
         con.writeObject(outMessage);
         inMessage = (MessageShop) con.readObject();
         if(inMessage.getType() != MessageRepository.ACK){
-            GenericIO.writelnString("Owner: - Error adding products in display.");
-            GenericIO.writelnString(inMessage.toString());
+            System.out.println("Owner: - Error adding products in display.");
+            System.out.println(inMessage.toString());
             System.exit(1);
         }
         con.close();
@@ -487,8 +486,8 @@ public class OwnerBroker implements OwnerFactoryInterface, OwnerRepositoryInterf
         con.writeObject(outMessage);
         inMessage = (MessageShop) con.readObject();
         if(inMessage.getType() != MessageRepository.ACK){
-            GenericIO.writelnString("Owner: - Error replenish stock (Shop).");
-            GenericIO.writelnString(inMessage.toString());
+            System.out.println("Owner: - Error replenish stock (Shop).");
+            System.out.println(inMessage.toString());
             System.exit(1);
         }
         con.close();
@@ -519,8 +518,8 @@ public class OwnerBroker implements OwnerFactoryInterface, OwnerRepositoryInterf
                     result = inMessage.isBool();
                 break;
             default:
-                GenericIO.writelnString("Owner: - Error verifying if he can stop working.");
-                GenericIO.writelnString(inMessage.toString());
+                System.out.println("Owner: - Error verifying if he can stop working.");
+                System.out.println(inMessage.toString());
                 System.exit(1);
                 break;
         }
@@ -549,8 +548,8 @@ public class OwnerBroker implements OwnerFactoryInterface, OwnerRepositoryInterf
         con.writeObject(outMessage);
         inMessage = (MessageFactory) con.readObject();
         if(inMessage.getType() != MessageRepository.ACK){
-            GenericIO.writelnString("Owner: - Error replenish stock (Factory).");
-            GenericIO.writelnString(inMessage.toString());
+            System.out.println("Owner: - Error replenish stock (Factory).");
+            System.out.println(inMessage.toString());
             System.exit(1);
         }
         con.close();
@@ -584,8 +583,8 @@ public class OwnerBroker implements OwnerFactoryInterface, OwnerRepositoryInterf
                     result = inMessage.getValue();
                 break;
             default:
-                GenericIO.writelnString("Owner: - Error going to Factory (Factory).");
-                GenericIO.writelnString(inMessage.toString());
+                System.out.println("Owner: - Error going to Factory (Factory).");
+                System.out.println(inMessage.toString());
                 System.exit(1);
                 break;
         }
@@ -621,8 +620,8 @@ public class OwnerBroker implements OwnerFactoryInterface, OwnerRepositoryInterf
                     result = inMessage.isBool();
                 break;
             default:
-                GenericIO.writelnString("Owner: - Error verifying if the storage has prime materials.");
-                GenericIO.writelnString(inMessage.toString());
+                System.out.println("Owner: - Error verifying if the storage has prime materials.");
+                System.out.println(inMessage.toString());
                 System.exit(1);
                 break;
         }
@@ -657,8 +656,8 @@ public class OwnerBroker implements OwnerFactoryInterface, OwnerRepositoryInterf
                     result = inMessage.getValue();
                 break;
             default:
-                GenericIO.writelnString("Owner: - Error visiting suppliers.");
-                GenericIO.writelnString(inMessage.toString());
+                System.out.println("Owner: - Error visiting suppliers.");
+                System.out.println(inMessage.toString());
                 System.exit(1);
                 break;
         }

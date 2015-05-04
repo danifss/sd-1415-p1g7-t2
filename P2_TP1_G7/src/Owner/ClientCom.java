@@ -1,6 +1,5 @@
 package Owner;
 
-import genclass.GenericIO;
 import java.io.*;
 import java.net.*;
 
@@ -14,35 +13,35 @@ public class ClientCom {
     /**
      * Communication Socket
      *
-     * @serialField commSocket
+     * @serial commSocket
      */
     private Socket commSocket = null;
 
     /**
      * Name of the computacional system where is located the server.
      *
-     * @serialField serverHostName
+     * @serial serverHostName
      */
     private String serverHostName = null;
 
     /**
      * Number of listening port of the server.
      *
-     * @serialField serverPortNumb
+     * @serial serverPortNumb
      */
     private int serverPortNumb;
 
     /**
      * Entrance stream of communication channel
      *
-     * @serialField in
+     * @serial in
      */
     private ObjectInputStream in = null;
 
     /**
      * Exit stream of communication channel
      *
-     * @serialField out
+     * @serial out
      */
     private ObjectOutputStream out = null;
 
@@ -71,35 +70,35 @@ public class ClientCom {
             commSocket = new Socket();
             commSocket.connect(serverAddress);
         } catch (UnknownHostException e) {
-            GenericIO.writelnString(Thread.currentThread().getName()
+            System.out.println(Thread.currentThread().getName()
                     + " - o nome do sistema computacional onde reside o servidor é desconhecido: "
                     + serverHostName + "!");
             e.printStackTrace();
             System.exit(1);
         } catch (NoRouteToHostException e) {
-            GenericIO.writelnString(Thread.currentThread().getName()
+            System.out.println(Thread.currentThread().getName()
                     + " - o nome do sistema computacional onde reside o servidor é inatingível: "
                     + serverHostName + "!");
             e.printStackTrace();
             System.exit(1);
         } catch (ConnectException e) {
-            GenericIO.writelnString(Thread.currentThread().getName()
+            System.out.println(Thread.currentThread().getName()
                     + " - o servidor não responde em: " + serverHostName + "." + serverPortNumb + "!");
             if (e.getMessage().equals("Connection refused")) {
                 success = false;
             } else {
-                GenericIO.writelnString(e.getMessage() + "!");
+                System.out.println(e.getMessage() + "!");
                 e.printStackTrace();
                 System.exit(1);
             }
         } catch (SocketTimeoutException e) {
-            GenericIO.writelnString(Thread.currentThread().getName()
+            System.out.println(Thread.currentThread().getName()
                     + " - ocorreu um time out no estabelecimento da ligação a: "
                     + serverHostName + "." + serverPortNumb + "!");
             success = false;
         } catch (IOException e) // erro fatal --- outras causas
         {
-            GenericIO.writelnString(Thread.currentThread().getName()
+            System.out.println(Thread.currentThread().getName()
                     + " - ocorreu um erro indeterminado no estabelecimento da ligação a: "
                     + serverHostName + "." + serverPortNumb + "!");
             e.printStackTrace();
@@ -113,7 +112,7 @@ public class ClientCom {
         try {
             out = new ObjectOutputStream(commSocket.getOutputStream());
         } catch (IOException e) {
-            GenericIO.writelnString(Thread.currentThread().getName()
+            System.out.println(Thread.currentThread().getName()
                     + " - não foi possível abrir o canal de saída do socket!");
             e.printStackTrace();
             System.exit(1);
@@ -122,7 +121,7 @@ public class ClientCom {
         try {
             in = new ObjectInputStream(commSocket.getInputStream());
         } catch (IOException e) {
-            GenericIO.writelnString(Thread.currentThread().getName()
+            System.out.println(Thread.currentThread().getName()
                     + " - não foi possível abrir o canal de entrada do socket!");
             e.printStackTrace();
             System.exit(1);
@@ -138,7 +137,7 @@ public class ClientCom {
         try {
             in.close();
         } catch (IOException e) {
-            GenericIO.writelnString(Thread.currentThread().getName()
+            System.out.println(Thread.currentThread().getName()
                     + " - não foi possível fechar o canal de entrada do socket!");
             e.printStackTrace();
             System.exit(1);
@@ -147,7 +146,7 @@ public class ClientCom {
         try {
             out.close();
         } catch (IOException e) {
-            GenericIO.writelnString(Thread.currentThread().getName()
+            System.out.println(Thread.currentThread().getName()
                     + " - não foi possível fechar o canal de saída do socket!");
             e.printStackTrace();
             System.exit(1);
@@ -156,7 +155,7 @@ public class ClientCom {
         try {
             commSocket.close();
         } catch (IOException e) {
-            GenericIO.writelnString(Thread.currentThread().getName()
+            System.out.println(Thread.currentThread().getName()
                     + " - não foi possível fechar o socket de comunicação!");
             e.printStackTrace();
             System.exit(1);
@@ -174,17 +173,17 @@ public class ClientCom {
         try {
             fromServer = in.readObject();
         } catch (InvalidClassException e) {
-            GenericIO.writelnString(Thread.currentThread().getName()
+            System.out.println(Thread.currentThread().getName()
                     + " - o objecto lido não é passível de desserialização!");
             e.printStackTrace();
             System.exit(1);
         } catch (IOException e) {
-            GenericIO.writelnString(Thread.currentThread().getName()
+            System.out.println(Thread.currentThread().getName()
                     + " - erro na leitura de um objecto do canal de entrada do socket de comunicação!");
             e.printStackTrace();
             System.exit(1);
         } catch (ClassNotFoundException e) {
-            GenericIO.writelnString(Thread.currentThread().getName()
+            System.out.println(Thread.currentThread().getName()
                     + " - o objecto lido corresponde a um tipo de dados desconhecido!");
             e.printStackTrace();
             System.exit(1);
@@ -202,17 +201,17 @@ public class ClientCom {
         try {
             out.writeObject(toServer);
         } catch (InvalidClassException e) {
-            GenericIO.writelnString(Thread.currentThread().getName()
+            System.out.println(Thread.currentThread().getName()
                     + " - o objecto a ser escrito não é passível de serialização!");
             e.printStackTrace();
             System.exit(1);
         } catch (NotSerializableException e) {
-            GenericIO.writelnString(Thread.currentThread().getName()
+            System.out.println(Thread.currentThread().getName()
                     + " - o objecto a ser escrito pertence a um tipo de dados não serializável!");
             e.printStackTrace();
             System.exit(1);
         } catch (IOException e) {
-            GenericIO.writelnString(Thread.currentThread().getName()
+            System.out.println(Thread.currentThread().getName()
                     + " - erro na escrita de um objecto do canal de saída do socket de comunicação!");
             e.printStackTrace();
             System.exit(1);

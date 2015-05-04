@@ -1,6 +1,5 @@
 package Owner;
 
-
 /**
  * This class is responsible to host the Owner
  *
@@ -31,43 +30,43 @@ public class Owner extends Thread implements OwnerInterface {
     
     /**
      * General Repository
-     * @serialField sharedInfo
+     * @serial sharedInfo
      */
     private OwnerRepositoryInterface sharedInfo;
 
     /**
      * Factory
-     * @serialField factory
+     * @serial factory
      */
     private OwnerFactoryInterface factory;
 
     /**
      * Shop
-     * @serialField shop
+     * @serial shop
      */
     private OwnerShopInterface shop;
     
     /**
      * Storage
-     * @serialField storage
+     * @serial storage
      */
     private OwnerStorageInterface storage;
     
     /**
      * Present State of the Owner
-     * @serialField ownerState
+     * @serial ownerState
      */
     private int ownerState;
     
     /**
      * Number of prime materials that the owner has
-     * @serialField nPrimeMaterials
+     * @serial nPrimeMaterials
      */
     private int nPrimeMaterials;
     
     /**
      * Id of the customer that the owner is attending
-     * @serialField attendingCustomerId
+     * @serial attendingCustomerId
      */
     private int attendingCustomerId;
 
