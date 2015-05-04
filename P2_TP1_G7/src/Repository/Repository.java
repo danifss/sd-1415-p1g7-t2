@@ -172,7 +172,7 @@ public class Repository implements RepositoryInterface {
         try {
             PrintWriter log = new PrintWriter(fName);
 
-            log.write("        Aveiro Handicraft SARL - Description of the internal state\n");
+            log.println("        Aveiro Handicraft SARL - Description of the internal state\n");
         
             String line1 = "ENTREPRE ";
             String line2 = "  Stat   ";
@@ -188,8 +188,8 @@ public class Repository implements RepositoryInterface {
             }
             line1 += "            SHOP                  WORKSHOP";
             line2 += "    Stat NCI NPI PCR PMR    APMI NPI NSPM TAPM TNP";
-            log.write(line1);
-            log.write(line2);
+            log.println(line1);
+            log.println(line2);
 
             log.close();
             
@@ -322,7 +322,7 @@ public class Repository implements RepositoryInterface {
             lineStatus += String.format("%3d", nProductsManufactured);
 
 
-            log.write(lineStatus);
+            log.println(lineStatus);
             log.close();
             
         } catch(IOException e) {
