@@ -3,7 +3,6 @@ package Craftman;
 import comInf.MessageShop;
 import comInf.MessageRepository;
 import comInf.MessageFactory;
-import genclass.GenericIO;
 
 /**
  * @author Daniel 51908
@@ -14,37 +13,37 @@ public class CraftmanBroker implements CraftmanRepositoryInterface, CraftmanShop
     
     /**
      * Repository server host name
-     * @serialField RPserverHostName
+     * @serial RPserverHostName
      */
     private String RPserverHostName = null;
 
     /**
      * Repository Server port
-     * @serialField RPserverPortNumb
+     * @serial RPserverPortNumb
      */
     private int RPserverPortNumb;
     
     /**
      * Shop server host name
-     * @serialField ShopServerHostName
+     * @serial ShopServerHostName
      */
     private String ShopServerHostName = null;
 
     /**
      * Shop Server port
-     * @serialField ShopServerPortNumb
+     * @serial ShopServerPortNumb
      */
     private int ShopServerPortNumb;
     
     /**
      * Factory server host name
-     * @serialField FactoryServerHostName
+     * @serial FactoryServerHostName
      */
     private String FactoryServerHostName = null;
 
     /**
      * Factory Server port
-     * @serialField FactoryServerPortNumb
+     * @serial FactoryServerPortNumb
      */
     private int FactoryServerPortNumb;
     
@@ -90,8 +89,8 @@ public class CraftmanBroker implements CraftmanRepositoryInterface, CraftmanShop
         con.writeObject(outMessage);
         inMessage = (MessageRepository) con.readObject();
         if(inMessage.getType() != MessageRepository.ACK){
-            GenericIO.writelnString("Craftman: "+craftmanId+" - Error setting Craftman State.");
-            GenericIO.writelnString(inMessage.toString());
+            System.out.println("Craftman: "+craftmanId+" - Error setting Craftman State.");
+            System.out.println(inMessage.toString());
             System.exit(1);
         }
         con.close();
@@ -116,8 +115,8 @@ public class CraftmanBroker implements CraftmanRepositoryInterface, CraftmanShop
         con.writeObject(outMessage);
         inMessage = (MessageRepository) con.readObject();
         if(inMessage.getType() != MessageRepository.ACK){
-            GenericIO.writelnString("Craftman: "+craftmanId+" - Error setting total goods crafted by him.");
-            GenericIO.writelnString(inMessage.toString());
+            System.out.println("Craftman: "+craftmanId+" - Error setting total goods crafted by him.");
+            System.out.println(inMessage.toString());
             System.exit(1);
         }
         con.close();
@@ -143,8 +142,8 @@ public class CraftmanBroker implements CraftmanRepositoryInterface, CraftmanShop
         con.writeObject(outMessage);
         inMessage = (MessageShop) con.readObject();
         if(inMessage.getType() != MessageShop.ACK){
-            GenericIO.writelnString("Craftman: "+craftmanId+" - Error setting prime materials needed.");
-            GenericIO.writelnString(inMessage.toString());
+            System.out.println("Craftman: "+craftmanId+" - Error setting prime materials needed.");
+            System.out.println(inMessage.toString());
             System.exit(1);
         }
         con.close();
@@ -168,8 +167,8 @@ public class CraftmanBroker implements CraftmanRepositoryInterface, CraftmanShop
         con.writeObject(outMessage);
         inMessage = (MessageShop) con.readObject();
         if(inMessage.getType() != MessageShop.ACK){
-            GenericIO.writelnString("Craftman: "+craftmanId+" - Error notifying batch is ready for transfer.");
-            GenericIO.writelnString(inMessage.toString());
+            System.out.println("Craftman: "+craftmanId+" - Error notifying batch is ready for transfer.");
+            System.out.println(inMessage.toString());
             System.exit(1);
         }
         con.close();
@@ -195,8 +194,8 @@ public class CraftmanBroker implements CraftmanRepositoryInterface, CraftmanShop
         con.writeObject(outMessage);
         inMessage = (MessageFactory) con.readObject();
         if(inMessage.getType() != MessageFactory.ACK){
-            GenericIO.writelnString("Craftman: "+craftmanId+" - Error notifying owner to collect products.");
-            GenericIO.writelnString(inMessage.toString());
+            System.out.println("Craftman: "+craftmanId+" - Error notifying owner to collect products.");
+            System.out.println(inMessage.toString());
             System.exit(1);
         }
         con.close();
@@ -226,8 +225,8 @@ public class CraftmanBroker implements CraftmanRepositoryInterface, CraftmanShop
                 result = inMessage.isBool();
                 break;
             default:
-                GenericIO.writelnString("Craftman: "+craftmanId+" - Error verifying if he needs to contact the owner.");
-                GenericIO.writelnString(inMessage.toString());
+                System.out.println("Craftman: "+craftmanId+" - Error verifying if he needs to contact the owner.");
+                System.out.println(inMessage.toString());
                 System.exit(1);
                 break;
         }
@@ -259,8 +258,8 @@ public class CraftmanBroker implements CraftmanRepositoryInterface, CraftmanShop
                 result = inMessage.isBool();
                 break;
             default:
-                GenericIO.writelnString("Craftman: "+craftmanId+" - Error checking for prime materials on Factory.");
-                GenericIO.writelnString(inMessage.toString());
+                System.out.println("Craftman: "+craftmanId+" - Error checking for prime materials on Factory.");
+                System.out.println(inMessage.toString());
                 System.exit(1);
                 break;
         }
@@ -292,8 +291,8 @@ public class CraftmanBroker implements CraftmanRepositoryInterface, CraftmanShop
                 result = inMessage.isBool();
                 break;
             default:
-                GenericIO.writelnString("Craftman: "+craftmanId+" - Error checking if needs to contact owner to bring prime materials from Factory.");
-                GenericIO.writelnString(inMessage.toString());
+                System.out.println("Craftman: "+craftmanId+" - Error checking if needs to contact owner to bring prime materials from Factory.");
+                System.out.println(inMessage.toString());
                 System.exit(1);
                 break;
         }
@@ -325,8 +324,8 @@ public class CraftmanBroker implements CraftmanRepositoryInterface, CraftmanShop
                 result = inMessage.getValue();
                 break;
             default:
-                GenericIO.writelnString("Craftman: "+craftmanId+" - Error checking if needs to contact owner to bring prime materials from Factory.");
-                GenericIO.writelnString(inMessage.toString());
+                System.out.println("Craftman: "+craftmanId+" - Error checking if needs to contact owner to bring prime materials from Factory.");
+                System.out.println(inMessage.toString());
                 System.exit(1);
                 break;
         }
@@ -358,8 +357,8 @@ public class CraftmanBroker implements CraftmanRepositoryInterface, CraftmanShop
                 result = inMessage.isBool();
                 break;
             default:
-                GenericIO.writelnString("Craftman: "+craftmanId+" - Error checking if needs to contact owner to bring prime materials from Factory.");
-                GenericIO.writelnString(inMessage.toString());
+                System.out.println("Craftman: "+craftmanId+" - Error checking if needs to contact owner to bring prime materials from Factory.");
+                System.out.println(inMessage.toString());
                 System.exit(1);
                 break;
         }
@@ -391,8 +390,8 @@ public class CraftmanBroker implements CraftmanRepositoryInterface, CraftmanShop
                 result = inMessage.isBool();
                 break;
             default:
-                GenericIO.writelnString("Craftman: "+craftmanId+" - Error checking if someone already contacted the owner to restock on Factory.");
-                GenericIO.writelnString(inMessage.toString());
+                System.out.println("Craftman: "+craftmanId+" - Error checking if someone already contacted the owner to restock on Factory.");
+                System.out.println(inMessage.toString());
                 System.exit(1);
                 break;
         }
@@ -424,8 +423,8 @@ public class CraftmanBroker implements CraftmanRepositoryInterface, CraftmanShop
                 result = inMessage.getValue();
                 break;
             default:
-                GenericIO.writelnString("Craftman: "+craftmanId+" - Error checking how many prime materials need to make a product on Factory.");
-                GenericIO.writelnString(inMessage.toString());
+                System.out.println("Craftman: "+craftmanId+" - Error checking how many prime materials need to make a product on Factory.");
+                System.out.println(inMessage.toString());
                 System.exit(1);
                 break;
         }
@@ -458,8 +457,8 @@ public class CraftmanBroker implements CraftmanRepositoryInterface, CraftmanShop
                 result = inMessage.getValue();
                 break;
             default:
-                GenericIO.writelnString("Craftman: "+craftmanId+" - Error storing made products into Factory.");
-                GenericIO.writelnString(inMessage.toString());
+                System.out.println("Craftman: "+craftmanId+" - Error storing made products into Factory.");
+                System.out.println(inMessage.toString());
                 System.exit(1);
                 break;
         }
@@ -491,8 +490,8 @@ public class CraftmanBroker implements CraftmanRepositoryInterface, CraftmanShop
                 result = inMessage.isBool();
                 break;
             default:
-                GenericIO.writelnString("Craftman: "+craftmanId+" - Error checking if flag of prime materials needed is true or not in Factory.");
-                GenericIO.writelnString(inMessage.toString());
+                System.out.println("Craftman: "+craftmanId+" - Error checking if flag of prime materials needed is true or not in Factory.");
+                System.out.println(inMessage.toString());
                 System.exit(1);
                 break;
         }

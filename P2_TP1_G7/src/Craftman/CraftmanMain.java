@@ -1,6 +1,5 @@
 package Craftman;
 
-import genclass.GenericIO;
 import MainServer.ServerInfo;
 import comInf.MessageConfig;
 
@@ -53,8 +52,8 @@ public class CraftmanMain {
                 result = inMessage.getValue();
                 break;
             default:
-                GenericIO.writelnString("Repository: Error contacting Main Server..");
-                GenericIO.writelnString(inMessage.toString());
+                System.out.println("Repository: Error contacting Main Server..");
+                System.out.println(inMessage.toString());
                 System.exit(1);
                 break;
         }
@@ -81,8 +80,8 @@ public class CraftmanMain {
                 result = inMessage.getStr();
                 break;
             default:
-                GenericIO.writelnString("Repository: Error contacting Main Server..");
-                GenericIO.writelnString(inMessage.toString());
+                System.out.println("Repository: Error contacting Main Server..");
+                System.out.println(inMessage.toString());
                 System.exit(1);
                 break;
         }
