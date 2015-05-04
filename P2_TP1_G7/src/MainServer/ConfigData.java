@@ -298,7 +298,7 @@ public class ConfigData implements ConfigDataInterface {
 
     /**
      * Get Repository Host Name
-     * @return getRepositoryHostName repositoryHostName
+     * @return getRepositoryHostName host name
      */
     public String getRepositoryHostName(){
         return repositoryHostName;
@@ -328,50 +328,98 @@ public class ConfigData implements ConfigDataInterface {
         this.repositoryPortNum = repositoryPortNum;
     }
 
+    /**
+     * getShopHostName
+     * @return shopHostName host name
+     */
     public String getShopHostName(){
         return shopHostName;
     }
 
+    /**
+     * setShopHostName
+     * @param shopHostName host name
+     */
     public void setShopHostName(String shopHostName){
         this.shopHostName = shopHostName;
     }
 
+    /**
+     * getShopPortNum
+     * @return shopPortNum port number
+     */
     public int getShopPortNum(){
         return shopPortNum;
     }
 
+    /**
+     * setShopPortNum
+     * @param shopPortNum port number
+     */
     public void setShopPortNum(int shopPortNum){
         this.shopPortNum = shopPortNum;
     }
 
+    /**
+     * getStorageHostName
+     * @return storageHostName host name
+     */
     public String getStorageHostName(){
         return storageHostName;
     }
 
+    /**
+     * setStorageHostName
+     * @param storageHostName host name
+     */
     public void setStorageHostName(String storageHostName){
         this.storageHostName = storageHostName;
     }
 
+    /**
+     * getStoragePortNum
+     * @return storagePortNum port number
+     */
     public int getStoragePortNum(){
         return storagePortNum;
     }
 
+    /**
+     * setStoragePortNum
+     * @param storagePortNum port number
+     */
     public void setStoragePortNum(int storagePortNum){
         this.storagePortNum = storagePortNum;
     }
 
+    /**
+     * getFactoryHostName
+     * @return factoryHostName host name
+     */
     public String getFactoryHostName(){
         return factoryHostName;
     }
 
+    /**
+     * setFactoryHostName
+     * @param factoryHostName host name
+     */
     public void setFactoryHostName(String factoryHostName){
         this.factoryHostName = factoryHostName;
     }
 
+    /**
+     * getFactoryPortNum
+     * @return factoryPortNum port number
+     */
     public int getFactoryPortNum(){
         return factoryPortNum;
     }
 
+    /**
+     * setFactoryPortNum
+     * @param factoryPortNum port number
+     */
     public void setFactoryPortNum(int factoryPortNum){
         this.factoryPortNum = factoryPortNum;
     }

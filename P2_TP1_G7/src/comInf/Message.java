@@ -20,14 +20,14 @@ public abstract class Message implements Serializable {
     /**
      * Operation with error. (Server response)
      *
-     * @serialField ERROR
+     * @serialField ERROR Error
      */
     public static final int ERROR = -1;
     
     /**
      * Operation completed with success. (Server response)
      *
-     * @serialField ACK
+     * @serialField ACK Acknowledge
      */
     public static final int ACK = 0;
 
