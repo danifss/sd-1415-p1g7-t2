@@ -1,6 +1,5 @@
 package Repository;
 
-import genclass.GenericIO;
 import MainServer.ServerInfo;
 import comInf.MessageConfig;
 import java.net.Inet4Address;
@@ -16,7 +15,7 @@ public class RepositoryServer {
     /**
      * Server Repository port number.
      *
-     * @serialField portNumb
+     * @serial portNumb
      */
     private static final int portNumb = 22170;
     
@@ -41,9 +40,9 @@ public class RepositoryServer {
         scon.start();                                           // com o endereco publico
         repository = new Repository(nCraftmans, nCustomers, fName, nPrimeMaterialsInFactory); // activacao do servico
         repositoryInterface = new RepositoryBroker(repository, nCustomers, nCraftmans);       // activacao do interface com o servico
-        GenericIO.writelnString("Repository");
-        GenericIO.writelnString("O serviço foi estabelecido!");
-        GenericIO.writelnString("O servidor esta em escuta.");
+        System.out.println("Repository");
+        System.out.println("O serviço foi estabelecido!");
+        System.out.println("O servidor esta em escuta.");
 
         /* processamento de pedidos */
         while (true){
@@ -72,8 +71,8 @@ public class RepositoryServer {
                 result = inMessage.getValue();
                 break;
             default:
-                GenericIO.writelnString("Repository: Error contacting Main Server..");
-                GenericIO.writelnString(inMessage.toString());
+                System.out.println("Repository: Error contacting Main Server..");
+                System.out.println(inMessage.toString());
                 System.exit(1);
                 break;
         }
@@ -100,8 +99,8 @@ public class RepositoryServer {
                 result = inMessage.getStr();
                 break;
             default:
-                GenericIO.writelnString("Repository: Error contacting Main Server..");
-                GenericIO.writelnString(inMessage.toString());
+                System.out.println("Repository: Error contacting Main Server..");
+                System.out.println(inMessage.toString());
                 System.exit(1);
                 break;
         }
@@ -124,8 +123,8 @@ public class RepositoryServer {
         con.writeObject(outMessage);
         inMessage = (MessageConfig) con.readObject();
         if(inMessage.getType() != MessageConfig.ACK){
-            GenericIO.writelnString("Repository: Error contacting Main Server..");
-            GenericIO.writelnString(inMessage.toString());
+            System.out.println("Repository: Error contacting Main Server..");
+            System.out.println(inMessage.toString());
             System.exit(1);
         }
         con.close();
@@ -145,8 +144,8 @@ public class RepositoryServer {
         con.writeObject(outMessage);
         inMessage = (MessageConfig) con.readObject();
         if(inMessage.getType() != MessageConfig.ACK){
-            GenericIO.writelnString("Repository: Error contacting Main Server..");
-            GenericIO.writelnString(inMessage.toString());
+            System.out.println("Repository: Error contacting Main Server..");
+            System.out.println(inMessage.toString());
             System.exit(1);
         }
         con.close();
