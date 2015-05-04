@@ -10,69 +10,69 @@ public class MessageShop extends Message {
     /**
      * Serialization key.
      * 
-     * @serialField serialVersionUID
+     * @serial serialVersionUID
      */
     private static final long serialVersionUID = 220415L;
     
     //*************** CUSTOMERS MESSAGE TYPES
     /**
      * Message type: Customer check if door is open.
-     * @serialField CHKDOOROPEN
+     * @serial CHKDOOROPEN
      */
     public static final int CHKDOOROPEN = 1;
     
     /**
      * Message type: Answer to Customer that door is open.
-     * @serialField DOOROPEN
+     * @serial DOOROPEN
      */
     public static final int DOOROPEN = 2;
     
     /**
      * Message type: Answer to Customer that door is closed.
-     * @serialField DOORCLOSED
+     * @serial DOORCLOSED
      */
     public static final int DOORCLOSED = 3;
     
     /**
      * Message type: Customer enter in the Shop.
-     * @serialField ENTERSHOP
+     * @serial ENTERSHOP
      */
     public static final int ENTERSHOP = 4;
     
     /**
      * Message type: Customer perusingAround in Shop.
-     * @serialField PERUSINGAROUND
+     * @serial PERUSINGAROUND
      */
     public static final int PERUSINGAROUND = 5;
     
     /**
      * Message type: Customer goes to queue to buy the products.
-     * @serialField IWANTTHIS
+     * @serial IWANTTHIS
      */
     public static final int IWANTTHIS = 6;
     
     /**
      * Message type: Customer leaves the shop.
-     * @serialField EXITSHOP
+     * @serial EXITSHOP
      */
     public static final int EXITSHOP = 7;
     
     /**
      * Message type: Customer will check if can die.
-     * @serialField ENDOPER
+     * @serial ENDOPER
      */
     public static final int ENDOPER = 8;
     
     //*************** CRAFTMANS MESSAGE TYPES
     /**
      * Message type: Craftman indicates that prime materials are needed.
-     * @serialField PRIMEMATERIALSNEEDED
+     * @serial PRIMEMATERIALSNEEDED
      */
     public static final int PRIMEMATERIALSNEEDED = 9;
     
     /**
      * Message type: Craftman indicates that the Owner can go to factory to collect products.
-     * @serialField READYFORTRANSFER
+     * @serial READYFORTRANSFER
      */
     public static final int READYFORTRANSFER = 10;
     
@@ -80,85 +80,85 @@ public class MessageShop extends Message {
     //*************** OWNER MESSAGE TYPES
     /**
      * Message type: Owner opens the shop.
-     * @serialField OPENTHESHOP
+     * @serial OPENTHESHOP
      */
     public static final int OPENTHESHOP = 30;
     
     /**
      * Message type: Owner checks if the Factory needs prime materials.
-     * @serialField ISSUPPLYMATERIALSTOFACT
+     * @serial ISSUPPLYMATERIALSTOFACT
      */
     public static final int ISSUPPLYMATERIALSTOFACT = 31;
     
     /**
      * Message type: Owner checks if the he can collect products in the Factory.
-     * @serialField ISTRANFSPRODSTOSHOP
+     * @serial ISTRANFSPRODSTOSHOP
      */
     public static final int ISTRANFSPRODSTOSHOP = 32;
     
     /**
      * Message type: Owner sees the situation of the shop and decide what to do.
-     * @serialField APPRAISESIT
+     * @serial APPRAISESIT
      */
     public static final int APPRAISESIT = 33;
     
     /**
      * Message type: Owner closes the door.
-     * @serialField CLOSETHEDOOR
+     * @serial CLOSETHEDOOR
      */
     public static final int CLOSETHEDOOR = 34;
     
     /**
      * Message type: Owner sees if there is customers inside the shop.
-     * @serialField CUSTOMERSINTHESHOP
+     * @serial CUSTOMERSINTHESHOP
      */
     public static final int CUSTOMERSINTHESHOP = 35;
     
     /**
      * Message type: Owner address a Customer on the queue.
-     * @serialField ADDRESSACUSTOMER
+     * @serial ADDRESSACUSTOMER
      */
     public static final int ADDRESSACUSTOMER = 36;
     
     /**
      * Message type: Owner services a customer.
-     * @serialField SERVICECUSTOMER
+     * @serial SERVICECUSTOMER
      */
     public static final int SERVICECUSTOMER = 37;
     
     /**
      * Message type: Owner says goodbye to the Customer he is attending.
-     * @serialField SAYGOODBYETOCUST
+     * @serial SAYGOODBYETOCUST
      */
     public static final int SAYGOODBYETOCUST = 38;
     
     /**
      * Message type: Owner sees if the shop is on state STILL_OPEN.
-     * @serialField ISSHOPSTILLOPEN
+     * @serial ISSHOPSTILLOPEN
      */
     public static final int ISSHOPSTILLOPEN = 39;
     
     /**
      * Message type: Owner goes to the Factory to collect products.
-     * @serialField GOTOWORKSHOP
+     * @serial GOTOWORKSHOP
      */
     public static final int GOTOWORKSHOP = 40;
     
     /**
      * Message type: Owner updates the number of products that the shop is selling.
-     * @serialField ADDNGOODSINDISPLAY
+     * @serial ADDNGOODSINDISPLAY
      */
     public static final int ADDNGOODSINDISPLAY = 41;
     
     /**
      * Message type: Owner goes to Factory to restock prime materials.
-     * @serialField REPLENISHSTOCK
+     * @serial REPLENISHSTOCK
      */
     public static final int REPLENISHSTOCK = 42;
     
     /**
      * Message type: Verifies if the Owner can stop working.
-     * @serialField ENDOPEROWNER
+     * @serial ENDOPEROWNER
      */
     public static final int ENDOPEROWNER = 43;
     
@@ -166,19 +166,19 @@ public class MessageShop extends Message {
     //*************** Internal variables
     /**
      * Variable to save a integer value.
-     * @serialField value
+     * @serial value
      */
     private int value = 0;
     
     /**
      * Variable to save a boolean value.
-     * @serialField bool
+     * @serial bool
      */
     private boolean bool = false;
     
     /**
      * Variable to see if Customer can die or not.
-     * @serialField endOper
+     * @serial endOper
      */
     private boolean endOper = false;
     

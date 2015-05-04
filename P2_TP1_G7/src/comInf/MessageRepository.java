@@ -10,75 +10,115 @@ public class MessageRepository extends Message {
     /**
      * Serialization key
      * 
-     * @serialField serialVersionUID
+     * @serial serialVersionUID
      */
     private static final long serialVersionUID = 220415L;
     
     //*************** OWNER MESSAGE TYPES
     /**
-     * Owner messages.
-     * @serialField SETOWNERSTATE Set Owner Present State
+     * Owner messages: Set Owner Present State
+     * @serial SETOWNERSTATE 
      */
     public static final int SETOWNERSTATE = 1;
     
     //*************** CUSTOMERS MESSAGE TYPES
     /**
-     * Customer messages.
-     * @serialField SETCUSTOMERSTATE Set Customer State in Repository
-     * @serialField SETGOODSBYCUST Set number of goods by Customer
+     * Customer messages: Set Customer State in Repository
+     * @serial SETCUSTOMERSTATE 
      */
     public static final int SETCUSTOMERSTATE = 2;
+    
+    /**
+     * Customer messages: Set number of goods by Customer
+     * @serial SETGOODSBYCUST Set number of goods by Customer
+     */
     public static final int SETGOODSBYCUST = 3;
     
     //*************** CRAFTMANS MESSAGE TYPES
     /**
-     * Craftman messages. 
-     * @serialField SETCRAFTMANSTATE Set Craftman Present State
-     * @serialField SETGOODSCRAFTEDBYCRAFTMAN Set total number of products crafted by Craftman
+     * Craftman messages: Set Craftman Present State
+     * @serial SETCRAFTMANSTATE 
      */
     public static final int SETCRAFTMANSTATE = 4;
+    
+    /**
+     * Craftman messages: Set total number of products crafted by Craftman
+     * @serial SETGOODSCRAFTEDBYCRAFTMAN 
+     */
     public static final int SETGOODSCRAFTEDBYCRAFTMAN = 5;
     
     //*************** SHOP MESSAGE TYPES
     /**
-     * Shop messages. 
-     * @serialField SETSHOPSTATE Set Shop State
-     * @serialField SETCUSTINSHOP Set number of Customers inside the Shop
-     * @serialField SETGOODSINDISP Set number of goods in display
-     * @serialField SETTRANSPRODTOSHOP Set if the craftsman requested the transfer of finished products to the Shop
-     * @serialField SETSUPPLYMATTOFACT Set if the craftsman requested the supply of prime materials to the Factory
+     * Shop messages: Set Shop State
+     * @serial SETSHOPSTATE 
      */
     public static final int SETSHOPSTATE = 6;
+    
+    /**
+     * Shop messages: Set number of Customers inside the Shop
+     * @serial SETCUSTINSHOP 
+     */
     public static final int SETCUSTINSHOP = 7;
+    
+    /**
+     * Shop messages: Set number of goods in display
+     * @serial SETGOODSINDISP 
+     */
     public static final int SETGOODSINDISP = 8;
+    
+    /**
+     * Shop messages: Set if the craftsman requested the transfer of finished products to the Shop
+     * @serial SETTRANSPRODTOSHOP 
+     */
     public static final int SETTRANSPRODTOSHOP = 9;
+    
+    /**
+     * Shop messages: Set if the craftsman requested the supply of prime materials to the Factory
+     * @serial SETSUPPLYMATTOFACT 
+     */
     public static final int SETSUPPLYMATTOFACT = 10;
     
     //*************** FACTORY MESSAGE TYPES
     /**
-     * Shop messages. 
-     * @serialField SETPRIMEMATERIALSINFACT Change the amount of prime materials presently in the Factory
-     * @serialField SETFINISHEDPRODUCTSINFACT Change the number of finished products presently in the Factory
-     * @serialField SETSUPPLIEDTIMES Change the number of times that a supply of prime materials was delivered to the Factory
-     * @serialField SETPRIMEMATSUPPLIED Change the total amount of prime materials that have already been supplied (accumulation)
-     * @serialField SETSUPPLYMATTOFACT Change the total number of products that have already been manufactured (accumulation)
+     * Shop messages: Change the amount of prime materials presently in the Factory
+     * @serial SETPRIMEMATERIALSINFACT  
      */
     public static final int SETPRIMEMATERIALSINFACT = 11;
+    
+    /**
+     * Shop messages: Change the number of finished products presently in the Factory
+     * @serial SETFINISHEDPRODUCTSINFACT 
+     */
     public static final int SETFINISHEDPRODUCTSINFACT = 12;
+    
+    /**
+     * Shop messages: Change the number of times that a supply of prime materials was delivered to the Factory
+     * @serial SETSUPPLIEDTIMES 
+     */
     public static final int SETSUPPLIEDTIMES = 13;
+    
+    /**
+     * Shop messages: Change the total amount of prime materials that have already been supplied (accumulation)
+     * @serial SETPRIMEMATSUPPLIED 
+     */
     public static final int SETPRIMEMATSUPPLIED = 14;
+    
+    /**
+     * Shop messages: Change the total number of products that have already been manufactured (accumulation)
+     * @serial SETSUPPLYMATTOFACT
+     */
     public static final int SETPRODSMANUFACTURED = 15;
     
     //*************** Internal variables
     /**
      * Value of something in integer.
-     * @serialField value
+     * @serial value
      */
     private int value = -1;
     
     /**
      * Variable to save a boolean value.
-     * @serialField bool
+     * @serial bool
      */
     private boolean bool = false;
     

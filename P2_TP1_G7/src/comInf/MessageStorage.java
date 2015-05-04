@@ -10,20 +10,20 @@ public class MessageStorage extends Message {
     /**
      * Serialization key
      * 
-     * @serialField serialVersionUID
+     * @serial serialVersionUID
      */
     private static final long serialVersionUID = 220415L;
     
     //*************** OWNER MESSAGE TYPES
     /**
      * Message type: Owner sees if the Storage has prime materials.
-     * @serialField PRIMEMATERIALSAVAILABLE
+     * @serial PRIMEMATERIALSAVAILABLE
      */
     public static final int PRIMEMATERIALSAVAILABLE = 1;
     
     /**
      * Message type: Owner collects some prime materials.
-     * @serialField VISITSUPPLIERS
+     * @serial VISITSUPPLIERS
      */
     public static final int VISITSUPPLIERS = 2;
     
@@ -31,8 +31,8 @@ public class MessageStorage extends Message {
     //*************** OTHER MESSAGE TYPES
     /**
      * Message type: Other messages types to get info from Storage.
-     * @serialField GETNPRIMEMATERIALSDELIVERED
-     * @serialField GETMAXPRIMEMATERIALSTODELIVER
+     * @serial GETNPRIMEMATERIALSDELIVERED
+     * @serial GETMAXPRIMEMATERIALSTODELIVER
      */
     public static final int GETNPRIMEMATERIALSDELIVERED = 3;
     public static final int GETMAXPRIMEMATERIALSTODELIVER = 4;
@@ -41,13 +41,13 @@ public class MessageStorage extends Message {
     //*************** Internal Variables
     /**
      * Variable to save a integer value.
-     * @serialField value
+     * @serial value
      */
     private int value = -1;
     
     /**
      * Generic boolean variable
-     * @serialField bool
+     * @serial bool
      */
     private boolean bool = false;
     
