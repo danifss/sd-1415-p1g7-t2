@@ -181,7 +181,7 @@ public class ConfigData implements ConfigDataInterface {
 
     /**
      * Set num Prime Materials In Factory.
-     * @param nPrimeMaterialsInFactory 
+     * @param nPrimeMaterialsInFactory prime materials
      */
     @Override
     public void setnPrimeMaterialsInFactory(int nPrimeMaterialsInFactory){
@@ -190,7 +190,7 @@ public class ConfigData implements ConfigDataInterface {
 
     /**
      * Get num Initial Products In Shop.
-     * @return nInitialProductsInShop
+     * @return nInitialProductsInShop products in Shop
      */
     @Override
     public int getnInitialProductsInShop(){
@@ -199,7 +199,7 @@ public class ConfigData implements ConfigDataInterface {
 
     /**
      * Set num Initial Products In Shop.
-     * @param nInitialProductsInShop 
+     * @param nInitialProductsInShop products in Shop
      */
     @Override
     public void setnInitialProductsInShop(int nInitialProductsInShop){
@@ -208,7 +208,7 @@ public class ConfigData implements ConfigDataInterface {
 
     /**
      * Get num Initial Prime Materials In Storage.
-     * @return nInitialPrimeMaterialsInStorage
+     * @return nInitialPrimeMaterialsInStorage prime materials in Storage
      */
     @Override
     public int getnInitialPrimeMaterialsInStorage(){
@@ -217,7 +217,7 @@ public class ConfigData implements ConfigDataInterface {
 
     /**
      * Set num Initial Prime Materials In Storage.
-     * @param nInitialPrimeMaterialsInStorage 
+     * @param nInitialPrimeMaterialsInStorage prime materials in Storage
      */
     @Override
     public void setnInitialPrimeMaterialsInStorage(int nInitialPrimeMaterialsInStorage){
@@ -226,7 +226,7 @@ public class ConfigData implements ConfigDataInterface {
 
     /**
      * Get num Prime Materials By Product.
-     * @return nPrimeMaterialsByProduct
+     * @return nPrimeMaterialsByProduct prime materials by product
      */
     @Override
     public int getnPrimeMaterialsByProduct(){
@@ -235,7 +235,7 @@ public class ConfigData implements ConfigDataInterface {
 
     /**
      * Set num Prime Materials By Product.
-     * @param nPrimeMaterialsByProduct 
+     * @param nPrimeMaterialsByProduct prime materials by product
      */
     @Override
     public void setnPrimeMaterialsByProduct(int nPrimeMaterialsByProduct){
@@ -244,7 +244,7 @@ public class ConfigData implements ConfigDataInterface {
 
     /**
      * Get num Max Products Collect.
-     * @return nMaxProductsCollect
+     * @return nMaxProductsCollect Max Products Collect
      */
     @Override
     public int getnMaxProductsCollect(){
@@ -253,7 +253,7 @@ public class ConfigData implements ConfigDataInterface {
 
     /**
      * Set num Max Products Collect.
-     * @param nMaxProductsCollect 
+     * @param nMaxProductsCollect Max Products Collect
      */
     @Override
     public void setnMaxProductsCollect(int nMaxProductsCollect){
@@ -262,7 +262,7 @@ public class ConfigData implements ConfigDataInterface {
 
     /**
      * Get num Min Prime Materials For Restock.
-     * @return nMinPrimeMaterialsForRestock
+     * @return nMinPrimeMaterialsForRestock Min Prime Materials For Restock
      */
     @Override
     public int getnMinPrimeMaterialsForRestock(){
@@ -271,7 +271,7 @@ public class ConfigData implements ConfigDataInterface {
 
     /**
      * Set num Min Prime Materials For Restock.
-     * @param nMinPrimeMaterialsForRestock 
+     * @param nMinPrimeMaterialsForRestock Min Prime Materials For Restock
      */
     @Override
     public void setnMinPrimeMaterialsForRestock(int nMinPrimeMaterialsForRestock){
@@ -280,7 +280,7 @@ public class ConfigData implements ConfigDataInterface {
 
     /**
      * Get total Products.
-     * @return totalProducts
+     * @return totalProducts total Products
      */
     @Override
     public int gettotalProducts(){
@@ -289,25 +289,41 @@ public class ConfigData implements ConfigDataInterface {
 
     /**
      * Set total Products.
-     * @param totalProducts 
+     * @param totalProducts total Products
      */
     @Override
     public void settotalProducts(int totalProducts){
         this.totalProducts = totalProducts;
     }
 
+    /**
+     * Get Repository Host Name
+     * @return getRepositoryHostName repositoryHostName
+     */
     public String getRepositoryHostName(){
         return repositoryHostName;
     }
 
+    /**
+     * setRepositoryHostName
+     * @param repositoryHostName host name
+     */
     public void setRepositoryHostName(String repositoryHostName){
         this.repositoryHostName = repositoryHostName;
     }
 
+    /**
+     * getRepositoryPortNum
+     * @return getRepositoryPortNum repositoryPortNum
+     */
     public int getRepositoryPortNum(){
         return repositoryPortNum;
     }
 
+    /**
+     * setRepositoryPortNum
+     * @param repositoryPortNum port number
+     */
     public void setRepositoryPortNum(int repositoryPortNum){
         this.repositoryPortNum = repositoryPortNum;
     }

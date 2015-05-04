@@ -45,7 +45,7 @@ public class CustomerBroker implements CustomerShopInterface, CustomerRepository
     //*************** Shop communication
     /**
      * Communicate with Shop: Customer verifies if the door is open.
-     * @param customerId
+     * @param customerId id
      * @return if door is open or not
      */
     @Override
@@ -81,7 +81,7 @@ public class CustomerBroker implements CustomerShopInterface, CustomerRepository
     
     /**
      * Communicate with Shop: Customer enter in the Shop.
-     * @param customerId
+     * @param customerId id
      */
     @Override
     public void enterShop(int customerId) {
@@ -106,7 +106,7 @@ public class CustomerBroker implements CustomerShopInterface, CustomerRepository
     
     /**
      * Communicate with Shop: Customer perusingAround in Shop and chooses what to buy.
-     * @param customerId
+     * @param customerId id
      * @return number of products to Customer buy
      */
     @Override
@@ -138,7 +138,7 @@ public class CustomerBroker implements CustomerShopInterface, CustomerRepository
     
     /**
      * Communicate with Shop: Customer buys the products.
-     * @param customerId
+     * @param customerId id
      * @param nGoods Number of goods to buy
      */
     @Override
@@ -164,7 +164,7 @@ public class CustomerBroker implements CustomerShopInterface, CustomerRepository
 
     /**
      * Communicate with Shop: Customer wants to exit from Shop.
-     * @param customerId 
+     * @param customerId  id
      */
     @Override
     public void exitShop(int customerId) {
@@ -189,7 +189,7 @@ public class CustomerBroker implements CustomerShopInterface, CustomerRepository
 
     /**
      * Communicate with Shop: Customer checks if can die.
-     * @param customerId
+     * @param customerId id
      * @return true if can die and false in otherwise
      */
     @Override
@@ -227,7 +227,7 @@ public class CustomerBroker implements CustomerShopInterface, CustomerRepository
     //*************** Repository communication
     /**
      * Communicate with Repository: Set Customer present state.
-     * @param customerId
+     * @param customerId id
      * @param state Customer state
      */
     @Override
@@ -253,6 +253,7 @@ public class CustomerBroker implements CustomerShopInterface, CustomerRepository
 
     /**
      * Communicate with Repository: Set number of Customers inside the Shop.
+     * @param customerId id
      * @param nCustomersInsideShop number of Customers
      */
     @Override
@@ -278,7 +279,7 @@ public class CustomerBroker implements CustomerShopInterface, CustomerRepository
 
     /**
      * Communicate with Repository: Sum number of bought products for a specific Customer.
-     * @param customerId
+     * @param customerId id
      * @param nGoods number of products
      */
     @Override
