@@ -3,25 +3,31 @@ package MainServer;
 import comInf.MessageException;
 import comInf.MessageConfig;
 
+/**
+ * @author Daniel 51908
+ * @author Raphael 64044
+ * @version 2.0
+ */
+
 public class ConfigBroker {
 
-	/**
-	 * Configuration Data
-	 * 
-	 * @serialField data
-	 */
-	private ConfigData data;
+    /**
+     * Configuration Data
+     * 
+     * @serialField data
+     */
+    private ConfigData data;
 
 
     /**
      * Configurations Broker Constructor
      * @param data Configurations Data
      */
-	public ConfigBroker(ConfigData data){
-		this.data = data;
-	}
+    public ConfigBroker(ConfigData data){
+            this.data = data;
+    }
 
-	/**
+    /**
      * Processing message through respectively task execution. Generation of a response message.
      *
      * @param inMessage message with request

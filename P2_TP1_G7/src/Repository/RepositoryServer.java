@@ -7,8 +7,9 @@ import java.net.Inet4Address;
 import java.net.UnknownHostException;
 
 /**
- *
- * @author Daniel
+ * @author Daniel 51908
+ * @author Raphael 64044
+ * @version 2.0
  */
 public class RepositoryServer {
 

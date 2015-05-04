@@ -4,8 +4,9 @@ import comInf.MessageException;
 import comInf.MessageStorage;
 
 /**
- *
- * @author Daniel
+ * @author Daniel 51908
+ * @author Raphael 64044
+ * @version 2.0
  */
 class StorageBroker {
     
