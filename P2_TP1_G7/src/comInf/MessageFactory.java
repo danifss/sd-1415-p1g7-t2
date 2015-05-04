@@ -10,68 +10,68 @@ public class MessageFactory extends Message {
     /**
      * Serialization key
      * 
-     * @serialField serialVersionUID
+     * @serial serialVersionUID
      */
     private static final long serialVersionUID = 220415L;
 
     //*************** CRAFTMANS MESSAGE TYPES
     /**
      * Message type: The Craftman indicates that the owner has products to collect.
-     * @serialField READYFORTRANSFER
+     * @serial READYFORTRANSFER
      */
     public static final int READYFORTRANSFER = 1;
     
     /**
      * Message type: The Craftman verifies if he needs to contact the owner to collect products.
-     * @serialField CHECKCONTACTPRODUCT
+     * @serial CHECKCONTACTPRODUCT
      */
     public static final int CHECKCONTACTPRODUCT = 2;
     
     /**
      * Message type: The Craftman checks if the Factory has prime materials to collect.
-     * @serialField CHECKFORMATERIALS
+     * @serial CHECKFORMATERIALS
      */
     public static final int CHECKFORMATERIALS = 3;
     
     /**
      * Message type: Check if the Craftman needs to contact owner to bring prime materials.
-     * @serialField CHECKFORRESTOCK
+     * @serial CHECKFORRESTOCK
      */
     public static final int CHECKFORRESTOCK = 4;
     
     /**
      * Message type: The Craftman collects prime materials.
-     * @serialField COLLECTMATERIALS
+     * @serial COLLECTMATERIALS
      */
     public static final int COLLECTMATERIALS = 5;
     
     /**
      * Message type: Checks if the all the prime materials from the storage were supplied.
-     * @serialField ENDOFPRIMEMATERIALS
+     * @serial ENDOFPRIMEMATERIALS
      */
     public static final int ENDOFPRIMEMATERIALS = 6;
     
     /**
      * Message type: The Craftman sees if someone already contacted the owner to restock prime materials.
-     * @serialField FLAGPRIMEACTIVATED
+     * @serial FLAGPRIMEACTIVATED
      */
     public static final int FLAGPRIMEACTIVATED = 7;
     
     /**
      * Message type: Craftman sees how many prime materials needs to produce a new product
-     * @serialField GETNPRIMEPERPRODUCT
+     * @serial GETNPRIMEPERPRODUCT
      */
     public static final int GETNPRIMEPERPRODUCT = 8;
     
     /**
      * Message type: The Craftman stores the products produced.
-     * @serialField GOTOSTORE
+     * @serial GOTOSTORE
      */
     public static final int GOTOSTORE = 9;
     
     /**
      * Message type: The Craftman turns true the flag that indicates that prime materials are needed.
-     * @serialField PRIMEMATERIALSNEEDED
+     * @serial PRIMEMATERIALSNEEDED
      */
     public static final int PRIMEMATERIALSNEEDED = 10;
     
@@ -79,13 +79,13 @@ public class MessageFactory extends Message {
     //*************** OWNER MESSAGE TYPES
     /**
      * Message type: Owner goes to Factory to restock prime materials.
-     * @serialField REPLENISHSTOCK
+     * @serial REPLENISHSTOCK
      */
     public static final int REPLENISHSTOCK = 30;
     
     /**
      * Message type: Owner goes to the Factory to collect products.
-     * @serialField GOTOWORKSHOP
+     * @serial GOTOWORKSHOP
      */
     public static final int GOTOWORKSHOP = 31;
     
@@ -93,13 +93,13 @@ public class MessageFactory extends Message {
     //*************** Internal Variables
     /**
      * Variable to save a integer value.
-     * @serialField value
+     * @serial value
      */
     private int value = -1;
     
     /**
      * Generic boolean variable
-     * @serialField bool
+     * @serial bool
      */
     private boolean bool = false;
     
