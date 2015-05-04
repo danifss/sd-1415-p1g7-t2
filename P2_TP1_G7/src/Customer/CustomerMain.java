@@ -1,6 +1,5 @@
 package Customer;
 
-import genclass.GenericIO;
 import MainServer.ServerInfo;
 import comInf.MessageConfig;
 
@@ -11,7 +10,7 @@ import comInf.MessageConfig;
  */
 public class CustomerMain {
     public static void main(String[] args){
-        //TODO: create and start n Customers
+        // create and start n Customers
         int nCustomers = contactMainServer(MessageConfig.GETNCUSTOMERS, -1);
         // Array de Clientes
         Customer[] customer = new Customer[nCustomers];
@@ -20,7 +19,7 @@ public class CustomerMain {
         String repositoryHost = contactMainServer(MessageConfig.GETREPOSITORYHOST, "");
         int repositoryPort = contactMainServer(MessageConfig.GETREPOSITORYPORT, -1);
         
-        // PORTAS: 221GX -> G = grupo 7 -> X 0-9
+        
         CustomerBroker broker = new CustomerBroker(shopHost, shopPort, repositoryHost, repositoryPort);
         
         //Initialization of Customers
@@ -51,8 +50,8 @@ public class CustomerMain {
                 result = inMessage.getValue();
                 break;
             default:
-                GenericIO.writelnString("Repository: Error contacting Main Server..");
-                GenericIO.writelnString(inMessage.toString());
+                System.out.println("Repository: Error contacting Main Server..");
+                System.out.println(inMessage.toString());
                 System.exit(1);
                 break;
         }
@@ -79,8 +78,8 @@ public class CustomerMain {
                 result = inMessage.getStr();
                 break;
             default:
-                GenericIO.writelnString("Repository: Error contacting Main Server..");
-                GenericIO.writelnString(inMessage.toString());
+                System.out.println("Repository: Error contacting Main Server..");
+                System.out.println(inMessage.toString());
                 System.exit(1);
                 break;
         }

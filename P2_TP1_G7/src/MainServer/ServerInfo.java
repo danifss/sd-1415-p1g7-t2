@@ -15,6 +15,7 @@ public class ServerInfo {
     
     /**
      * Main Server Port Number
+     * PORTAS: 221GX -> G = grupo 7 -> X 0-9
      * @serial MainServerPortNum
      */
     private static final int MainServerPortNum = 22177;

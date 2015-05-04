@@ -20,37 +20,37 @@ public class Customer extends Thread implements CustomerInterface {
     
     /**
      * Customer identity
-     * @serialField customerId
+     * @serial customerId
      */
     private final int customerId;
     
     /**
      * Present Customer State
-     * @serialField customerState
+     * @serial customerState
      */
     private int customerState;
     
     /**
      * Shop
-     * @serialField shop
+     * @serial shop
      */
     private CustomerShopInterface shop;
 	
     /**
      * General Repository
-     * @serialField sharedInfo
+     * @serial sharedInfo
      */
     private CustomerRepositoryInterface sharedInfo;
     
     /**
      * Total number of goods bought buy the customer
-     * @serialField nGoodsBought
+     * @serial nGoodsBought
      */
     private int nGoodsBought;
 
     /**
      * Number of products that the customer has with him
-     * @serialField nProductsCustomerHas
+     * @serial nProductsCustomerHas
      */
     private int nProductsCustomer;
     
