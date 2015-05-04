@@ -10,67 +10,67 @@ public class ConfigData implements ConfigDataInterface {
 
     /**
      * Logging file name
-     * @serialField fName
+     * @serial fName
      */
 	private String fName = "log.txt";
     
     /**
      * Number of Craftmans.
-     * @serialField nCraftmans
+     * @serial nCraftmans
      */
 	private int nCraftmans = 3;
     
     /**
      * Number of Customers
-     * @serialField nCustomers
+     * @serial nCustomers
      */
     private int nCustomers = 3;
     
     /**
      * Initial number of prime materials in the Factory
-     * @serialField nPrimeMaterialsInFactory
+     * @serial nPrimeMaterialsInFactory
      */
     private int nPrimeMaterialsInFactory = 10;
     
     /**
      * Initial number of products in the Shop
-     * @serialField nInitialProductsInShop
+     * @serial nInitialProductsInShop
      */
     private int nInitialProductsInShop = 10;
     
     /**
      * Initial number of prime materials in the Storage
-     * @serialField nInitialPrimeMaterialsInStorage
+     * @serial nInitialPrimeMaterialsInStorage
      */
     private int nInitialPrimeMaterialsInStorage = 20;
     
     /**
      * Prime materials needed per product
-     * @serialField nPrimeMaterialsByProduct
+     * @serial nPrimeMaterialsByProduct
      */
     private int nPrimeMaterialsByProduct = 2;
     
     /**
      * 
-     * @serialField nPrimeOwnerCarry
+     * @serial nPrimeOwnerCarry
      */
     //private int nPrimeOwnerCarry = 10;
     
     /**
      * Minimum number of prime materials for restock
-     * @serialField nMinPrimeMaterialsForRestock
+     * @serial nMinPrimeMaterialsForRestock
      */
     private int nMinPrimeMaterialsForRestock = 10;
     
     /**
      * Maximum number of products that the owner can carry
-     * @serialField nMaxProductsCollect
+     * @serial nMaxProductsCollect
      */
     private int nMaxProductsCollect = 5;
     
     /**
      * Number of total products
-     * @serialField totalProducts
+     * @serial totalProducts
      */
     private int totalProducts = 0;
     
@@ -78,32 +78,32 @@ public class ConfigData implements ConfigDataInterface {
     //*************** SERVERS INFO
     /**
      * Repository Server
-     * @serialField repositoryHostName
-     * @serialField repositoryPortNum
+     * @serial repositoryHostName
+     * @serial repositoryPortNum
      */
     private String repositoryHostName = "localhost";
     private int repositoryPortNum = -1;
     
     /**
      * Shop Server
-     * @serialField shopHostName
-     * @serialField shopPortNum
+     * @serial shopHostName
+     * @serial shopPortNum
      */
     private String shopHostName = "localhost";
     private int shopPortNum = -1;
     
     /**
      * Storage Server
-     * @serialField storageHostName
-     * @serialField storagePortNum
+     * @serial storageHostName
+     * @serial storagePortNum
      */
     private String storageHostName = "localhost";
     private int storagePortNum = -1;
     
     /**
      * Factory Server
-     * @serialField factoryHostName
-     * @serialField factoryPortNum
+     * @serial factoryHostName
+     * @serial factoryPortNum
      */
     private String factoryHostName = "localhost";
     private int factoryPortNum = -1;

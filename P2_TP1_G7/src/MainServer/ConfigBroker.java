@@ -14,7 +14,7 @@ public class ConfigBroker {
     /**
      * Configuration Data
      * 
-     * @serialField data
+     * @serial data
      */
     private ConfigData data;
 

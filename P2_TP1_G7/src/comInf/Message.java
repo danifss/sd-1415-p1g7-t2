@@ -13,35 +13,35 @@ public abstract class Message implements Serializable {
     /**
      * Serialization key.
      *
-     * @serialField serialVersionUID
+     * @serial serialVersionUID
      */
     private static final long serialVersionUID = 220415L;
 
     /**
      * Operation with error. (Server response)
      *
-     * @serialField ERROR Error
+     * @serial ERROR
      */
     public static final int ERROR = -1;
     
     /**
      * Operation completed with success. (Server response)
      *
-     * @serialField ACK Acknowledge
+     * @serial ACK
      */
     public static final int ACK = 0;
 
     /**
      * Message type.
      *
-     * @serialField msgType
+     * @serial msgType
      */
     private int msgType = -1;
 
     /**
      * ID
      *
-     * @serialField id
+     * @serial id
      */
     private int id = -1;
 
