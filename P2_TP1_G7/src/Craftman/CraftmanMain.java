@@ -1,5 +1,9 @@
 package Craftman;
 
+import genclass.GenericIO;
+import MainServer.ServerInfo;
+import comInf.MessageConfig;
+
 /**
  * @author Daniel 51908
  * @author Raphael 64044
@@ -7,13 +11,19 @@ package Craftman;
  */
 public class CraftmanMain {
     public static void main(String[] args){
-        //TODO: create and start 3 Craftmans
-        int nCraftmans = 10;
+        //TODO: create and start n Craftmans
+        int nCraftmans = contactMainServer(MessageConfig.GETNCRAFTMANS, -1);
         // Array de Craftmans
         Craftman[] craftman = new Craftman[nCraftmans];
+        String repositoryHost = contactMainServer(MessageConfig.GETREPOSITORYHOST, "");
+        int repositoryPort = contactMainServer(MessageConfig.GETREPOSITORYPORT, -1);
+        String shopHost = contactMainServer(MessageConfig.GETSHOPHOST, "");
+        int shopPort = contactMainServer(MessageConfig.GETSHOPPORT, -1);
+        String factoryHost = contactMainServer(MessageConfig.GETFACTORYHOST, "");
+        int factoryPort = contactMainServer(MessageConfig.GETFACTORYPORT, -1);
         // PORTAS: 221GX -> G = grupo 7 -> X 0-9
         //CraftmanBroker broker = new CraftmanBroker("localhost", 22170, "localhost", 22171, "localhost", 22172);
-        CraftmanBroker broker = new CraftmanBroker("l040101-ws01.ua.pt", 22170, "l040101-ws03.ua.pt", 22171, "l040101-ws04.ua.pt", 22172);
+        CraftmanBroker broker = new CraftmanBroker(repositoryHost, repositoryPort, shopHost, shopPort, factoryHost, factoryPort);
         
         //Initialization of Craftmans
         for (int i = 0; i < nCraftmans; i++)
@@ -22,5 +32,61 @@ public class CraftmanMain {
         // Starting Craftmans
         for (int i = 0; i < nCraftmans; i++)
             craftman[i].start();
+    }
+    
+    private static int contactMainServer(int msgType, int value){
+        //TODO: ligar ao Main Server e informar o seu ip e porta e pedir valores que necessita.
+        ClientCom con = new ClientCom(ServerInfo.getMainServerHostName(), ServerInfo.getMainServerPortNum());
+        MessageConfig inMessage, outMessage;
+        
+        outMessage = new MessageConfig(msgType, value); // pede a realizacao do servico
+        while (!con.open ()){                           // aguarda ligação
+            try{
+                Thread.sleep ((long) (10));
+            }catch (InterruptedException e) {}
+        }
+        con.writeObject(outMessage);
+        inMessage = (MessageConfig) con.readObject();
+        int result = -1;
+        switch(inMessage.getType()){
+            case MessageConfig.ACK:
+                result = inMessage.getValue();
+                break;
+            default:
+                GenericIO.writelnString("Repository: Error contacting Main Server..");
+                GenericIO.writelnString(inMessage.toString());
+                System.exit(1);
+                break;
+        }
+        con.close();
+        return result;
+    }
+    
+    private static String contactMainServer(int msgType, String str){
+        //Jigar ao Main Server e pedir valores que necessita.
+        ClientCom con = new ClientCom(ServerInfo.getMainServerHostName(), ServerInfo.getMainServerPortNum());
+        MessageConfig inMessage, outMessage;
+        
+        outMessage = new MessageConfig(msgType, str); // pede a realizacao do servico
+        while (!con.open ()){                           // aguarda ligação
+            try{
+                Thread.sleep ((long) (10));
+            }catch (InterruptedException e) {}
+        }
+        con.writeObject(outMessage);
+        inMessage = (MessageConfig) con.readObject();
+        String result = "";
+        switch(inMessage.getType()){
+            case MessageConfig.ACK:
+                result = inMessage.getStr();
+                break;
+            default:
+                GenericIO.writelnString("Repository: Error contacting Main Server..");
+                GenericIO.writelnString(inMessage.toString());
+                System.exit(1);
+                break;
+        }
+        con.close();
+        return result;
     }
 }
