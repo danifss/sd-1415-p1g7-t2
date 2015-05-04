@@ -1,7 +1,6 @@
 package Shop;
 
 import comInf.MessageRepository;
-import genclass.GenericIO;
 
 /**
  * @author Daniel 51908
@@ -12,13 +11,13 @@ public class ShopBrokerRepository implements ShopRepositoryInterface {
 
     /**
      * Repository server host name
-     * @serialField RPserverHostName
+     * @serial RPserverHostName
      */
     private String RPserverHostName = null;
 
     /**
      * Repository Server port
-     * @serialField RPserverPortNumb
+     * @serial RPserverPortNumb
      */
     private int RPserverPortNumb;
     
@@ -52,8 +51,8 @@ public class ShopBrokerRepository implements ShopRepositoryInterface {
         con.writeObject(outMessage);
         inMessage = (MessageRepository) con.readObject();
         if(inMessage.getType() != MessageRepository.ACK){
-            GenericIO.writelnString("Shop: - Error setting the boolean to transfer products to Shop.");
-            GenericIO.writelnString(inMessage.toString());
+            System.out.println("Shop: - Error setting the boolean to transfer products to Shop.");
+            System.out.println(inMessage.toString());
             System.exit(1);
         }
         con.close();
@@ -77,8 +76,8 @@ public class ShopBrokerRepository implements ShopRepositoryInterface {
         con.writeObject(outMessage);
         inMessage = (MessageRepository) con.readObject();
         if(inMessage.getType() != MessageRepository.ACK){
-            GenericIO.writelnString("Shop: - Error setting number of goods in display.");
-            GenericIO.writelnString(inMessage.toString());
+            System.out.println("Shop: - Error setting number of goods in display.");
+            System.out.println(inMessage.toString());
             System.exit(1);
         }
         con.close();
@@ -102,8 +101,8 @@ public class ShopBrokerRepository implements ShopRepositoryInterface {
         con.writeObject(outMessage);
         inMessage = (MessageRepository) con.readObject();
         if(inMessage.getType() != MessageRepository.ACK){
-            GenericIO.writelnString("Shop: - Error setting boolean to supply materials to Factory.");
-            GenericIO.writelnString(inMessage.toString());
+            System.out.println("Shop: - Error setting boolean to supply materials to Factory.");
+            System.out.println(inMessage.toString());
             System.exit(1);
         }
         con.close();
@@ -127,8 +126,8 @@ public class ShopBrokerRepository implements ShopRepositoryInterface {
         con.writeObject(outMessage);
         inMessage = (MessageRepository) con.readObject();
         if(inMessage.getType() != MessageRepository.ACK){
-            GenericIO.writelnString("Shop: - Error setting number of customers inside Shop.");
-            GenericIO.writelnString(inMessage.toString());
+            System.out.println("Shop: - Error setting number of customers inside Shop.");
+            System.out.println(inMessage.toString());
             System.exit(1);
         }
         con.close();
@@ -152,8 +151,8 @@ public class ShopBrokerRepository implements ShopRepositoryInterface {
         con.writeObject(outMessage);
         inMessage = (MessageRepository) con.readObject();
         if(inMessage.getType() != MessageRepository.ACK){
-            GenericIO.writelnString("Shop: - Error setting the state of the Shop.");
-            GenericIO.writelnString(inMessage.toString());
+            System.out.println("Shop: - Error setting the state of the Shop.");
+            System.out.println(inMessage.toString());
             System.exit(1);
         }
         con.close();

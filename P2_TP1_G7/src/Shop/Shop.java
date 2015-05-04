@@ -27,73 +27,73 @@ public class Shop implements ShopInterface {
     
     /**
      * Present State of Shop.
-     * @serialField shopState
+     * @serial shopState
      */
     private int shopState;
     
     /**
      * General Repository.
-     * @serialField sharedInfo
+     * @serial sharedInfo
      */
     private final ShopRepositoryInterface sharedInfo;
 
     /**
      * FIFO with Customers waiting for their turn to buy something.
-     * @serialField queueCustomer
+     * @serial queueCustomer
      */
     private MemFIFO queueCustomer;
     
     /**
      * Number of customers inside the shop.
-     * @serialField customerInsideShop
+     * @serial customerInsideShop
      */
     private int customerInsideShop;
     
     /**
      * Number of goods that the shop has to sell.
-     * @serialField nGoodsInDisplay
+     * @serial nGoodsInDisplay
      */
     private int nGoodsInDisplay;
     
     /**
      * Id of the customer that the owner is attending.
-     * @serialField attendingCustomerId;
+     * @serial attendingCustomerId;
      */
     private int attendingCustomerId;
     
     /**
      * Number of goods that the customer is buying.
-     * @serialField nGoodsCustomerHave
+     * @serial nGoodsCustomerHave
      */
     private int nGoodsCustomerHave;
     
     /**
      * Flag to see if the owner already finished the purchase.
-     * @serialField flagPurchaseMade
+     * @serial flagPurchaseMade
      */
     private boolean flagPurchaseMade;
     
     /**
      * Flag to see if the Factory has products to bring.
-     * @serialField flagBringProductsFromFactory
+     * @serial flagBringProductsFromFactory
      */
     private int flagBringProductsFromFactory;
     
     /**
      * Flag to see if the Factory needs prime materials.
-     * @serialField flagPrimeMaterialsNeeded
+     * @serial flagPrimeMaterialsNeeded
      */
     private boolean flagPrimeMaterialsNeeded;
     
     /**
      * Total amount of products delivered.
-     * @serialField nProductsDelivered
+     * @serial nProductsDelivered
      */
     private int nProductsDelivered;
     
     /**
      * Total number of products that the shop can have in this experience.
-     * @serialField totalProducts
+     * @serial totalProducts
      */
     private final int totalProducts;
     

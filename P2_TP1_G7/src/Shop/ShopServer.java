@@ -2,7 +2,6 @@ package Shop;
 
 import MainServer.ServerInfo;
 import comInf.MessageConfig;
-import genclass.GenericIO;
 import java.net.Inet4Address;
 import java.net.UnknownHostException;
 
@@ -15,7 +14,7 @@ public class ShopServer {
     
     /**
      * Server Shop port number.
-     * @serialField portNumb
+     * @serial portNumb
      */
     private static final int portNumb = 22171;
     
@@ -49,9 +48,9 @@ public class ShopServer {
         repository = new ShopBrokerRepository(repositoryHost, repositoryPort); // ativacao do servico
         shop = new Shop(nInitialProductsInShop, nCustomers, repository, totalProducts); // activacao do servico
         shopInterface = new ShopBroker(shop, nCustomers, nCraftmans); // activacao do interface com o servico
-        GenericIO.writelnString("Shop");
-        GenericIO.writelnString("O serviço foi estabelecido!");
-        GenericIO.writelnString("O servidor esta em escuta.");
+        System.out.println("Shop");
+        System.out.println("O serviço foi estabelecido!");
+        System.out.println("O servidor esta em escuta.");
 
         /* processamento de pedidos */
         while (true) {
@@ -80,8 +79,8 @@ public class ShopServer {
                 result = inMessage.getValue();
                 break;
             default:
-                GenericIO.writelnString("Repository: Error contacting Main Server..");
-                GenericIO.writelnString(inMessage.toString());
+                System.out.println("Repository: Error contacting Main Server..");
+                System.out.println(inMessage.toString());
                 System.exit(1);
                 break;
         }
@@ -108,8 +107,8 @@ public class ShopServer {
                 result = inMessage.getStr();
                 break;
             default:
-                GenericIO.writelnString("Shop: Error contacting Main Server..");
-                GenericIO.writelnString(inMessage.toString());
+                System.out.println("Shop: Error contacting Main Server..");
+                System.out.println(inMessage.toString());
                 System.exit(1);
                 break;
         }
@@ -132,8 +131,8 @@ public class ShopServer {
         con.writeObject(outMessage);
         inMessage = (MessageConfig) con.readObject();
         if(inMessage.getType() != MessageConfig.ACK){
-            GenericIO.writelnString("Shop: Error contacting Main Server..");
-            GenericIO.writelnString(inMessage.toString());
+            System.out.println("Shop: Error contacting Main Server..");
+            System.out.println(inMessage.toString());
             System.exit(1);
         }
         con.close();
@@ -153,8 +152,8 @@ public class ShopServer {
         con.writeObject(outMessage);
         inMessage = (MessageConfig) con.readObject();
         if(inMessage.getType() != MessageConfig.ACK){
-            GenericIO.writelnString("Shop: Error contacting Main Server..");
-            GenericIO.writelnString(inMessage.toString());
+            System.out.println("Shop: Error contacting Main Server..");
+            System.out.println(inMessage.toString());
             System.exit(1);
         }
         con.close();

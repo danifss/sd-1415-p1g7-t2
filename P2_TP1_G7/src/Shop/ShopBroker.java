@@ -13,19 +13,19 @@ public class ShopBroker {
     /**
      * Shop Monitor
      *
-     * @serialField shop
+     * @serial shop
      */
     private final Shop shop;
     
     /**
      * Total number of Customers
-     * @serialField nCustomers
+     * @serial nCustomers
      */
     private final int nCustomers;
     
     /**
      * Total number of Craftmans
-     * @serialField nCraftmans
+     * @serial nCraftmans
      */
     private final int nCraftmans;
 
