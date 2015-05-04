@@ -11,25 +11,25 @@ public class Storage implements StorageInterface {
     
     /**
      * Present number of Prime Materials in Storage.
-     * @serialField nPrimeMaterialsInStorage
+     * @serial nPrimeMaterialsInStorage
      */
     private int nPrimeMaterialsInStorage;
     
     /**
      * Maximum number of Prime Materials available to be delivered to the factory.
-     * @serialField nMaxPrimeMaterialsToDeliver
+     * @serial nMaxPrimeMaterialsToDeliver
      */
     private final int nMaxPrimeMaterialsToDeliver;
     
     /**
      * Number of Prime Materials delivered to the factory.
-     * @serialField nPrimeMaterialsDelivered
+     * @serial nPrimeMaterialsDelivered
      */
     private int nPrimeMaterialsDelivered;
     
     /**
      * Number of prime materials that the owner can carry.
-     * @serialField nPrimeOwnerCarry
+     * @serial nPrimeOwnerCarry
      */
     private final int nPrimeOwnerCarry;
 
