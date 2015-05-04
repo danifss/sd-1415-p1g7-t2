@@ -69,6 +69,12 @@ public class MessageConfig extends Message {
      */
     public static final int GETNMINPRIMEMATERIALSFORRESTOCK = 9;
     
+    /**
+     * Message type: Number of total products
+     * @serialField GETTOTALPRODUCTS
+     */
+    public static final int GETTOTALPRODUCTS = 10;
+    
     
     //*************** SETTING MESSAGES OF HOSTS AND PORTS
     /**
