@@ -88,43 +88,43 @@ public interface ConfigDataInterface {
 
     /**
      * Set num Initial Prime Materials In Storage.
-     * @param nInitialPrimeMaterialsInStorage
+     * @param nInitialPrimeMaterialsInStorage prime materials in Storage
      */
     void setnInitialPrimeMaterialsInStorage(int nInitialPrimeMaterialsInStorage);
 
     /**
      * Set num Initial Products In Shop.
-     * @param nInitialProductsInShop
+     * @param nInitialProductsInShop Products in Shop
      */
     void setnInitialProductsInShop(int nInitialProductsInShop);
 
     /**
      * Set num Max Products Collect.
-     * @param nMaxProductsCollect
+     * @param nMaxProductsCollect Products to collect
      */
     void setnMaxProductsCollect(int nMaxProductsCollect);
 
     /**
      * Set num Min Prime Materials For Restock.
-     * @param nMinPrimeMaterialsForRestock
+     * @param nMinPrimeMaterialsForRestock Prima materials for restock
      */
     void setnMinPrimeMaterialsForRestock(int nMinPrimeMaterialsForRestock);
 
     /**
      * Set num Prime Materials By Product.
-     * @param nPrimeMaterialsByProduct
+     * @param nPrimeMaterialsByProduct prime materials by product
      */
     void setnPrimeMaterialsByProduct(int nPrimeMaterialsByProduct);
 
     /**
      * Set num Prime Materials In Factory.
-     * @param nPrimeMaterialsInFactory
+     * @param nPrimeMaterialsInFactory prime materials in Factory
      */
     void setnPrimeMaterialsInFactory(int nPrimeMaterialsInFactory);
 
     /**
      * Set total Products.
-     * @param totalProducts
+     * @param totalProducts total products
      */
     void settotalProducts(int totalProducts);
     

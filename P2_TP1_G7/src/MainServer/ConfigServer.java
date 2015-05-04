@@ -22,7 +22,7 @@ public class ConfigServer {
      * os seus ip's e portas.
      * Configura-se também os valores pre-definidos para o problema. (num. clientes etc)
      * 
-     * @param args 
+     * @param args arguments
      */
     public static void main(String[] args){
         
