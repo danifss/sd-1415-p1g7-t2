@@ -13,7 +13,7 @@ class StorageBroker {
     /**
      * Storage Monitor
      * 
-     * @serialField storage
+     * @serial storage
      */
     private final Storage storage;
     

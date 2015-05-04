@@ -1,6 +1,5 @@
 package Storage;
 
-import genclass.GenericIO;
 import MainServer.ServerInfo;
 import comInf.MessageConfig;
 import java.net.Inet4Address;
@@ -15,7 +14,7 @@ public class StorageServer {
     
     /**
      * Server Storage port number.
-     * @serialField portNumb
+     * @serial portNumb
      */
     private static final int portNumb = 22173;
 
@@ -39,9 +38,9 @@ public class StorageServer {
         
         storage = new Storage(nInitialPrimeMaterialsInStorage, nPrimeOwnerCarry);
         storageInterface = new StorageBroker(storage);
-        GenericIO.writelnString("Storage");
-        GenericIO.writelnString("O serviço foi estabelecido!");
-        GenericIO.writelnString("O servidor esta em escuta.");
+        System.out.println("Storage");
+        System.out.println("O serviço foi estabelecido!");
+        System.out.println("O servidor esta em escuta.");
 
         /* processamento de pedidos */
         while (true) {
@@ -66,8 +65,8 @@ public class StorageServer {
         con.writeObject(outMessage);
         inMessage = (MessageConfig) con.readObject();
         if(inMessage.getType() != MessageConfig.ACK){
-            GenericIO.writelnString("Storage: Error contacting Main Server..");
-            GenericIO.writelnString(inMessage.toString());
+            System.out.println("Storage: Error contacting Main Server..");
+            System.out.println(inMessage.toString());
             System.exit(1);
         }
         con.close();
@@ -87,8 +86,8 @@ public class StorageServer {
         con.writeObject(outMessage);
         inMessage = (MessageConfig) con.readObject();
         if(inMessage.getType() != MessageConfig.ACK){
-            GenericIO.writelnString("Storage: Error contacting Main Server..");
-            GenericIO.writelnString(inMessage.toString());
+            System.out.println("Storage: Error contacting Main Server..");
+            System.out.println(inMessage.toString());
             System.exit(1);
         }
         con.close();
@@ -113,8 +112,8 @@ public class StorageServer {
                 result = inMessage.getValue();
                 break;
             default:
-                GenericIO.writelnString("Storage: Error contacting Main Server..");
-                GenericIO.writelnString(inMessage.toString());
+                System.out.println("Storage: Error contacting Main Server..");
+                System.out.println(inMessage.toString());
                 System.exit(1);
                 break;
         }
