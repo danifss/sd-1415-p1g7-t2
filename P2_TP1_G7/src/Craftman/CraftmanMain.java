@@ -10,7 +10,7 @@ import comInf.MessageConfig;
  */
 public class CraftmanMain {
     public static void main(String[] args){
-        //TODO: create and start n Craftmans
+        // create and start n Craftmans
         int nCraftmans = contactMainServer(MessageConfig.GETNCRAFTMANS, -1);
         // Array de Craftmans
         Craftman[] craftman = new Craftman[nCraftmans];

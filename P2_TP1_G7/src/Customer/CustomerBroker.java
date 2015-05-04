@@ -1,7 +1,6 @@
 package Customer;
 
 import comInf.*;
-import genclass.GenericIO;
 
 /**
  * @author Daniel 51908
@@ -12,25 +11,25 @@ public class CustomerBroker implements CustomerShopInterface, CustomerRepository
 
     /**
      * Repository host name
-     * @serialField RPserverHostName
+     * @serial RPserverHostName
      */
     private String RPserverHostName = null;
 
     /**
      * Repository Server port
-     * @serialField RPserverPortNumb
+     * @serial RPserverPortNumb
      */
     private int RPserverPortNumb;
     
     /**
      * Shop host name
-     * @serialField ShopServerHostName
+     * @serial ShopServerHostName
      */
     private String ShopServerHostName = null;
 
     /**
      * Shop Server port
-     * @serialField ShopServerPortNumb
+     * @serial ShopServerPortNumb
      */
     private int ShopServerPortNumb;
     
@@ -70,8 +69,8 @@ public class CustomerBroker implements CustomerShopInterface, CustomerRepository
                 //result =  false; // Nao precisa
                 break;
             default:
-                GenericIO.writelnString("Customer: "+customerId+" - Error checking Shop door.");
-                GenericIO.writelnString(inMessage.toString());
+                System.out.println("Customer: "+customerId+" - Error checking Shop door.");
+                System.out.println(inMessage.toString());
                 System.exit(1);
                 break;
         }
@@ -97,8 +96,8 @@ public class CustomerBroker implements CustomerShopInterface, CustomerRepository
         con.writeObject(outMessage);
         inMessage = (MessageShop) con.readObject();
         if (inMessage.getType() != Message.ACK) {
-            GenericIO.writelnString("Customer: "+customerId+" - Error entering in the Shop.");
-            GenericIO.writelnString(inMessage.toString());
+            System.out.println("Customer: "+customerId+" - Error entering in the Shop.");
+            System.out.println(inMessage.toString());
             System.exit(1);
         }
         con.close();
@@ -128,8 +127,8 @@ public class CustomerBroker implements CustomerShopInterface, CustomerRepository
                 result = inMessage.getValue();
                 break;
             default:
-                GenericIO.writelnString("Customer: "+customerId+" - Error on perusingAround in Shop.");
-                GenericIO.writelnString(inMessage.toString());
+                System.out.println("Customer: "+customerId+" - Error on perusingAround in Shop.");
+                System.out.println(inMessage.toString());
                 System.exit(1);
         }
         con.close();
@@ -155,8 +154,8 @@ public class CustomerBroker implements CustomerShopInterface, CustomerRepository
         con.writeObject(outMessage);
         inMessage = (MessageShop) con.readObject();
         if (inMessage.getType() != Message.ACK) {
-            GenericIO.writelnString("Customer: "+customerId+" - Error iWantThis in Shop.");
-            GenericIO.writelnString(inMessage.toString());
+            System.out.println("Customer: "+customerId+" - Error iWantThis in Shop.");
+            System.out.println(inMessage.toString());
             System.exit(1);
         }
         con.close();
@@ -180,8 +179,8 @@ public class CustomerBroker implements CustomerShopInterface, CustomerRepository
         con.writeObject(outMessage);
         inMessage = (MessageShop) con.readObject();
         if (inMessage.getType() != Message.ACK) {
-            GenericIO.writelnString("Customer: "+customerId+" - Error on exiting from Shop.");
-            GenericIO.writelnString(inMessage.toString());
+            System.out.println("Customer: "+customerId+" - Error on exiting from Shop.");
+            System.out.println(inMessage.toString());
             System.exit(1);
         }
         con.close();
@@ -214,8 +213,8 @@ public class CustomerBroker implements CustomerShopInterface, CustomerRepository
                     result = false;
                 break;
             default:
-                GenericIO.writelnString("Customer: "+customerId+" - Error checking endOper in Shop.");
-                GenericIO.writelnString(inMessage.toString());
+                System.out.println("Customer: "+customerId+" - Error checking endOper in Shop.");
+                System.out.println(inMessage.toString());
                 System.exit(1);
                 break;
         }
@@ -244,8 +243,8 @@ public class CustomerBroker implements CustomerShopInterface, CustomerRepository
         con.writeObject(outMessage);
         inMessage = (MessageRepository) con.readObject();
         if (inMessage.getType() != Message.ACK) {
-            GenericIO.writelnString("Customer: "+customerId+" - Error setting Customer state on Repository.");
-            GenericIO.writelnString(inMessage.toString());
+            System.out.println("Customer: "+customerId+" - Error setting Customer state on Repository.");
+            System.out.println(inMessage.toString());
             System.exit(1);
         }
         con.close();
@@ -270,8 +269,8 @@ public class CustomerBroker implements CustomerShopInterface, CustomerRepository
         con.writeObject(outMessage);
         inMessage = (MessageRepository) con.readObject();
         if (inMessage.getType() != Message.ACK) {
-            GenericIO.writelnString("Customer: - Error setting number of Customers inside the shop on Repository.");
-            GenericIO.writelnString(inMessage.toString());
+            System.out.println("Customer: - Error setting number of Customers inside the shop on Repository.");
+            System.out.println(inMessage.toString());
             System.exit(1);
         }
         con.close();
@@ -296,8 +295,8 @@ public class CustomerBroker implements CustomerShopInterface, CustomerRepository
         con.writeObject(outMessage);
         inMessage = (MessageRepository) con.readObject();
         if (inMessage.getType() != Message.ACK) {
-            GenericIO.writelnString("Customer: - Error setting number of goods by Customer on Repository.");
-            GenericIO.writelnString(inMessage.toString());
+            System.out.println("Customer: - Error setting number of goods by Customer on Repository.");
+            System.out.println(inMessage.toString());
             System.exit(1);
         }
         con.close();
