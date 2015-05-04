@@ -19,20 +19,15 @@ public class RepositoryServer {
      */
     private static final int portNumb = 22170;
     
-    private static int nCustomers = 3;
-    private static int nCraftmans = 3;
-    private static int nPrimeMaterialsInFactory = 10; // Initial number of prime materials in the Factory
-    private static String fName = "log.txt";
-    
     public static void main(String[] args) throws UnknownHostException {
         // Aqui e onde corre o servidor e lanca threads(ClientProxy) para atender cada cliente.
         setRepositoryHostOnMainServer(MessageConfig.SETREPOSITORYHOST);
         setRepositoryPortOnMainServer(MessageConfig.SETREPOSITORYPORT);
         
-        nCustomers = contactMainServer(MessageConfig.GETNCUSTOMERS, -1);
-        nCraftmans = contactMainServer(MessageConfig.GETNCRAFTMANS, -1);
-        nPrimeMaterialsInFactory = contactMainServer(MessageConfig.GETNPRIMEMATERIALSINFACTORY, -1);
-        fName = contactMainServer(MessageConfig.GETFNAME, "");
+        int nCustomers = contactMainServer(MessageConfig.GETNCUSTOMERS, -1);
+        int nCraftmans = contactMainServer(MessageConfig.GETNCRAFTMANS, -1);
+        int nPrimeMaterialsInFactory = contactMainServer(MessageConfig.GETNPRIMEMATERIALSINFACTORY, -1);
+        String fName = contactMainServer(MessageConfig.GETFNAME, "");
         
         Repository repository;                                  // Repository (servico a ser prestado)
         RepositoryBroker repositoryInterface;                   // Interface a Repository

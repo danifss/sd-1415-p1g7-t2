@@ -17,17 +17,14 @@ public class StorageServer {
      * @serialField portNumb
      */
     private static final int portNumb = 22173;
-    
-    private static int nInitialPrimeMaterialsInStorage = 20; // Initial number of prime materials in the Storage
-    private static int nPrimeOwnerCarry = 10; // Number of prime materials that the owner can carry
-    
+
     public static void main(String[] args) throws UnknownHostException {
         
         setStorageHostOnMainServer(MessageConfig.SETSTORAGEHOST);
         setStoragePortOnMainServer(MessageConfig.SETSTORAGEPORT);
         
-        nInitialPrimeMaterialsInStorage = contactMainServer(MessageConfig.GETNINITIALPRIMEMATERIALSINSTORAGE);
-        nPrimeOwnerCarry = contactMainServer(MessageConfig.GETNMAXPRODUCTSCOLLECT);
+        int nInitialPrimeMaterialsInStorage = contactMainServer(MessageConfig.GETNINITIALPRIMEMATERIALSINSTORAGE);
+        int nPrimeOwnerCarry = contactMainServer(MessageConfig.GETNMAXPRODUCTSCOLLECT);
         
         Storage storage;
         StorageBroker storageInterface;
@@ -54,7 +51,7 @@ public class StorageServer {
     }
     
     private static void setStorageHostOnMainServer(int msgType) throws UnknownHostException {
-        //TODO: ligar ao Main Server e informar o seu ip
+        //ligar ao Main Server e informar o seu ip
         ClientCom con = new ClientCom(ServerInfo.getMainServerHostName(), ServerInfo.getMainServerPortNum());
         MessageConfig inMessage, outMessage;
         
@@ -76,7 +73,7 @@ public class StorageServer {
     }
     
     private static void setStoragePortOnMainServer(int msgType) {
-        //TODO: ligar ao Main Server e informar a sua porta.
+        //ligar ao Main Server e informar a sua porta.
         ClientCom con = new ClientCom(ServerInfo.getMainServerHostName(), ServerInfo.getMainServerPortNum());
         MessageConfig inMessage, outMessage;
         

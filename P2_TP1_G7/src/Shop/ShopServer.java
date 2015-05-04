@@ -18,31 +18,21 @@ public class ShopServer {
      */
     private static final int portNumb = 22171;
     
-    private static String repositoryHost = "localhost";
-    private static int repositoryPort = 22170;
-    private static int nCustomers = 3;
-    private static int nCraftmans = 3;
-    private static int nInitialProductsInShop = 10; // Initial number of products in the Shop
-    private static int nInitialPrimeMaterialsInStorage = 20; // Initial number of prime materials in the Storage
-    private static int nPrimeMaterialsInFactory = 10; // Initial number of prime materials in the Factory
-    private static int nPrimeMaterialsByProduct = 2; // Prime materials needed per product
-    private static int totalProducts = ((nPrimeMaterialsInFactory + nInitialPrimeMaterialsInStorage) / nPrimeMaterialsByProduct) + nInitialProductsInShop;
-    
     public static void main(String[] args) throws UnknownHostException {
         // Aqui e onde corre o servidor e lanca threads(ClientProxy) para atender cada cliente.
         
         setShopHostOnMainServer(MessageConfig.SETSHOPHOST);
         setShopPortOnMainServer(MessageConfig.SETSHOPPORT);
         
-        repositoryHost = contactMainServer(MessageConfig.GETREPOSITORYHOST, "");
-        repositoryPort = contactMainServer(MessageConfig.GETREPOSITORYPORT, -1);
-        nCustomers = contactMainServer(MessageConfig.GETNCUSTOMERS, -1);
-        nCraftmans = contactMainServer(MessageConfig.GETNCRAFTMANS, -1);
-        nInitialProductsInShop = contactMainServer(MessageConfig.GETNINITIALPRODUCTSINSHOP, -1);
-        nInitialPrimeMaterialsInStorage = contactMainServer(MessageConfig.GETNINITIALPRIMEMATERIALSINSTORAGE, -1);
-        nPrimeMaterialsInFactory = contactMainServer(MessageConfig.GETNPRIMEMATERIALSINFACTORY, -1);
-        nPrimeMaterialsByProduct = contactMainServer(MessageConfig.GETNPRIMEMATERIALSBYPRODUCT, -1);
-        totalProducts = contactMainServer(MessageConfig.GETTOTALPRODUCTS, -1);
+        String repositoryHost = contactMainServer(MessageConfig.GETREPOSITORYHOST, "");
+        int repositoryPort = contactMainServer(MessageConfig.GETREPOSITORYPORT, -1);
+        int nCustomers = contactMainServer(MessageConfig.GETNCUSTOMERS, -1);
+        int nCraftmans = contactMainServer(MessageConfig.GETNCRAFTMANS, -1);
+        int nInitialProductsInShop = contactMainServer(MessageConfig.GETNINITIALPRODUCTSINSHOP, -1);
+//        int nInitialPrimeMaterialsInStorage = contactMainServer(MessageConfig.GETNINITIALPRIMEMATERIALSINSTORAGE, -1);
+//        int nPrimeMaterialsInFactory = contactMainServer(MessageConfig.GETNPRIMEMATERIALSINFACTORY, -1);
+//        int nPrimeMaterialsByProduct = contactMainServer(MessageConfig.GETNPRIMEMATERIALSBYPRODUCT, -1);
+        int totalProducts = contactMainServer(MessageConfig.GETTOTALPRODUCTS, -1);
         
         Shop shop;                                              // Shop (servico a ser prestado)
         ShopBroker shopInterface;                               // Interface a Shop

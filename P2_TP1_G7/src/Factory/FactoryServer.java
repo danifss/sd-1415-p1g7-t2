@@ -62,7 +62,7 @@ public class FactoryServer {
     }
     
     private static int contactMainServer(int msgType, int value){
-        //TODO: ligar ao Main Server e informar o seu ip e porta e pedir valores que necessita.
+        //ligar ao Main Server e informar o seu ip e porta e pedir valores que necessita.
         ClientCom con = new ClientCom(ServerInfo.getMainServerHostName(), ServerInfo.getMainServerPortNum());
         MessageConfig inMessage, outMessage;
         
@@ -80,7 +80,7 @@ public class FactoryServer {
                 result = inMessage.getValue();
                 break;
             default:
-                GenericIO.writelnString("Repository: Error contacting Main Server..");
+                GenericIO.writelnString("Factory: Error contacting Main Server..");
                 GenericIO.writelnString(inMessage.toString());
                 System.exit(1);
                 break;
@@ -90,7 +90,7 @@ public class FactoryServer {
     }
     
     private static String contactMainServer(int msgType, String str){
-        //Jigar ao Main Server e pedir valores que necessita.
+        //Ligar ao Main Server e pedir valores que necessita.
         ClientCom con = new ClientCom(ServerInfo.getMainServerHostName(), ServerInfo.getMainServerPortNum());
         MessageConfig inMessage, outMessage;
         
@@ -108,7 +108,7 @@ public class FactoryServer {
                 result = inMessage.getStr();
                 break;
             default:
-                GenericIO.writelnString("Repository: Error contacting Main Server..");
+                GenericIO.writelnString("Factory: Error contacting Main Server..");
                 GenericIO.writelnString(inMessage.toString());
                 System.exit(1);
                 break;
@@ -118,7 +118,7 @@ public class FactoryServer {
     }
     
     private static void setFactoryHostOnMainServer(int msgType) throws UnknownHostException {
-        //TODO: ligar ao Main Server e informar o seu ip e porta e pedir valores que necessita.
+        //ligar ao Main Server e informar o seu ip e porta e pedir valores que necessita.
         ClientCom con = new ClientCom(ServerInfo.getMainServerHostName(), ServerInfo.getMainServerPortNum());
         MessageConfig inMessage, outMessage;
         
@@ -140,7 +140,7 @@ public class FactoryServer {
     }
     
     private static void setFactoryPortOnMainServer(int msgType) {
-        //TODO: ligar ao Main Server e informar o seu ip e porta e pedir valores que necessita.
+        //ligar ao Main Server e informar o seu ip e porta e pedir valores que necessita.
         ClientCom con = new ClientCom(ServerInfo.getMainServerHostName(), ServerInfo.getMainServerPortNum());
         MessageConfig inMessage, outMessage;
         
