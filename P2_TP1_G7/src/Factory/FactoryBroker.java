@@ -12,13 +12,13 @@ public class FactoryBroker {
     
     /**
      * Total number of Craftmans
-     * @serialField nCraftmans
+     * @serial nCraftmans
      */
     private final int nCraftmans;
     
     /**
      * Factory Monitor Object
-     * @serialField factory
+     * @serial factory
      */
     private final Factory factory;
 

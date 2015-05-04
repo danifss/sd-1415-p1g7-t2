@@ -1,6 +1,5 @@
 package Factory;
 
-import genclass.GenericIO;
 import comInf.MessageException;
 import comInf.MessageFactory;
 
@@ -15,21 +14,21 @@ public class ClientProxy extends Thread {
     /**
      * Threads counter
      *
-     * @serialField nProxy
+     * @serial nProxy
      */
     private static int nProxy;
 
     /**
      * Communication Channel.
      *
-     * @serialField sconi
+     * @serial sconi
      */
     private ServerCom sconi;
 
     /**
      *
      *
-     * @serialField factoryInter
+     * @serial factoryInter
      */
     private FactoryBroker factoryInter;
 
@@ -58,8 +57,8 @@ public class ClientProxy extends Thread {
         try {
             outMessage = factoryInter.processAndReply(inMessage);      // processá-lo
         } catch (MessageException e) {
-            GenericIO.writelnString("Thread " + getName() + ": " + e.getMessage() + "!");
-            GenericIO.writelnString(e.getMessageVal().toString());
+            System.out.println("Thread " + getName() + ": " + e.getMessage() + "!");
+            System.out.println(e.getMessageVal().toString());
             System.exit(1);
         }
         sconi.writeObject(outMessage);                              // enviar resposta ao cliente
@@ -79,7 +78,7 @@ public class ClientProxy extends Thread {
         try {
             cl = (Class<ClientProxy>) Class.forName("Factory.ClientProxy");
         } catch (ClassNotFoundException e) {
-            GenericIO.writelnString("O tipo de dados ClientProxy não foi encontrado!");
+            System.out.println("O tipo de dados ClientProxy não foi encontrado!");
             e.printStackTrace();
             System.exit(1);
         }

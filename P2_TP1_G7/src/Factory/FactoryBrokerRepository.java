@@ -1,7 +1,6 @@
 package Factory;
 
 import comInf.MessageRepository;
-import genclass.GenericIO;
 
 /**
  * @author Daniel 51908
@@ -12,13 +11,13 @@ class FactoryBrokerRepository implements FactoryRepositoryInterface {
 
     /**
      * Repository server host name
-     * @serialField RPserverHostName
+     * @serial RPserverHostName
      */
     private String RPserverHostName = null;
 
     /**
      * Repository Server port
-     * @serialField RPserverPortNumb
+     * @serial RPserverPortNumb
      */
     private int RPserverPortNumb;
     
@@ -52,8 +51,8 @@ class FactoryBrokerRepository implements FactoryRepositoryInterface {
         con.writeObject(outMessage);
         inMessage = (MessageRepository) con.readObject();
         if(inMessage.getType() != MessageRepository.ACK){
-            GenericIO.writelnString("Factory: - Error setting number of prime materials in Factory.");
-            GenericIO.writelnString(inMessage.toString());
+            System.out.println("Factory: - Error setting number of prime materials in Factory.");
+            System.out.println(inMessage.toString());
             System.exit(1);
         }
         con.close();
@@ -77,8 +76,8 @@ class FactoryBrokerRepository implements FactoryRepositoryInterface {
         con.writeObject(outMessage);
         inMessage = (MessageRepository) con.readObject();
         if(inMessage.getType() != MessageRepository.ACK){
-            GenericIO.writelnString("Factory: - Error setting number of finished products in factory.");
-            GenericIO.writelnString(inMessage.toString());
+            System.out.println("Factory: - Error setting number of finished products in factory.");
+            System.out.println(inMessage.toString());
             System.exit(1);
         }
         con.close();
@@ -102,8 +101,8 @@ class FactoryBrokerRepository implements FactoryRepositoryInterface {
         con.writeObject(outMessage);
         inMessage = (MessageRepository) con.readObject();
         if(inMessage.getType() != MessageRepository.ACK){
-            GenericIO.writelnString("Factory: - Error setting number of products manufactured.");
-            GenericIO.writelnString(inMessage.toString());
+            System.out.println("Factory: - Error setting number of products manufactured.");
+            System.out.println(inMessage.toString());
             System.exit(1);
         }
         con.close();
@@ -127,8 +126,8 @@ class FactoryBrokerRepository implements FactoryRepositoryInterface {
         con.writeObject(outMessage);
         inMessage = (MessageRepository) con.readObject();
         if(inMessage.getType() != MessageRepository.ACK){
-            GenericIO.writelnString("Factory: - Error setting number of supplied times.");
-            GenericIO.writelnString(inMessage.toString());
+            System.out.println("Factory: - Error setting number of supplied times.");
+            System.out.println(inMessage.toString());
             System.exit(1);
         }
         con.close();
@@ -152,8 +151,8 @@ class FactoryBrokerRepository implements FactoryRepositoryInterface {
         con.writeObject(outMessage);
         inMessage = (MessageRepository) con.readObject();
         if(inMessage.getType() != MessageRepository.ACK){
-            GenericIO.writelnString("Factory: - Error setting number of prime materials supplied.");
-            GenericIO.writelnString(inMessage.toString());
+            System.out.println("Factory: - Error setting number of prime materials supplied.");
+            System.out.println(inMessage.toString());
             System.exit(1);
         }
         con.close();
