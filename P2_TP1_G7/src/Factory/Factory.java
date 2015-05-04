@@ -12,7 +12,7 @@ public class Factory implements FactoryInterface {
     /**
      * General Repository
      * 
-     * @serialField info
+     * @serial info
      */
     private final FactoryRepositoryInterface info;
     
@@ -21,76 +21,75 @@ public class Factory implements FactoryInterface {
     // Variables that need to be used in the repository
     /**
      * Amount of prime materials presently in the Factory
-     * @serialField nPrimeMaterialsInFactory
+     * @serial nPrimeMaterialsInFactory
      */
     private int nPrimeMaterialsInFactory;
     
     /**
      * Amount of products in Factory to be delivered to the Shop by the Owner
-     * @serialField nFinishedProductsInFactory
+     * @serial nFinishedProductsInFactory
      */
     private int nFinishedProductsInFactory;
     
     /**
      * Number of times that a supply of prime materials was delivered to the workshop
-     * @serialField nSuppliedTimes
+     * @serial nSuppliedTimes
      */
     private int nSuppliedTimes;
     
     /**
      * Total number of prime materials delivered
-     * @serialField nPrimeMaterialsSupplied
+     * @serial nPrimeMaterialsSupplied
      */
     private int nPrimeMaterialsSupplied;
    
     /**
      * Total number of products that have already been manufactured (accumulation)
-     * @serialField nProductsManufactured
+     * @serial nProductsManufactured
      */
     private int nProductsManufactured;
-    
     
     
     // Variables that don't need to be used in the repository
     /**
      * Total number of prime materials in the Storage at the beginning
-     * @serialField nTotalPrime
+     * @serial nTotalPrime
      */
     private final int nTotalPrime;
     
     /**
      * Amount of prime materials at the beginning in the factory
-     * @serialField nInitialPrime
+     * @serial nInitialPrime
      */
     private final int nInitialPrime;
     
     /**
      * Number of prime materials needed to produce a new product
-     * @serialField nPrimePerProduct
+     * @serial nPrimePerProduct
      */
     private final int nPrimePerProduct;
     
     /**
      * Minimum number of prime materials in stock to call owner to restock
-     * @serialField nPrimeRestock
+     * @serial nPrimeRestock
      */
     private final int nPrimeRestock;
     
     /**
      * Maximum number of finished products that the owner can collect
-     * @serialField nProductsCollect
+     * @serial nProductsCollect
      */
     private final int nProductsCollect;
     
     /**
      * Flag to see if the owner was already contacted to bring prime materials
-     * @serialField primeCall
+     * @serial primeCall
      */
     private boolean flagPrimeCall;
     
     /**
      * Flag to see how many times the owner was contacted to collect finished products
-     * @serialField nProductsCall
+     * @serial nProductsCall
      */
     private int flagNProductsCall;
     

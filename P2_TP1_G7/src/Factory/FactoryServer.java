@@ -1,6 +1,5 @@
 package Factory;
 
-import genclass.GenericIO;
 import MainServer.ServerInfo;
 import comInf.MessageConfig;
 import java.net.Inet4Address;
@@ -49,9 +48,9 @@ public class FactoryServer {
         factory = new Factory(repository, nPrimeMaterialsInFactory, nTotalPrime, nPrimePerProduct, nPrimeRestock, nProductsCollect); // activacao do servico
         
         factoryInterface = new FactoryBroker(factory, nCraftmans); // activacao do interface com o servico
-        GenericIO.writelnString("Factory");
-        GenericIO.writelnString("O serviço foi estabelecido!");
-        GenericIO.writelnString("O servidor esta em escuta.");
+        System.out.println("Factory");
+        System.out.println("O serviço foi estabelecido!");
+        System.out.println("O servidor esta em escuta.");
 
         /* processamento de pedidos */
         while (true) {
@@ -80,8 +79,8 @@ public class FactoryServer {
                 result = inMessage.getValue();
                 break;
             default:
-                GenericIO.writelnString("Factory: Error contacting Main Server..");
-                GenericIO.writelnString(inMessage.toString());
+                System.out.println("Factory: Error contacting Main Server..");
+                System.out.println(inMessage.toString());
                 System.exit(1);
                 break;
         }
@@ -108,8 +107,8 @@ public class FactoryServer {
                 result = inMessage.getStr();
                 break;
             default:
-                GenericIO.writelnString("Factory: Error contacting Main Server..");
-                GenericIO.writelnString(inMessage.toString());
+                System.out.println("Factory: Error contacting Main Server..");
+                System.out.println(inMessage.toString());
                 System.exit(1);
                 break;
         }
@@ -132,8 +131,8 @@ public class FactoryServer {
         con.writeObject(outMessage);
         inMessage = (MessageConfig) con.readObject();
         if(inMessage.getType() != MessageConfig.ACK){
-            GenericIO.writelnString("Factory: Error contacting Main Server..");
-            GenericIO.writelnString(inMessage.toString());
+            System.out.println("Factory: Error contacting Main Server..");
+            System.out.println(inMessage.toString());
             System.exit(1);
         }
         con.close();
@@ -153,8 +152,8 @@ public class FactoryServer {
         con.writeObject(outMessage);
         inMessage = (MessageConfig) con.readObject();
         if(inMessage.getType() != MessageConfig.ACK){
-            GenericIO.writelnString("Factory: Error contacting Main Server..");
-            GenericIO.writelnString(inMessage.toString());
+            System.out.println("Factory: Error contacting Main Server..");
+            System.out.println(inMessage.toString());
             System.exit(1);
         }
         con.close();
