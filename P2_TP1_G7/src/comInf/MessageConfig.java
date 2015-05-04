@@ -77,51 +77,105 @@ public class MessageConfig extends Message {
     
     
     //*************** SETTING MESSAGES OF HOSTS AND PORTS
+    // Repository
     /**
-     * Message type: Set and Get Repository Host name and Port number.
+     * Message type: Set Repository Host name
      * @serial SETREPOSITORYHOST
-     * @serial GETREPOSITORYHOST
-     * @serial SETREPOSITORYPORT
-     * @serial GETREPOSITORYPORT
      */
     public static final int SETREPOSITORYHOST = 20;
+    
+    /**
+     * Message type: Get Repository Host name
+     * @serial GETREPOSITORYHOST
+     */
     public static final int GETREPOSITORYHOST = 21;
+    
+    /**
+     * Message type: Set Repository port number
+     * @serial SETREPOSITORYPORT
+     */
     public static final int SETREPOSITORYPORT = 22;
+    
+    /**
+     * Message type: Get Repository port number
+     * @serial GETREPOSITORYPORT
+     */
     public static final int GETREPOSITORYPORT = 23;
     
+    // SHOP
     /**
+     * Message type: Set Shop Host name
      * @serial SETSHOPHOST
-     * @serial GETSHOPHOST
-     * @serial SETSHOPPORT
-     * @serial GETSHOPPORT
      */
     public static final int SETSHOPHOST = 24;
+    
+    /**
+     * Message type: Get Shop Host name
+     * @serial GETSHOPHOST
+     */
     public static final int GETSHOPHOST = 25;
+    
+    /**
+     * Message type: Set Shop port number
+     * @serial SETSHOPPORT
+     */
     public static final int SETSHOPPORT = 26;
+    
+    /**
+     * Message type: Get Shop port number
+     * @serial GETSHOPPORT
+     */
     public static final int GETSHOPPORT = 27;
     
+    // Factory
     /**
-     * @serial SETSTORAGEHOST
-     * @serial GETSTORAGEHOST
-     * @serial SETSTORAGEPORT
-     * @serial GETSTORAGEPORT
-     */
-    public static final int SETSTORAGEHOST = 28;
-    public static final int GETSTORAGEHOST = 29;
-    public static final int SETSTORAGEPORT = 30;
-    public static final int GETSTORAGEPORT = 31;
-    
-    /**
+     * Message type: Get Factory Host name
      * @serial SETFACTORYHOST
-     * @serial GETFACTORYHOST
-     * @serial SETFACTORYPORT
-     * @serial GETFACTORYPORT
      */
     public static final int SETFACTORYHOST = 32;
+    
+    /**
+     * Message type: Get Factory Host name
+     * @serial GETFACTORYHOST
+     */
     public static final int GETFACTORYHOST = 33;
+    
+    /**
+     * Message type: Set Factory port number
+     * @serial SETFACTORYPORT
+     */
     public static final int SETFACTORYPORT = 34;
+    
+    /**
+     * Message type: Get Factory port number
+     * @serial GETFACTORYPORT
+     */
     public static final int GETFACTORYPORT = 35;
     
+    // STORAGE
+    /**
+     * Message type: Set Storage Host name
+     * @serial SETSTORAGEHOST
+     */
+    public static final int SETSTORAGEHOST = 28;
+    
+    /**
+     * Message type: Get Storage Host name
+     * @serial GETSTORAGEHOST
+     */
+    public static final int GETSTORAGEHOST = 29;
+    
+    /**
+     * Message type: Set Factory port number
+     * @serial SETSTORAGEPORT
+     */
+    public static final int SETSTORAGEPORT = 30;
+    
+    /**
+     * Message type: Get Storage port number
+     * @serial GETSTORAGEPORT
+     */
+    public static final int GETSTORAGEPORT = 31;
     
     
     //*************** Internal Variables
