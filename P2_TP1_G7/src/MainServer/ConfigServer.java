@@ -12,7 +12,7 @@ public class ConfigServer {
     /**
      * Configurations Server port number.
      * 
-     * @serialField portNumb
+     * @serial portNumb
      */
     private static final int portNumb = 22177;
     

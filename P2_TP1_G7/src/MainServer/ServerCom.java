@@ -14,7 +14,7 @@ public class ServerCom {
     /**
      * Socket de escuta
      *
-     * @serialField listeningSocket
+     * @serial listeningSocket
      */
 
     private ServerSocket listeningSocket = null;
@@ -22,28 +22,28 @@ public class ServerCom {
     /**
      * Socket de comunicação
      *
-     * @serialField commSocket
+     * @serial commSocket
      */
     private Socket commSocket = null;
 
     /**
      * Número do port de escuta do servidor
      *
-     * @serialField serverPortNumb
+     * @serial serverPortNumb
      */
     private int serverPortNumb;
 
     /**
      * Stream de entrada do canal de comunicação
      *
-     * @serialField in
+     * @serial in
      */
     private ObjectInputStream in = null;
 
     /**
      * Stream de saída do canal de comunicação
      *
-     * @serialField out
+     * @serial out
      */
     private ObjectOutputStream out = null;
 

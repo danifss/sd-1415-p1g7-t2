@@ -15,21 +15,21 @@ public class ClientProxy extends Thread {
     /**
      * Threads counter
      *
-     * @serialField nProxy
+     * @serial nProxy
      */
     private static int nProxy;
 
     /**
      * Communication Channel.
      *
-     * @serialField sconi
+     * @serial sconi
      */
     private ServerCom sconi;
 
     /**
      *
      *
-     * @serialField configInter
+     * @serial configInter
      */
     private ConfigBroker configInter;
 

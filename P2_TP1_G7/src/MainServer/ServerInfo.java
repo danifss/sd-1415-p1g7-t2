@@ -9,13 +9,13 @@ public class ServerInfo {
     
     /**
      * Main Server Host Name
-     * @serialField MainServerHostName
+     * @serial MainServerHostName
      */
     private static final String MainServerHostName = "192.168.8.171"; // PC1
     
     /**
      * Main Server Port Number
-     * @serialField MainServerPortNum
+     * @serial MainServerPortNum
      */
     private static final int MainServerPortNum = 22177;
 
