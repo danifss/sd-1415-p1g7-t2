@@ -9,6 +9,7 @@ public interface CustomerShopInterface {
 
     /**
      * The customer enters the shop.
+     * @param customerId id
      */
     void enterShop(int customerId);
 
@@ -17,6 +18,7 @@ public interface CustomerShopInterface {
      * If he his the last one leaving the Shop, wakes up the Owner (important to Owner
      * finish working, if he his waiting for all the Customers to buy products,
      * but the last one don't buy anything).
+     * @param customerId id
      */
     void exitShop(int customerId);
 
@@ -31,6 +33,7 @@ public interface CustomerShopInterface {
 
     /**
      * The Customer sees if the door is open
+     * @param customerId id
      * @return True if the shop is OPEN
      */
     boolean isDoorOpen(int customerId);
@@ -40,6 +43,7 @@ public interface CustomerShopInterface {
      * A random number is generated, then if it is less than 0.5 and 
      * exists goods to buy, that number*100 is divided by the number 
      * of goods for sell and returns his remainder.
+     * @param customerId id
      * @return number of goods to buy
      */
     int perusingAround(int customerId);
@@ -48,6 +52,7 @@ public interface CustomerShopInterface {
      * See if the owner and the customer can stop.
      * Checks if all products have been transferred to Shop, and all the products
      * are sold.
+     * @param customerId id
      * @return true if they can stop working
      */
     boolean endOper(int customerId);

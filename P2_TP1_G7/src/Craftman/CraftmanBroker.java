@@ -127,7 +127,7 @@ public class CraftmanBroker implements CraftmanRepositoryInterface, CraftmanShop
     //*************** Shop Communication
     /**
      * Communicate with Shop: Craftman indicates that prime materials are needed in the Factory.
-     * @param craftmanId
+     * @param craftmanId id
      */
     @Override
     public void primeMaterialsNeededShop(int craftmanId) {
@@ -152,7 +152,7 @@ public class CraftmanBroker implements CraftmanRepositoryInterface, CraftmanShop
     
     /**
      * Communicate with Shop: Craftman indicates that the Owner can go to factory to collect products.
-     * @param craftmanId 
+     * @param craftmanId id
      */
     @Override
     public void batchReadyForTransferShop(int craftmanId) {
@@ -179,7 +179,7 @@ public class CraftmanBroker implements CraftmanRepositoryInterface, CraftmanShop
     //*************** Factory Communication
     /**
      * Communicate with Factory: The Craftman indicates that the owner has products to collect.
-     * @param craftmanId
+     * @param craftmanId id
      */
     @Override
     public void batchReadyForTransferFactory(int craftmanId) {
@@ -204,7 +204,7 @@ public class CraftmanBroker implements CraftmanRepositoryInterface, CraftmanShop
 
     /**
      * Communicate with Factory: The Craftman verifies if he needs to contact the owner to collect products.
-     * @param craftmanId
+     * @param craftmanId id
      * @return if he needs to contact owner
      */
     @Override
@@ -237,7 +237,7 @@ public class CraftmanBroker implements CraftmanRepositoryInterface, CraftmanShop
 
     /**
      * Communicate with Factory: The Craftman checks if the Factory has prime materials to collect.
-     * @param craftmanId
+     * @param craftmanId id
      * @return if Factory has prime materials
      */
     @Override
@@ -270,7 +270,7 @@ public class CraftmanBroker implements CraftmanRepositoryInterface, CraftmanShop
 
     /**
      * Communicate with Factory: Check if the Craftman needs to contact owner to bring prime materials.
-     * @param craftmanId
+     * @param craftmanId id
      * @return if owner has to bring prime materials from Factory
      */
     @Override
@@ -303,8 +303,8 @@ public class CraftmanBroker implements CraftmanRepositoryInterface, CraftmanShop
 
     /**
      * Communicate with Factory: The Craftman collects prime materials.
-     * @param craftmanId
-     * @return 
+     * @param craftmanId id
+     * @return collected materials
      */
     @Override
     public int collectMaterials(int craftmanId) {
@@ -336,7 +336,7 @@ public class CraftmanBroker implements CraftmanRepositoryInterface, CraftmanShop
 
     /**
      * Communicate with Factory: Checks if the all the prime materials from the storage were supplied.
-     * @param craftmanId
+     * @param craftmanId id
      * @return if all prime materials have been supplied
      */
     @Override
@@ -369,7 +369,7 @@ public class CraftmanBroker implements CraftmanRepositoryInterface, CraftmanShop
 
     /**
      * Communicate with Factory: The Craftman sees if someone already contacted the owner to restock prime materials.
-     * @param craftmanId
+     * @param craftmanId id
      * @return if someone already contacted the owner
      */
     @Override
@@ -402,7 +402,7 @@ public class CraftmanBroker implements CraftmanRepositoryInterface, CraftmanShop
 
     /**
      * Communicate with Factory: Craftman sees how many prime materials needs to produce a new product
-     * @param craftmanId
+     * @param craftmanId id
      * @return number of prime materials needed per product
      */
     @Override
@@ -435,7 +435,7 @@ public class CraftmanBroker implements CraftmanRepositoryInterface, CraftmanShop
 
     /**
      * Communicate with Factory: The Craftman stores the products produced.
-     * @param craftmanId
+     * @param craftmanId id
      * @param nProd Number of products that the Craftman has
      * @return number of products the Craftman stored
      */
@@ -469,7 +469,7 @@ public class CraftmanBroker implements CraftmanRepositoryInterface, CraftmanShop
 
     /**
      * Communicate with Factory: The Craftman turns true the flag that indicates that prime materials are needed.
-     * @param craftmanId
+     * @param craftmanId id
      * @return if he contacted the owner
      */
     @Override

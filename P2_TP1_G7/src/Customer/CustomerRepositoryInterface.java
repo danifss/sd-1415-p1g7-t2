@@ -18,6 +18,7 @@ public interface CustomerRepositoryInterface {
     /**
      * Set number of customers inside.
      *
+     * @param customerId id
      * @param nCustomersInsideShop Number of customers inside
      */
     void setnCustomersInsideShop(int customerId, int nCustomersInsideShop);
