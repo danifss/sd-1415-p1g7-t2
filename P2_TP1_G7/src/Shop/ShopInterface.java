@@ -138,7 +138,7 @@ public interface ShopInterface {
 
     /**
      * Remove Customer from queue.
-     * @param customerId 
+     * @param customerId id
      */
     void removeSitCustomer(int customerId);
 

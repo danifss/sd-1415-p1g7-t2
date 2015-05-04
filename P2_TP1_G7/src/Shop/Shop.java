@@ -382,7 +382,7 @@ public class Shop implements ShopInterface {
     
     /**
      * Remove Customer from queue.
-     * @param customerId 
+     * @param customerId id
      */
     @Override
     public synchronized void removeSitCustomer(int customerId){

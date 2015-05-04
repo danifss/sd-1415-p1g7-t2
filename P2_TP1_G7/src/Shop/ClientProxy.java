@@ -37,8 +37,8 @@ public class ClientProxy extends Thread {
     /**
      * Instanciação do interface à barbearia.
      *
-     * @param sconi canal de comunicação
-     * @param bShopInter interface à barbearia
+     * @param sconi canal de comunicacao
+     * @param shopInter interface a barbearia
      */
     public ClientProxy(ServerCom sconi, ShopBroker shopInter) {
         super("Proxy_" + getProxyId());
